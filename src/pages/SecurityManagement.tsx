@@ -186,7 +186,7 @@ export const SecurityManagement: React.FC = () => {
             <ShieldAlert className="w-5 h-5 text-red-600" />
             <span>Office Assistant &amp; Information Security Management</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             Mandatory SOPs: OFF-001 through OFF-012 | Computer Modification Approval &amp; Security Controls
           </p>
         </div>
@@ -195,7 +195,7 @@ export const SecurityManagement: React.FC = () => {
           <button
             type="button"
             onClick={() => setCmrModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>New Computer Mod Request (OFF-005)</span>
@@ -203,7 +203,7 @@ export const SecurityManagement: React.FC = () => {
           <button
             type="button"
             onClick={() => setIncModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors"
           >
             <AlertTriangle className="w-4 h-4" />
             <span>Report Security Incident (OFF-012)</span>
@@ -213,20 +213,20 @@ export const SecurityManagement: React.FC = () => {
 
       {/* Notifications */}
       {error && (
-        <div className="p-3 bg-red-50 border-l-4 border-red-600 rounded-md text-xs text-red-800 flex items-center space-x-2">
+        <div className="p-3 bg-red-50 border-l-4 border-red-600 rounded-md text-sm text-red-800 flex items-center space-x-2">
           <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
           <span>{error}</span>
         </div>
       )}
       {success && (
-        <div className="p-3 bg-emerald-50 border-l-4 border-emerald-600 rounded-md text-xs text-emerald-800 flex items-center space-x-2">
+        <div className="p-3 bg-emerald-50 border-l-4 border-emerald-600 rounded-md text-sm text-emerald-800 flex items-center space-x-2">
           <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
           <span>{success}</span>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="border-b border-slate-200 flex space-x-6 text-xs font-bold">
+      <div className="border-b border-slate-200 flex space-x-6 text-sm font-bold">
         <button
           type="button"
           onClick={() => setActiveTab('modifications')}
@@ -270,7 +270,7 @@ export const SecurityManagement: React.FC = () => {
       {/* TAB 1: Computer Modification Requests (OFF-004..006) */}
       {activeTab === 'modifications' && (
         <div className="space-y-4">
-          <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-950 flex items-start space-x-3">
+          <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-lg text-sm text-blue-950 flex items-start space-x-3">
             <ShieldAlert className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
             <div>
               <span className="font-bold">SOP Rule 6 Mandate:</span>
@@ -282,7 +282,7 @@ export const SecurityManagement: React.FC = () => {
 
           <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Request ID</th>
@@ -344,7 +344,7 @@ export const SecurityManagement: React.FC = () => {
                   ))}
                   {modRequests.length === 0 && (
                     <tr>
-                      <td colSpan={8} className="px-4 py-6 text-center text-slate-400 text-xs">
+                      <td colSpan={8} className="px-4 py-6 text-center text-slate-500 text-sm">
                         No computer modification requests on file.
                       </td>
                     </tr>
@@ -360,7 +360,7 @@ export const SecurityManagement: React.FC = () => {
       {activeTab === 'checklists' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-xs text-slate-500">
+            <span className="text-sm text-slate-500">
               Audit logs for daily workstation locking (OFF-008) and terminal sign-outs (OFF-009)
             </span>
             <button
@@ -369,7 +369,7 @@ export const SecurityManagement: React.FC = () => {
                 setChkSignature(null);
                 setChecklistModalOpen(true);
               }}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm"
             >
               <CheckSquare className="w-4 h-4" />
               <span>Submit Daily Security Walkthrough (OFF-008)</span>
@@ -378,7 +378,7 @@ export const SecurityManagement: React.FC = () => {
 
           <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Checklist #</th>
@@ -398,9 +398,9 @@ export const SecurityManagement: React.FC = () => {
                       <td className="px-4 py-3 font-medium">
                         {chk.employeeName} ({chk.employeeIdNumber})
                       </td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Verified</td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Verified</td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Compliant</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">Verified</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">Verified</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">Compliant</td>
                       <td className="px-4 py-3">
                         <StatusBadge status={chk.status} size="sm" />
                       </td>
@@ -408,7 +408,7 @@ export const SecurityManagement: React.FC = () => {
                   ))}
                   {checklists.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="px-4 py-6 text-center text-slate-400 text-xs">
+                      <td colSpan={7} className="px-4 py-6 text-center text-slate-500 text-sm">
                         No daily security checklists on file.
                       </td>
                     </tr>
@@ -425,7 +425,7 @@ export const SecurityManagement: React.FC = () => {
         <div className="space-y-4">
           <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse text-xs">
+              <table className="w-full text-left border-collapse text-sm">
                 <thead>
                   <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Incident ID</th>
@@ -461,7 +461,7 @@ export const SecurityManagement: React.FC = () => {
                   ))}
                   {incidents.length === 0 && (
                     <tr>
-                      <td colSpan={7} className="px-4 py-6 text-center text-slate-400 text-xs">
+                      <td colSpan={7} className="px-4 py-6 text-center text-slate-500 text-sm">
                         Zero active security incidents on file.
                       </td>
                     </tr>
@@ -484,7 +484,7 @@ export const SecurityManagement: React.FC = () => {
                   Submit Computer Modification Request (OFF-005)
                 </h3>
               </div>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setCmrModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900"
@@ -493,7 +493,7 @@ export const SecurityManagement: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleCreateCMR} className="p-6 space-y-4 text-xs">
+            <form onSubmit={handleCreateCMR} className="p-6 space-y-4 text-sm">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">
                   Workstation Identifier *
@@ -582,7 +582,7 @@ export const SecurityManagement: React.FC = () => {
                 <CheckSquare className="w-4 h-4 text-amber-600" />
                 <span>Daily Security Walkthrough &amp; Sign-Out (OFF-008)</span>
               </h3>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setChecklistModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900"
@@ -591,7 +591,7 @@ export const SecurityManagement: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleSubmitChecklist} className="p-6 space-y-4 text-xs">
+            <form onSubmit={handleSubmitChecklist} className="p-6 space-y-4 text-sm">
               <div className="space-y-2">
                 <label className="flex items-center space-x-2.5 font-semibold text-slate-800">
                   <input
@@ -648,13 +648,13 @@ export const SecurityManagement: React.FC = () => {
                 <div>
                   <span className="font-semibold block">Employee Signature:</span>
                   <span className="text-xs text-slate-500">
-                    {chkSignature ? '✓ Signature Attached' : 'Signature required to submit'}
+                    {chkSignature ? 'Signature attached' : 'Signature required to submit'}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setChkSigOpen(true)}
-                  className="px-3 py-1.5 bg-white border border-slate-300 text-slate-800 font-bold rounded-md text-xs"
+                  className="px-3 py-1.5 bg-white border border-slate-300 text-slate-800 font-bold rounded-md text-sm"
                 >
                   Capture Signature
                 </button>
@@ -689,7 +689,7 @@ export const SecurityManagement: React.FC = () => {
                 <AlertTriangle className="w-4 h-4 text-amber-600" />
                 <span>Security Incident Reporting (OFF-012)</span>
               </h3>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setIncModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900"
@@ -698,7 +698,7 @@ export const SecurityManagement: React.FC = () => {
               </button>
             </div>
 
-            <form onSubmit={handleReportIncident} className="p-6 space-y-4 text-xs">
+            <form onSubmit={handleReportIncident} className="p-6 space-y-4 text-sm">
               <div>
                 <label className="block font-semibold text-slate-700 mb-1">
                   Incident Title *

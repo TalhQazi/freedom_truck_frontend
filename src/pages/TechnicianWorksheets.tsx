@@ -60,12 +60,12 @@ export const TechnicianWorksheets: React.FC = () => {
             <ClipboardCheck className="w-5 h-5 text-teal-700" />
             <span>Technician Worksheets &amp; Dual QC Inspection Hub</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             Mandatory SOPs: TECH-001 through TECH-013 &amp; SW-010 Final Verification
           </p>
         </div>
 
-        <div className="flex items-center space-x-2 text-xs font-bold text-slate-700 bg-white border border-slate-300 rounded-md px-3 py-1.5 shadow-sm">
+        <div className="flex items-center space-x-2 text-sm font-bold text-slate-700 bg-white border border-slate-300 rounded-md px-3 py-1.5 shadow-sm">
           <ShieldCheck className="w-4 h-4 text-emerald-600" />
           <span>Rule 4 Dual Technician Verification Enforced</span>
         </div>
@@ -80,7 +80,7 @@ export const TechnicianWorksheets: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by worksheet #, RO #, customer, plate, or technician ID..."
-            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
 
@@ -89,7 +89,7 @@ export const TechnicianWorksheets: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-xs border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
+            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
           >
             <option value="">All Inspection Stages</option>
             <option value="IN_PROGRESS">In progress (Bay Work)</option>
@@ -117,10 +117,10 @@ export const TechnicianWorksheets: React.FC = () => {
                 <th className="px-4 py-3 text-right">Inspection Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Loading technician worksheets...
                   </td>
                 </tr>
@@ -146,7 +146,7 @@ export const TechnicianWorksheets: React.FC = () => {
                       <div className="font-semibold text-slate-800">
                         {ws.vehicle?.year} {ws.vehicle?.make} {ws.vehicle?.model}
                       </div>
-                      <div className="text-xs text-slate-400">
+                      <div className="text-xs text-slate-500">
                         {ws.vehicle?.licensePlate} ({Number(ws.recordedMileage || 0).toLocaleString()} mi)
                       </div>
                     </td>
@@ -160,17 +160,17 @@ export const TechnicianWorksheets: React.FC = () => {
                         <span className="text-amber-600 text-xs">Pending (TECH-002)</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-xs">
+                    <td className="px-4 py-3 text-sm">
                       {ws.initialSignoff?.signature ? (
                         <span className="text-emerald-700 font-semibold flex items-center space-x-1">
                           <CheckCircle className="w-3.5 h-3.5" />
                           <span>{ws.initialSignoff.employeeId}</span>
                         </span>
                       ) : (
-                        <span className="text-slate-400">Unsigned</span>
+                        <span className="text-slate-500">Unsigned</span>
                       )}
                     </td>
-                    <td className="px-4 py-3 text-xs">
+                    <td className="px-4 py-3 text-sm">
                       {ws.qcInspection?.signature ? (
                         <span className="text-emerald-700 font-bold flex items-center space-x-1">
                           <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
@@ -182,7 +182,7 @@ export const TechnicianWorksheets: React.FC = () => {
                           <span>Discrepancy</span>
                         </span>
                       ) : (
-                        <span className="text-slate-400">Pending QC</span>
+                        <span className="text-slate-500">Pending QC</span>
                       )}
                     </td>
                     <td className="px-4 py-3">
@@ -191,7 +191,7 @@ export const TechnicianWorksheets: React.FC = () => {
                     <td className="px-4 py-3 text-right">
                       <Link
                         to={`/worksheets/${ws._id}`}
-                        className="inline-flex items-center px-3 py-1 text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center px-3 py-1 text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md transition-colors shadow-sm"
                       >
                         <span>Open Sheet</span>
                       </Link>
@@ -201,7 +201,7 @@ export const TechnicianWorksheets: React.FC = () => {
               })}
               {!loading && filteredWorksheets.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No worksheets found matching filter.
                   </td>
                 </tr>

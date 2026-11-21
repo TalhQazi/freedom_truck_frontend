@@ -36,7 +36,7 @@ export const VehicleDetail: React.FC = () => {
   }, [id]);
 
   if (loading || !data) {
-    return <div className="p-8 text-center text-xs text-slate-500">Loading vehicle service record...</div>;
+    return <div className="p-8 text-center text-sm text-slate-500">Loading vehicle service record...</div>;
   }
 
   const { vehicle, repairOrders = [], worksheets = [] } = data;
@@ -54,11 +54,11 @@ export const VehicleDetail: React.FC = () => {
           </Link>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+              <span className="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                 {vehicle.licensePlate}
               </span>
               {vehicle.unitNumber && (
-                <span className="text-xs text-slate-600 font-semibold">
+                <span className="text-sm text-slate-600 font-semibold">
                   Unit: {vehicle.unitNumber}
                 </span>
               )}
@@ -71,7 +71,7 @@ export const VehicleDetail: React.FC = () => {
 
         <Link
           to={`/repair-orders`}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Intake Vehicle for Service (RO)</span>
@@ -81,10 +81,10 @@ export const VehicleDetail: React.FC = () => {
       {/* Vehicle Specification Card */}
       <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
-          <span className="text-xs text-slate-400 block mb-1">
+          <span className="text-xs text-slate-500 block mb-1">
             VIN (Vehicle Identification #)
           </span>
-          <div className="text-xs font-bold text-slate-900">
+          <div className="text-sm font-bold text-slate-900">
             {vehicle.vin}
           </div>
           <div className="text-xs text-slate-500 mt-1">
@@ -93,32 +93,32 @@ export const VehicleDetail: React.FC = () => {
         </div>
 
         <div>
-          <span className="text-xs text-slate-400 block mb-1">
+          <span className="text-xs text-slate-500 block mb-1">
             Engine &amp; Sub-Model
           </span>
-          <div className="text-xs font-semibold text-slate-800">
+          <div className="text-sm font-semibold text-slate-800">
             {vehicle.engine || 'Standard Factory Spec'}
           </div>
           <div className="text-xs text-slate-500 mt-0.5">{vehicle.subModel}</div>
         </div>
 
         <div>
-          <span className="text-xs text-slate-400 block mb-1">
+          <span className="text-xs text-slate-500 block mb-1">
             Odometer Tracking
           </span>
           <div className="text-sm font-bold text-slate-900">
             {Number(vehicle.currentMileage || 0).toLocaleString()} miles
           </div>
-          <div className="text-xs text-slate-400 mt-0.5">
+          <div className="text-xs text-slate-500 mt-0.5">
             Previous: {Number(vehicle.previousMileage || vehicle.currentMileage).toLocaleString()} mi
           </div>
         </div>
 
         <div>
-          <span className="text-xs text-slate-400 block mb-1">
+          <span className="text-xs text-slate-500 block mb-1">
             Registered Account Owner
           </span>
-          <div className="text-xs font-bold text-blue-700">
+          <div className="text-sm font-bold text-blue-700">
             {vehicle.customer?.name ? (
               <Link to={`/customers/${vehicle.customer._id}`} className="hover:underline">
                 {vehicle.customer.name}
@@ -136,10 +136,10 @@ export const VehicleDetail: React.FC = () => {
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start space-x-3">
           <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
-            <h3 className="text-xs font-bold text-amber-900">
+            <h3 className="text-sm font-bold text-amber-900">
               Outstanding Vehicle Concerns &amp; Recommendations
             </h3>
-            <ul className="mt-1 list-disc list-inside text-xs text-amber-800 space-y-0.5">
+            <ul className="mt-1 list-disc list-inside text-sm text-amber-800 space-y-0.5">
               {vehicle.outstandingIssues.map((issue: string, idx: number) => (
                 <li key={idx}>{issue}</li>
               ))}
@@ -170,7 +170,7 @@ export const VehicleDetail: React.FC = () => {
                 <th className="px-4 py-2.5 text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {repairOrders.map((ro: any) => (
                 <tr key={ro._id} className="hover:bg-slate-50">
                   <td className="px-4 py-2.5 font-bold text-blue-700">
@@ -199,7 +199,7 @@ export const VehicleDetail: React.FC = () => {
                   <td className="px-4 py-2.5 text-right">
                     <Link
                       to={`/repair-orders/${ro._id}`}
-                      className="text-xs font-semibold text-blue-700 hover:underline"
+                      className="text-sm font-semibold text-blue-700 hover:underline"
                     >
                       Open &rarr;
                     </Link>
@@ -208,7 +208,7 @@ export const VehicleDetail: React.FC = () => {
               ))}
               {repairOrders.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-4 py-6 text-center text-slate-400 text-xs">
+                  <td colSpan={8} className="px-4 py-6 text-center text-slate-500 text-sm">
                     No past service history recorded for this vehicle.
                   </td>
                 </tr>

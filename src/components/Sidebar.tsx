@@ -42,7 +42,7 @@ const Item: React.FC<NavItem & { onClick: () => void }> = ({ to, label, icon: Ic
       }`
     }
   >
-    <Icon className="h-4 w-4 shrink-0 text-slate-400" />
+    <Icon className="h-4 w-4 shrink-0 text-slate-400" aria-hidden="true" />
     <span className="truncate">{label}</span>
   </NavLink>
 );
@@ -64,7 +64,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
         <div className="fixed inset-0 z-30 bg-slate-900/30 lg:hidden" onClick={onClose} aria-hidden="true" />
       )}
       <aside
-        className={`fixed inset-y-0 left-0 z-40 flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-40 flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white transition-transform duration-200 lg:static lg:translate-x-0 ${
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -75,7 +75,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
             </div>
             <span className="text-sm font-semibold text-slate-900">Freedom Car &amp; Truck</span>
           </div>
-          <button type="button" onClick={onClose} className="rounded-md p-1 text-slate-400 hover:bg-slate-100 lg:hidden">
+          <button type="button" onClick={onClose} aria-label="Close menu" className="rounded-md p-1.5 text-slate-400 hover:bg-slate-100 lg:hidden">
             <X className="h-4 w-4" />
           </button>
         </div>

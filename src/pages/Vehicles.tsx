@@ -37,14 +37,14 @@ export const Vehicles: React.FC = () => {
             <Truck className="w-5 h-5 text-blue-700" />
             <span>Vehicle Registry &amp; Fleet Inventory</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             SOP SW-002: Mandatory registration of VIN, license plate, year, make, model &amp; mileage
           </p>
         </div>
 
         <Link
           to="/customers"
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Register Vehicle for Customer</span>
@@ -60,7 +60,7 @@ export const Vehicles: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by license plate, full VIN, make, model, or fleet unit number..."
-            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
       </div>
@@ -80,17 +80,17 @@ export const Vehicles: React.FC = () => {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Searching vehicle registry...
                   </td>
                 </tr>
               ) : vehicles.map((v: any) => (
                 <tr key={v._id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="px-4 py-3">
-                    <span className="font-bold text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+                    <span className="font-bold text-sm text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                       {v.licensePlate}
                     </span>
                     {v.unitNumber && (
@@ -129,13 +129,13 @@ export const Vehicles: React.FC = () => {
                         <span className="truncate max-w-xs">{v.outstandingIssues.join(', ')}</span>
                       </div>
                     ) : (
-                      <span className="text-slate-400 text-xs">None flagged</span>
+                      <span className="text-slate-500 text-xs">None flagged</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/vehicles/${v._id}`}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
+                      className="inline-flex items-center px-2.5 py-1 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <span>History</span>
                     </Link>
@@ -144,7 +144,7 @@ export const Vehicles: React.FC = () => {
               ))}
               {!loading && vehicles.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No vehicles found in registry.
                   </td>
                 </tr>

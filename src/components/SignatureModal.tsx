@@ -110,10 +110,10 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
             </div>
             <div>
               <h3 className="font-bold text-base text-slate-900">{title}</h3>
-              {subtitle && <p className="text-xs text-slate-700">{subtitle}</p>}
+              {subtitle && <p className="text-sm text-slate-700">{subtitle}</p>}
             </div>
           </div>
-          <button
+          <button aria-label="Close"
             onClick={onClose}
             className="text-slate-500 hover:text-slate-900 transition-colors p-1"
           >
@@ -124,15 +124,15 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
         {/* Content Body */}
         <div className="p-6 space-y-4">
           {declarationText && (
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded-md text-xs text-slate-700 leading-relaxed font-sans">
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-md text-sm text-slate-700 leading-relaxed font-sans">
               {declarationText}
             </div>
           )}
 
           <div className="space-y-1.5">
-            <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
+            <div className="flex items-center justify-between text-sm font-semibold text-slate-600">
               <span>Sign within the boundary below:</span>
-              <span className="text-xs text-slate-400">Touchscreen &amp; Mouse Enabled</span>
+              <span className="text-xs text-slate-500">Touchscreen &amp; Mouse Enabled</span>
             </div>
 
             <div className="relative border-2 border-dashed border-slate-300 rounded-md bg-slate-50/50 hover:border-slate-400 transition-colors">
@@ -150,10 +150,10 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
                 onTouchEnd={stopDrawing}
               />
               <div className="absolute bottom-3 left-4 right-4 border-b border-slate-300 pointer-events-none flex items-center justify-between">
-                <span className="text-xs text-slate-400">
+                <span className="text-xs text-slate-500">
                   X Digital Signature Line
                 </span>
-                <span className="text-xs text-slate-400">SOP Validated</span>
+                <span className="text-xs text-slate-500">SOP Validated</span>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
           <button
             type="button"
             onClick={handleClear}
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
             <span>Clear Canvas</span>
@@ -174,14 +174,14 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-1.5 text-xs font-medium text-slate-700 hover:text-slate-900 transition-colors"
+              className="px-4 py-1.5 text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
             >
               Cancel
             </button>
             <button
               type="button"
               onClick={handleConfirm}
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
             >
               <CheckCircle className="w-3.5 h-3.5" />
               <span>Confirm &amp; Record Signature</span>

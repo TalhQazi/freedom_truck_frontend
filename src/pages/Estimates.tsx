@@ -249,7 +249,7 @@ export const Estimates: React.FC = () => {
             <FileSpreadsheet className="w-5 h-5 text-blue-700" />
             <span>Estimates &amp; Customer Authorizations</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             SOP SW-003, SW-004 (Parts Matrix), SW-005 (Tire +$20 Flat), SW-007 (Authorization), SW-008 (50% Deposit)
           </p>
         </div>
@@ -257,7 +257,7 @@ export const Estimates: React.FC = () => {
         <button
           type="button"
           onClick={openCreateModal}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>New Itemized Estimate (SW-003)</span>
@@ -280,10 +280,10 @@ export const Estimates: React.FC = () => {
                 <th className="px-4 py-3 text-right">Workflow Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Loading estimates...
                   </td>
                 </tr>
@@ -291,7 +291,7 @@ export const Estimates: React.FC = () => {
                 <tr key={est._id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="px-4 py-3 font-bold text-blue-700">
                     {est.estimateNumber}
-                    <span className="text-xs text-slate-400 block font-normal">v{est.version}</span>
+                    <span className="text-xs text-slate-500 block font-normal">v{est.version}</span>
                   </td>
                   <td className="px-4 py-3 font-medium text-slate-900">
                     {est.customer?.name}
@@ -300,7 +300,7 @@ export const Estimates: React.FC = () => {
                     <div className="font-semibold text-slate-800">
                       {est.vehicle?.year} {est.vehicle?.make} {est.vehicle?.model}
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-slate-500">
                       {est.vehicle?.licensePlate} ({Number(est.mileageIn || 0).toLocaleString()} mi)
                     </div>
                   </td>
@@ -312,14 +312,14 @@ export const Estimates: React.FC = () => {
                   </td>
                   <td className="px-4 py-3">
                     {est.depositRequired > 0 ? (
-                      <div className="text-xs font-semibold text-orange-800">
+                      <div className="text-sm font-semibold text-orange-800">
                         ${est.depositRequired.toFixed(2)} (50%)
                         <span className="block text-xs text-slate-500">
-                          {est.depositMet ? '✓ Deposit Verified' : '⚠ Required before dispatch'}
+                          {est.depositMet ? 'Deposit verified' : 'Required before dispatch'}
                         </span>
                       </div>
                     ) : (
-                      <span className="text-slate-400 text-xs">Under $500 threshold</span>
+                      <span className="text-slate-500 text-xs">Under $500 threshold</span>
                     )}
                   </td>
                   <td className="px-4 py-3">
@@ -330,7 +330,7 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleAuthorizeClick(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors shadow-sm"
                       >
                         <FileCheck className="w-3.5 h-3.5" />
                         <span>Sign (SW-007)</span>
@@ -340,7 +340,7 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleConvertToRO(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors shadow-sm"
                       >
                         <span>Convert to RO (SW-006)</span>
                       </button>
@@ -355,7 +355,7 @@ export const Estimates: React.FC = () => {
               ))}
               {!loading && estimates.length === 0 && (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No estimates created yet. Click "New Itemized Estimate" to start.
                   </td>
                 </tr>
@@ -376,12 +376,12 @@ export const Estimates: React.FC = () => {
                   <h3 className="font-bold text-base text-slate-900">
                     New Itemized Estimate (SW-003)
                   </h3>
-                  <p className="text-xs text-slate-700">
+                  <p className="text-sm text-slate-700">
                     Enforcing SW-004 (Parts Matrix Markup) &amp; SW-005 (Tire +$20 Flat)
                   </p>
                 </div>
               </div>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900 p-1"
@@ -392,7 +392,7 @@ export const Estimates: React.FC = () => {
 
             <form onSubmit={handleCreateEstimate} className="p-6 space-y-5">
               {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-xs flex items-center space-x-2">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
                 </div>
@@ -401,14 +401,14 @@ export const Estimates: React.FC = () => {
               {/* Customer & Vehicle Select */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Select Customer Profile *
                   </label>
                   <select
                     required
                     value={selectedCustomerId}
                     onChange={(e) => handleCustomerChange(e.target.value)}
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   >
                     <option value="">-- Choose Customer --</option>
                     {customers.map((c) => (
@@ -420,7 +420,7 @@ export const Estimates: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Select Vehicle *
                   </label>
                   <select
@@ -428,7 +428,7 @@ export const Estimates: React.FC = () => {
                     disabled={!selectedCustomerId}
                     value={selectedVehicleId}
                     onChange={(e) => handleVehicleChange(e.target.value)}
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
                   >
                     <option value="">-- Choose Registered Vehicle --</option>
                     {customerVehicles.map((v) => (
@@ -440,7 +440,7 @@ export const Estimates: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Odometer In (Mileage) *
                   </label>
                   <input
@@ -449,14 +449,14 @@ export const Estimates: React.FC = () => {
                     value={mileageIn}
                     onChange={(e) => setMileageIn(e.target.value)}
                     placeholder="e.g. 54280"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Customer Complaint */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Customer Complaint &amp; Requested Symptoms (SW-003) *
                 </label>
                 <textarea
@@ -465,7 +465,7 @@ export const Estimates: React.FC = () => {
                   value={customerComplaint}
                   onChange={(e) => setCustomerComplaint(e.target.value)}
                   placeholder="Verbatim customer complaint: e.g., Brake squeal, steering pull right under heavy braking, check engine lamp."
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -473,7 +473,7 @@ export const Estimates: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                   <div>
-                    <h4 className="text-xs font-bold text-slate-900">
+                    <h4 className="text-sm font-bold text-slate-900">
                       Itemized Services, Parts &amp; Tires
                     </h4>
                     <p className="text-xs text-slate-500">
@@ -506,7 +506,7 @@ export const Estimates: React.FC = () => {
                 </div>
 
                 <div className="border border-slate-200 rounded-md overflow-hidden">
-                  <table className="w-full text-left text-xs">
+                  <table className="w-full text-left text-sm">
                     <thead className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                       <tr>
                         <th className="p-2">Type</th>
@@ -534,7 +534,7 @@ export const Estimates: React.FC = () => {
                               value={item.description}
                               onChange={(e) => updateLineItem(idx, 'description', e.target.value)}
                               placeholder={item.itemType === 'tire' ? 'e.g. Michelin Agilis 275/70R18' : 'Description'}
-                              className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900 focus:outline-none"
+                              className="w-full text-sm border border-slate-200 rounded-md px-2 py-1 text-slate-900 focus:outline-none"
                             />
                             {item.itemType === 'part' && (
                               <input
@@ -559,7 +559,7 @@ export const Estimates: React.FC = () => {
                                   e.target.value
                                 )
                               }
-                              className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900"
+                              className="w-full text-sm border border-slate-200 rounded-md px-2 py-1 text-slate-900"
                             />
                           </td>
                           <td className="p-2">
@@ -570,14 +570,14 @@ export const Estimates: React.FC = () => {
                                 min="0"
                                 value={item.costPrice}
                                 onChange={(e) => updateLineItem(idx, 'costPrice', e.target.value)}
-                                className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900"
+                                className="w-full text-sm border border-slate-200 rounded-md px-2 py-1 text-slate-900"
                               />
                             ) : (
-                              <span className="text-slate-400 text-xs">-</span>
+                              <span className="text-slate-500 text-xs">-</span>
                             )}
                           </td>
                           <td className="p-2">
-                            <div className="text-xs font-semibold text-slate-900">
+                            <div className="text-sm font-semibold text-slate-900">
                               ${Number(item.sellingPrice || 0).toFixed(2)}
                             </div>
                             {item.itemType === 'tire' && (
@@ -594,7 +594,7 @@ export const Estimates: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => removeLineItem(idx)}
-                              className="text-slate-400 hover:text-red-600"
+                              className="text-slate-500 hover:text-red-600"
                             >
                               <Trash2 className="w-3.5 h-3.5" />
                             </button>
@@ -608,7 +608,7 @@ export const Estimates: React.FC = () => {
 
               {/* Financial Calculation Summary (Section 11) */}
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="space-y-1 text-xs text-slate-600">
+                <div className="space-y-1 text-sm text-slate-600">
                   <div>Parts/Tires/Labor Subtotal: <span className="font-semibold text-slate-900">${totals.subtotal.toFixed(2)}</span></div>
                   <div>Shop Supplies &amp; EPA: <span className="font-semibold text-slate-900">${totals.supplies.toFixed(2)}</span></div>
                   <div>Sales Tax (8.25%): <span className="font-semibold text-slate-900">${totals.tax.toFixed(2)}</span></div>
@@ -620,7 +620,7 @@ export const Estimates: React.FC = () => {
                     ${totals.grand.toFixed(2)}
                   </div>
                   {totals.deposit > 0 ? (
-                    <div className="text-xs font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md">
+                    <div className="text-sm font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md">
                       Mandatory 50% Deposit: ${totals.deposit.toFixed(2)} (SW-008)
                     </div>
                   ) : (
@@ -636,14 +636,14 @@ export const Estimates: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-700 hover:text-slate-900"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Creating Estimate...' : 'Save Estimate (SW-003)'}
                 </button>

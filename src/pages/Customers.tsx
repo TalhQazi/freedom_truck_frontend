@@ -92,7 +92,7 @@ export const Customers: React.FC = () => {
             <Users className="w-5 h-5 text-blue-700" />
             <span>Customer Profiles &amp; Fleet Accounts</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             SOP SW-001: Create and verify complete customer account records
           </p>
         </div>
@@ -100,7 +100,7 @@ export const Customers: React.FC = () => {
         <button
           type="button"
           onClick={() => setModalOpen(true)}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Register New Customer (SW-001)</span>
@@ -116,7 +116,7 @@ export const Customers: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by customer name, phone number, email, or account #..."
-            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
       </div>
@@ -136,10 +136,10 @@ export const Customers: React.FC = () => {
                 <th className="px-4 py-3 text-right">Profile</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Searching customer database...
                   </td>
                 </tr>
@@ -174,7 +174,7 @@ export const Customers: React.FC = () => {
                         {c.address.street}, {c.address.city} {c.address.state} {c.address.zip}
                       </div>
                     ) : (
-                      <span className="text-slate-400">No address on file</span>
+                      <span className="text-slate-500">No address on file</span>
                     )}
                   </td>
                   <td className="px-4 py-3">
@@ -189,7 +189,7 @@ export const Customers: React.FC = () => {
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/customers/${c._id}`}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
+                      className="inline-flex items-center px-2.5 py-1 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <span>View</span>
                     </Link>
@@ -198,7 +198,7 @@ export const Customers: React.FC = () => {
               ))}
               {!loading && customers.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No customers found matching search criteria.
                   </td>
                 </tr>
@@ -219,7 +219,7 @@ export const Customers: React.FC = () => {
                   Register Customer Profile (SW-001)
                 </h3>
               </div>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900 p-1"
@@ -230,7 +230,7 @@ export const Customers: React.FC = () => {
 
             <form onSubmit={handleCreateCustomer} className="p-6 space-y-4">
               {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-xs flex items-center space-x-2">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
                 </div>
@@ -238,7 +238,7 @@ export const Customers: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Customer / Fleet Name *
                   </label>
                   <input
@@ -247,12 +247,12 @@ export const Customers: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Lone Star Logistics LLC"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Phone Number *
                   </label>
                   <input
@@ -261,14 +261,14 @@ export const Customers: React.FC = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(214) 555-0199"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Email Address
                   </label>
                   <input
@@ -276,18 +276,18 @@ export const Customers: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="fleet@company.com"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Account Status
                   </label>
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as any)}
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   >
                     <option value="active">Active Standard</option>
                     <option value="vip">Vip / High-Priority Commercial Fleet</option>
@@ -297,7 +297,7 @@ export const Customers: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Street Address
                 </label>
                 <input
@@ -305,51 +305,51 @@ export const Customers: React.FC = () => {
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                   placeholder="1234 Commerce Blvd"
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">City</label>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">City</label>
                   <input
                     type="text"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Dallas"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">State</label>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">State</label>
                   <input
                     type="text"
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     placeholder="TX"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">Zip</label>
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">Zip</label>
                   <input
                     type="text"
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                     placeholder="75201"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">Customer Notes</label>
+                <label className="block text-sm font-semibold text-slate-700 mb-1">Customer Notes</label>
                 <textarea
                   rows={2}
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Special instructions, fleet dispatch preferences, etc."
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -357,14 +357,14 @@ export const Customers: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-700 hover:text-slate-900"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Registering...' : 'Register Profile (SW-001)'}
                 </button>

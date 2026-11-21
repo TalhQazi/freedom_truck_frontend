@@ -16,6 +16,7 @@ import {
   Key,
   Database,
   Radio,
+  X,
 } from 'lucide-react';
 import { settingsApi, authApi } from '../api/client';
 import { useAuth } from '../context/AuthContext';
@@ -223,7 +224,7 @@ export default function Settings() {
               <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Workshop Configuration & Business Rules
               </h1>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Manage parts markup tiers (SW-004), tire flat rules (SW-005), deposit thresholds, and user accounts.
               </p>
             </div>
@@ -234,7 +235,7 @@ export default function Settings() {
         <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
           <button
             onClick={() => setActiveTab('markup')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'markup'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -245,7 +246,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('shop')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'shop'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -256,7 +257,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('employees')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'employees'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -267,7 +268,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('integrations')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'integrations'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -280,13 +281,13 @@ export default function Settings() {
 
       {/* Alert Banners */}
       {successMsg && (
-        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-md flex items-center gap-2">
+        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded-md flex items-center gap-2">
           <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
           <span>{successMsg}</span>
         </div>
       )}
       {errorMsg && (
-        <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-md flex items-center gap-2">
+        <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
           <span>{errorMsg}</span>
         </div>
@@ -296,7 +297,7 @@ export default function Settings() {
       {activeTab === 'markup' && (
         <div className="space-y-6">
           {/* Strict SOP Notice */}
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs space-y-2">
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm space-y-2">
             <div className="flex items-center gap-2 text-blue-600 font-bold">
               <Shield className="w-4 h-4" />
               SOP Pricing Compliance Notice (SW-004 & SW-005)
@@ -313,7 +314,7 @@ export default function Settings() {
             <div className="lg:col-span-8 bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
               <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <div>
-                  <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+                  <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
                     <Layers className="w-4 h-4 text-blue-600" />
                     Approved Parts Markup Matrix Tiers
                   </h3>
@@ -324,7 +325,7 @@ export default function Settings() {
                 {isManagement && (
                   <button
                     onClick={handleAddTier}
-                    className="px-2.5 py-1 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-xs font-semibold flex items-center gap-1"
+                    className="px-2.5 py-1 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-sm font-semibold flex items-center gap-1"
                   >
                     <Plus className="w-3.5 h-3.5" /> Add Tier
                   </button>
@@ -332,7 +333,7 @@ export default function Settings() {
               </div>
 
               <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs border-collapse">
+                <table className="w-full text-left text-sm border-collapse">
                   <thead>
                     <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                       <th className="py-2.5 px-3">Cost Tier Range</th>
@@ -354,7 +355,7 @@ export default function Settings() {
                                 step="0.01"
                                 value={tier.minCost}
                                 onChange={(e) => handleTierChange(idx, 'minCost', Number(e.target.value))}
-                                className="w-20 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
+                                className="w-20 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-sm text-slate-900"
                               />
                               <span>to $</span>
                               <input
@@ -362,7 +363,7 @@ export default function Settings() {
                                 step="0.01"
                                 value={tier.maxCost}
                                 onChange={(e) => handleTierChange(idx, 'maxCost', Number(e.target.value))}
-                                className="w-24 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
+                                className="w-24 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-sm text-slate-900"
                               />
                             </div>
                           ) : (
@@ -376,7 +377,7 @@ export default function Settings() {
                                 type="number"
                                 value={tier.markupPercent}
                                 onChange={(e) => handleTierChange(idx, 'markupPercent', Number(e.target.value))}
-                                className="w-16 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
+                                className="w-16 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-sm text-slate-900"
                               />
                               <span>%</span>
                             </div>
@@ -411,7 +412,7 @@ export default function Settings() {
                   <button
                     disabled={saving}
                     onClick={handleSaveMatrix}
-                    className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                    className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                   >
                     <Save className="w-3.5 h-3.5" /> Save Markup Matrix
                   </button>
@@ -421,7 +422,7 @@ export default function Settings() {
 
             {/* Live Pricing Calculator Tester */}
             <div className="lg:col-span-4 bg-white rounded-lg border border-slate-200 p-4 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
                 <Calculator className="w-4 h-4 text-emerald-600" />
                 Live Pricing Matrix Simulator
               </h3>
@@ -435,7 +436,7 @@ export default function Settings() {
                     <button
                       type="button"
                       onClick={() => setTestType('part')}
-                      className={`py-1.5 rounded text-xs font-semibold ${
+                      className={`py-1.5 rounded text-sm font-semibold ${
                         testType === 'part'
                           ? 'bg-blue-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
@@ -446,7 +447,7 @@ export default function Settings() {
                     <button
                       type="button"
                       onClick={() => setTestType('tire')}
-                      className={`py-1.5 rounded text-xs font-semibold ${
+                      className={`py-1.5 rounded text-sm font-semibold ${
                         testType === 'tire'
                           ? 'bg-blue-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
@@ -466,20 +467,20 @@ export default function Settings() {
                     step="0.01"
                     value={testCost}
                     onChange={(e) => setTestCost(e.target.value)}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleTestCalculate}
-                  className="w-full py-2 bg-slate-200 hover:bg-slate-600 text-slate-900 rounded-md text-xs font-semibold flex items-center justify-center gap-1.5"
+                  className="w-full py-2 bg-slate-200 hover:bg-slate-600 text-slate-900 rounded-md text-sm font-semibold flex items-center justify-center gap-1.5"
                 >
                   <Calculator className="w-3.5 h-3.5" /> Calculate Selling Price
                 </button>
 
                 {calcResult && (
-                  <div className="p-3 bg-slate-50 rounded-md border border-slate-200 space-y-2 text-xs">
+                  <div className="p-3 bg-slate-50 rounded-md border border-slate-200 space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-slate-500">Calculated Selling Price:</span>
                       <span className="font-bold text-emerald-600 text-sm">
@@ -502,14 +503,14 @@ export default function Settings() {
       {activeTab === 'shop' && (
         <form onSubmit={handleSaveShopSettings} className="space-y-6 max-w-4xl">
           <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-5">
-            <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+            <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
               <CircleDollarSign className="w-4 h-4 text-emerald-600" />
               Workshop Financial Parameters & Business Rules
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Default Labor Rate ($ / hour)
                 </label>
                 <input
@@ -518,7 +519,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.laborRateDefault}
                   onChange={(e) => setShopSettings({ ...shopSettings, laborRateDefault: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   Standard mechanical & diagnostic hourly rate
@@ -526,7 +527,7 @@ export default function Settings() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Default Sales Tax Rate (%)
                 </label>
                 <input
@@ -535,7 +536,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.taxRateDefault}
                   onChange={(e) => setShopSettings({ ...shopSettings, taxRateDefault: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   State & local municipal sales tax on parts and labor
@@ -543,7 +544,7 @@ export default function Settings() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Flat Tire Markup ($ per tire) – SW-005
                 </label>
                 <input
@@ -552,7 +553,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.tireMarkupFlat}
                   onChange={(e) => setShopSettings({ ...shopSettings, tireMarkupFlat: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-emerald-600 font-bold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-emerald-600 font-bold"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   Mandatory flat markup per tire (strictly $20.00 standard)
@@ -560,7 +561,7 @@ export default function Settings() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Deposit Threshold ($) – SW-008
                 </label>
                 <input
@@ -569,7 +570,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.depositThreshold}
                   onChange={(e) => setShopSettings({ ...shopSettings, depositThreshold: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   Repair orders exceeding this amount require a 50% deposit before dispatch
@@ -577,7 +578,7 @@ export default function Settings() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Mandatory Deposit Percentage (%)
                 </label>
                 <input
@@ -585,7 +586,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.depositPercentage}
                   onChange={(e) => setShopSettings({ ...shopSettings, depositPercentage: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   Strictly 50% of the total authorized estimate
@@ -593,7 +594,7 @@ export default function Settings() {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Daily Cash-Up Closing Float ($) – SW-015
                 </label>
                 <input
@@ -601,7 +602,7 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.drawerClosingTarget}
                   onChange={(e) => setShopSettings({ ...shopSettings, drawerClosingTarget: Number(e.target.value) })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-emerald-600 font-bold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-emerald-600 font-bold"
                 />
                 <span className="text-xs text-slate-500 mt-0.5 block">
                   Exact closing drawer cash float balance ($100.00 target)
@@ -610,7 +611,7 @@ export default function Settings() {
             </div>
 
             <div className="pt-4 border-t border-slate-200">
-              <h4 className="text-xs font-semibold text-slate-700 mb-3">Shop Facility Details</h4>
+              <h4 className="text-sm font-semibold text-slate-700 mb-3">Shop Facility Details</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs text-slate-500 mb-1">Company Trade Name</label>
@@ -619,7 +620,7 @@ export default function Settings() {
                     disabled={!isManagement}
                     value={shopSettings.companyName}
                     onChange={(e) => setShopSettings({ ...shopSettings, companyName: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                   />
                 </div>
                 <div>
@@ -629,7 +630,7 @@ export default function Settings() {
                     disabled={!isManagement}
                     value={shopSettings.phone}
                     onChange={(e) => setShopSettings({ ...shopSettings, phone: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -639,7 +640,7 @@ export default function Settings() {
                     disabled={!isManagement}
                     value={shopSettings.address}
                     onChange={(e) => setShopSettings({ ...shopSettings, address: e.target.value })}
-                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                   />
                 </div>
               </div>
@@ -650,7 +651,7 @@ export default function Settings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                 >
                   <Save className="w-4 h-4" /> Save Policy Parameters
                 </button>
@@ -666,14 +667,14 @@ export default function Settings() {
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-bold text-slate-900">Workshop Employee Accounts</h3>
-              <p className="text-xs text-slate-500">
+              <p className="text-sm text-slate-500">
                 Manage roles, employee IDs, and access status across all 6 roles.
               </p>
             </div>
             {isManagement && (
               <button
                 onClick={() => setShowAddEmpModal(true)}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 shadow-sm"
+                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm"
               >
                 <UserPlus className="w-3.5 h-3.5" /> Add Employee
               </button>
@@ -682,7 +683,7 @@ export default function Settings() {
 
           <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">EMP ID</th>
@@ -725,7 +726,7 @@ export default function Settings() {
                         <td className="py-3 px-3 text-right whitespace-nowrap">
                           <button
                             onClick={() => handleToggleUserStatus(emp)}
-                            className="text-xs text-slate-500 hover:text-slate-900 underline"
+                            className="text-sm text-slate-500 hover:text-slate-900 underline"
                           >
                             {emp.isActive ? 'Deactivate' : 'Activate'}
                           </button>
@@ -745,14 +746,14 @@ export default function Settings() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-blue-600">
+              <span className="text-sm font-bold text-blue-600">
                 Mitchell 1 Manager SE
               </span>
               <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
                 Ready
               </span>
             </div>
-            <p className="text-xs text-slate-700">
+            <p className="text-sm text-slate-700">
               API bridge for importing historical vehicle records, parts catalogs, and labor times.
             </p>
             <div className="text-xs text-slate-500">
@@ -762,14 +763,14 @@ export default function Settings() {
 
           <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-emerald-600">
+              <span className="text-sm font-bold text-emerald-600">
                 Electronic Parts Catalog
               </span>
               <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
                 Connected
               </span>
             </div>
-            <p className="text-xs text-slate-700">
+            <p className="text-sm text-slate-700">
               Real-time parts inventory query and supplier cost ingestion for matrix calculation.
             </p>
             <div className="text-xs text-slate-500">
@@ -779,14 +780,14 @@ export default function Settings() {
 
           <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-purple-600">
+              <span className="text-sm font-bold text-purple-600">
                 Tire Wholesale Network
               </span>
               <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
                 Connected
               </span>
             </div>
-            <p className="text-xs text-slate-700">
+            <p className="text-sm text-slate-700">
               National tire distributor catalog feeds with automated Cost + $20 flat pricing.
             </p>
             <div className="text-xs text-slate-500">
@@ -805,68 +806,68 @@ export default function Settings() {
                 <UserPlus className="w-4 h-4 text-blue-600" />
                 Register New Workshop Employee
               </h3>
-              <button
+              <button aria-label="Close"
                 onClick={() => setShowAddEmpModal(false)}
                 className="text-slate-500 hover:text-slate-900"
               >
-                ✕
+                <X className="h-5 w-5" />
               </button>
             </div>
 
             <form onSubmit={handleCreateEmployee} className="space-y-3">
               <div>
-                <label className="block text-xs text-slate-700 mb-1">Full Name</label>
+                <label className="block text-sm text-slate-700 mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.name}
                   onChange={(e) => setNewEmpData({ ...newEmpData, name: e.target.value })}
                   placeholder="e.g. John Doe"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-700 mb-1">Email Address</label>
+                <label className="block text-sm text-slate-700 mb-1">Email Address</label>
                 <input
                   type="email"
                   required
                   value={newEmpData.email}
                   onChange={(e) => setNewEmpData({ ...newEmpData, email: e.target.value })}
                   placeholder="e.g. jdoe@freedomcartruck.com"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-700 mb-1">Employee ID</label>
+                <label className="block text-sm text-slate-700 mb-1">Employee ID</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.employeeId}
                   onChange={(e) => setNewEmpData({ ...newEmpData, employeeId: e.target.value })}
                   placeholder="e.g. EMP-1007"
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-700 mb-1">Temporary Password</label>
+                <label className="block text-sm text-slate-700 mb-1">Temporary Password</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.password}
                   onChange={(e) => setNewEmpData({ ...newEmpData, password: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-700 mb-1">Workshop Role</label>
+                <label className="block text-sm text-slate-700 mb-1">Workshop Role</label>
                 <select
                   value={newEmpData.role}
                   onChange={(e) => setNewEmpData({ ...newEmpData, role: e.target.value })}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900"
                 >
                   <option value="service_writer">Service Writer</option>
                   <option value="technician">Technician</option>
@@ -881,14 +882,14 @@ export default function Settings() {
                 <button
                   type="button"
                   onClick={() => setShowAddEmpModal(false)}
-                  className="px-3 py-1.5 bg-slate-200 hover:bg-slate-600 text-slate-700 rounded-md text-xs"
+                  className="px-3 py-1.5 bg-slate-200 hover:bg-slate-600 text-slate-700 rounded-md text-sm"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold"
+                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold"
                 >
                   Create Employee
                 </button>

@@ -48,7 +48,7 @@ export const Invoices: React.FC = () => {
             <Receipt className="w-5 h-5 text-emerald-700" />
             <span>Commercial Invoices &amp; Billing</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             SOP SW-011: Itemized invoices with automatic 50% deposit credit deductions (SW-008)
           </p>
         </div>
@@ -63,7 +63,7 @@ export const Invoices: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by invoice number, customer name, license plate..."
-            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
 
@@ -72,7 +72,7 @@ export const Invoices: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-xs border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
+            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
           >
             <option value="">All Billing Statuses</option>
             <option value="ISSUED">Issued (Balance Due)</option>
@@ -99,10 +99,10 @@ export const Invoices: React.FC = () => {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={9} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={9} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Loading commercial invoices...
                   </td>
                 </tr>
@@ -123,7 +123,7 @@ export const Invoices: React.FC = () => {
                     <div className="font-semibold text-slate-800">
                       {inv.vehicle?.year} {inv.vehicle?.make} {inv.vehicle?.model}
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-slate-500">
                       {inv.vehicle?.licensePlate}
                     </div>
                   </td>
@@ -142,7 +142,7 @@ export const Invoices: React.FC = () => {
                   <td className="px-4 py-3 text-right space-x-1.5">
                     <Link
                       to={`/invoices/${inv._id}`}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
+                      className="inline-flex items-center px-2.5 py-1 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <Eye className="w-3.5 h-3.5 mr-1" />
                       <span>View</span>
@@ -152,7 +152,7 @@ export const Invoices: React.FC = () => {
               ))}
               {!loading && filtered.length === 0 && (
                 <tr>
-                  <td colSpan={9} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={9} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No invoices found.
                   </td>
                 </tr>

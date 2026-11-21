@@ -97,7 +97,7 @@ export default function Reports() {
               <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Operational & Financial Intelligence
               </h1>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Real-time financial reconciliation, shop operations metrics, and regulatory audit trail.
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function Reports() {
         <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
           <button
             onClick={() => setActiveTab('financial')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'financial'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -119,7 +119,7 @@ export default function Reports() {
 
           <button
             onClick={() => setActiveTab('operations')}
-            className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'operations'
                 ? 'bg-blue-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -131,7 +131,7 @@ export default function Reports() {
           {isManagement && (
             <button
               onClick={() => setActiveTab('audit')}
-              className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
                 activeTab === 'audit'
                   ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -149,7 +149,7 @@ export default function Reports() {
           {/* Top Metric Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-              <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
+              <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
                 <span>Total Collected Revenue</span>
                 <DollarSign className="w-4 h-4 text-emerald-600" />
               </div>
@@ -162,7 +162,7 @@ export default function Reports() {
             </div>
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-              <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
+              <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
                 <span>Cash Receipts (SW-015 Register)</span>
                 <Banknote className="w-4 h-4 text-emerald-600" />
               </div>
@@ -175,7 +175,7 @@ export default function Reports() {
             </div>
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-              <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
+              <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
                 <span>Electronic / Card Receipts</span>
                 <CreditCard className="w-4 h-4 text-blue-600" />
               </div>
@@ -188,7 +188,7 @@ export default function Reports() {
             </div>
 
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
-              <div className="flex items-center justify-between text-slate-500 text-xs mb-2">
+              <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
                 <span>Settled Payment Count</span>
                 <TrendingUp className="w-4 h-4 text-purple-600" />
               </div>
@@ -204,13 +204,13 @@ export default function Reports() {
           {/* Filter Bar */}
           <div className="flex items-center justify-between bg-white p-3 rounded-lg border border-slate-200">
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-500 flex items-center gap-1">
+              <span className="text-sm text-slate-500 flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" /> Date Range:
               </span>
               <select
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
               >
                 <option value="ALL">All Available History</option>
                 <option value="TODAY">Today's Transactions</option>
@@ -220,7 +220,7 @@ export default function Reports() {
 
             <button
               onClick={() => window.print()}
-              className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-200 text-slate-700 text-sm font-semibold flex items-center gap-1.5"
             >
               <Download className="w-3.5 h-3.5" /> Print / Export Ledger
             </button>
@@ -229,17 +229,17 @@ export default function Reports() {
           {/* Payment Transactions Table */}
           <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
                 <DollarSign className="w-4 h-4 text-emerald-600" />
                 Settled Payment Ledger (SW-012 / SW-013)
               </h3>
-              <span className="text-xs text-slate-500">
+              <span className="text-sm text-slate-500">
                 {financialData.recentPayments?.length || 0} Records
               </span>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">Date / Time</th>
@@ -313,36 +313,36 @@ export default function Reports() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-blue-600 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-blue-600 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" />
                 Current Repair Order Funnel
               </h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Active Repair Orders</span>
                   <span className="font-bold text-slate-900 text-sm">
                     {dashboardStats?.activeROs ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Vehicles in Service Bays</span>
                   <span className="font-bold text-blue-600 text-sm">
                     {dashboardStats?.vehiclesUnderService ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Pending Technician Inspections</span>
                   <span className="font-bold text-amber-600 text-sm">
                     {dashboardStats?.pendingTechInspections ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Pending Independent QC</span>
                   <span className="font-bold text-purple-600 text-sm">
                     {dashboardStats?.pendingQCInspections ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Completed & Released Vehicles</span>
                   <span className="font-bold text-emerald-600 text-sm">
                     {dashboardStats?.completedROs ?? '—'}
@@ -352,36 +352,36 @@ export default function Reports() {
             </div>
 
             <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-emerald-600 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-emerald-600 flex items-center gap-2">
                 <DollarSign className="w-4 h-4" />
                 Cash & Accounts Receivable
               </h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Unpaid Invoices Count</span>
                   <span className="font-bold text-amber-600 text-sm">
                     {dashboardStats?.unpaidInvoicesCount ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Total Unpaid Balance</span>
                   <span className="font-bold text-red-600 text-sm">
                     ${Number(dashboardStats?.unpaidInvoicesTotal || 0).toFixed(2)}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Pending 50% Deposits (&gt;$500)</span>
                   <span className="font-bold text-yellow-600 text-sm">
                     {dashboardStats?.pendingDeposits ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Daily Cash-Up Status (SW-015)</span>
                   <span className="font-bold text-blue-600 text-sm">
                     {dashboardStats?.todayCashUpStatus || 'NOT_SUBMITTED'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Drawer Closing Float Target</span>
                   <span className="font-bold text-emerald-600 text-sm">
                     $100.00 Exact
@@ -391,24 +391,24 @@ export default function Reports() {
             </div>
 
             <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold text-purple-600 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-purple-600 flex items-center gap-2">
                 <CheckCircle className="w-4 h-4" />
                 Workshop Registry Counts
               </h3>
               <div className="space-y-3">
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Total Customer Profiles (SW-001)</span>
                   <span className="font-bold text-slate-900 text-sm">
                     {dashboardStats?.totalCustomers ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Total Registered Vehicles (SW-002)</span>
                   <span className="font-bold text-slate-900 text-sm">
                     {dashboardStats?.totalVehicles ?? '—'}
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Pending Customer Authorizations</span>
                   <span className="font-bold text-amber-600 text-sm">
                     {dashboardStats?.pendingApprovals ?? '—'}
@@ -431,18 +431,18 @@ export default function Reports() {
                 placeholder="Search audit trail..."
                 value={auditSearch}
                 onChange={(e) => setAuditSearch(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-xs text-slate-500 flex items-center gap-1">
+              <span className="text-sm text-slate-500 flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5" /> Action Filter:
               </span>
               <select
                 value={auditActionFilter}
                 onChange={(e) => setAuditActionFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
               >
                 <option value="">All Actions</option>
                 <option value="LOGIN">User Logins</option>
@@ -457,17 +457,17 @@ export default function Reports() {
 
           <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
-              <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
                 <History className="w-4 h-4 text-blue-600" />
                 Immutable System Audit Logs ({auditTotal} Entries)
               </h3>
-              <span className="text-xs text-slate-500">
+              <span className="text-sm text-slate-500">
                 Rule 7 / Rule 8 Non-Repudiation
               </span>
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">Timestamp</th>

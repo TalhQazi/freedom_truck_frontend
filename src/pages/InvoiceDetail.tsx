@@ -91,7 +91,7 @@ export const InvoiceDetail: React.FC = () => {
   };
 
   if (loading || !invoice) {
-    return <div className="p-8 text-center text-xs text-slate-500">Loading invoice document...</div>;
+    return <div className="p-8 text-center text-sm text-slate-500">Loading invoice document...</div>;
   }
 
   return (
@@ -107,7 +107,7 @@ export const InvoiceDetail: React.FC = () => {
           </Link>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-300">
+              <span className="text-sm font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-300">
                 {invoice.invoiceNumber}
               </span>
               <StatusBadge status={invoice.status} size="sm" />
@@ -127,7 +127,7 @@ export const InvoiceDetail: React.FC = () => {
                 setPayAmount(invoice.balanceDue.toFixed(2));
                 setPayModalOpen(true);
               }}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
             >
               <DollarSign className="w-3.5 h-3.5" />
               <span>Record Customer Payment (SW-012)</span>
@@ -138,7 +138,7 @@ export const InvoiceDetail: React.FC = () => {
             href={invoiceApi.downloadPDFUrl(invoice._id)}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center space-x-1 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-1.5 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
           >
             <Download className="w-3.5 h-3.5 text-slate-500" />
             <span>PDF Download</span>
@@ -147,7 +147,7 @@ export const InvoiceDetail: React.FC = () => {
           <button
             type="button"
             onClick={() => window.print()}
-            className="inline-flex items-center space-x-1 px-3 py-1.5 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-1.5 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
           >
             <Printer className="w-3.5 h-3.5 text-slate-500" />
             <span>Print Invoice</span>
@@ -168,7 +168,7 @@ export const InvoiceDetail: React.FC = () => {
             <div className="text-xs text-slate-700 mt-1">
               Workshop Management Systems LLC
             </div>
-            <div className="text-xs text-slate-500 mt-2 space-y-0.5">
+            <div className="text-sm text-slate-500 mt-2 space-y-0.5">
               <div>1244 Freedom Industrial Blvd, Dallas, TX 75201</div>
               <div>Direct: (214) 555-0199 | service@freedomcartruck.com</div>
               <div className="text-xs text-slate-500">TX State Motor Facility License: TX-MV-849201-COMM</div>
@@ -182,7 +182,7 @@ export const InvoiceDetail: React.FC = () => {
             <div className="text-sm font-bold text-amber-600 mt-1">
               #{invoice.invoiceNumber}
             </div>
-            <div className="text-xs text-slate-700 mt-1 space-y-0.5">
+            <div className="text-sm text-slate-700 mt-1 space-y-0.5">
               <div>Date Issued: {new Date(invoice.issuedAt).toLocaleDateString()}</div>
               <div>Due Date: {new Date(invoice.dueDate).toLocaleDateString()}</div>
               <div>Repair Order Ref: {invoice.repairOrder?.roNumber}</div>
@@ -191,9 +191,9 @@ export const InvoiceDetail: React.FC = () => {
         </div>
 
         {/* Bill To & Vehicle Grid */}
-        <div className="p-6 grid grid-cols-2 gap-6 border-b border-slate-200 bg-slate-50/50 text-xs">
+        <div className="p-6 grid grid-cols-2 gap-6 border-b border-slate-200 bg-slate-50/50 text-sm">
           <div>
-            <span className="text-xs text-slate-400 font-bold block mb-1">
+            <span className="text-xs text-slate-500 font-bold block mb-1">
               Bill to customer account:
             </span>
             <div className="font-bold text-slate-900 text-sm">{invoice.customer?.name}</div>
@@ -207,7 +207,7 @@ export const InvoiceDetail: React.FC = () => {
           </div>
 
           <div>
-            <span className="text-xs text-slate-400 font-bold block mb-1">
+            <span className="text-xs text-slate-500 font-bold block mb-1">
               VEHICLE IDENTIFICATION &amp; REPAIR REF:
             </span>
             <div className="font-bold text-slate-900 text-sm">
@@ -223,7 +223,7 @@ export const InvoiceDetail: React.FC = () => {
 
         {/* Itemized Table */}
         <div className="p-6 space-y-4">
-          <table className="w-full text-left border-collapse text-xs">
+          <table className="w-full text-left border-collapse text-sm">
             <thead>
               <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                 <th className="py-2.5 px-3">Type</th>
@@ -261,7 +261,7 @@ export const InvoiceDetail: React.FC = () => {
 
           {/* Subtotal & Deposit Deductions Block */}
           <div className="flex justify-end pt-4 border-t border-slate-200">
-            <div className="w-72 space-y-2 text-xs">
+            <div className="w-72 space-y-2 text-sm">
               <div className="flex justify-between text-slate-600">
                 <span>Parts Total:</span>
                 <span>${Number(invoice.partsTotal || 0).toFixed(2)}</span>
@@ -327,7 +327,7 @@ export const InvoiceDetail: React.FC = () => {
                   Record Customer Payment (SW-012)
                 </h3>
               </div>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setPayModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900 p-1"
@@ -338,14 +338,14 @@ export const InvoiceDetail: React.FC = () => {
 
             <form onSubmit={handleProcessPayment} className="p-6 space-y-4">
               {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-xs flex items-center space-x-2">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Payment Amount ($) *
                 </label>
                 <input
@@ -360,13 +360,13 @@ export const InvoiceDetail: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Payment Method *
                 </label>
                 <select
                   value={payMethod}
                   onChange={(e) => setPayMethod(e.target.value as any)}
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-emerald-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-emerald-600 focus:outline-none"
                 >
                   <option value="CREDIT_CARD">Credit Card / Merchant Terminal</option>
                   <option value="CASH">Physical Cash (Drawer float reconciled sw-015)</option>
@@ -377,7 +377,7 @@ export const InvoiceDetail: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Reference / Approval Number
                 </label>
                 <input
@@ -385,7 +385,7 @@ export const InvoiceDetail: React.FC = () => {
                   value={payRef}
                   onChange={(e) => setPayRef(e.target.value)}
                   placeholder="e.g. AUTH_998124 or Check #4810"
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-emerald-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-emerald-600 focus:outline-none"
                 />
               </div>
 
@@ -393,14 +393,14 @@ export const InvoiceDetail: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setPayModalOpen(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-700 hover:text-slate-900"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Processing Payment...' : 'Record Payment & Issue Receipts (SW-012/013)'}
                 </button>
@@ -416,10 +416,10 @@ export const InvoiceDetail: React.FC = () => {
           <div className="flex items-center space-x-3">
             <CheckCircle className="w-5 h-5 text-emerald-600" />
             <div>
-              <h4 className="text-xs font-bold text-emerald-950">
+              <h4 className="text-sm font-bold text-emerald-950">
                 Payment #{lastPayment.paymentNumber} Recorded (SW-012)
               </h4>
-              <p className="text-xs text-emerald-800">
+              <p className="text-sm text-emerald-800">
                 Receipt #{lastPayment.receiptNumber} generated. Customer copy ready.
               </p>
             </div>
@@ -427,7 +427,7 @@ export const InvoiceDetail: React.FC = () => {
           <button
             type="button"
             onClick={() => setOfficeSignModalOpen(true)}
-            className="px-3 py-1.5 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm"
+            className="px-3 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm"
           >
             Capture Signed Office Copy (SW-013)
           </button>

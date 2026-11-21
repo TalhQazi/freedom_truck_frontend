@@ -48,12 +48,12 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
               <h3 className="font-bold text-base text-slate-900">
                 Company Pricing &amp; Markup Calculator
               </h3>
-              <p className="text-xs text-slate-700">
+              <p className="text-sm text-slate-700">
                 Mandatory SOP Compliance: SW-004 (Parts Matrix) &amp; SW-005 (Tires +$20)
               </p>
             </div>
           </div>
-          <button onClick={onClose} className="text-slate-500 hover:text-slate-900 transition-colors p-1">
+          <button aria-label="Close" onClick={onClose} className="text-slate-500 hover:text-slate-900 transition-colors p-1">
             <X className="w-5 h-5" />
           </button>
         </div>
@@ -62,7 +62,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
         <div className="p-6 space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-sm font-semibold text-slate-700 mb-1">
                 Item Classification
               </label>
               <select
@@ -79,11 +79,11 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-700 mb-1">
+              <label className="block text-sm font-semibold text-slate-700 mb-1">
                 Actual Acquisition Cost ($)
               </label>
               <div className="relative">
-                <span className="absolute left-3 top-2 text-slate-400 text-sm">$</span>
+                <span className="absolute left-3 top-2 text-slate-500 text-sm">$</span>
                 <input
                   type="number"
                   step="0.01"
@@ -111,8 +111,8 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
           {calculated && (
             <div className="p-4 bg-slate-50 border border-slate-200 rounded-lg space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-slate-200">
-                <span className="text-xs text-slate-500">Item Type:</span>
-                <span className="text-xs font-bold text-slate-800">
+                <span className="text-sm text-slate-500">Item Type:</span>
+                <span className="text-sm font-bold text-slate-800">
                   {calculated.itemType === 'tire' ? 'Commercial Tire (SW-005)' : 'Mechanical Part (SW-004)'}
                 </span>
               </div>
@@ -140,7 +140,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
                 </div>
               </div>
 
-              <div className="text-xs text-slate-600 bg-white p-2.5 rounded-md border border-slate-200 flex items-start space-x-2">
+              <div className="text-sm text-slate-600 bg-white p-2.5 rounded-md border border-slate-200 flex items-start space-x-2">
                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                 <div>
                   <span className="font-semibold text-slate-800">SOP Rule Formula: </span>
@@ -152,11 +152,11 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
 
           {/* Reference Table */}
           <div className="pt-2 border-t border-slate-200 space-y-2">
-            <div className="flex items-center space-x-1.5 text-xs font-semibold text-slate-700">
+            <div className="flex items-center space-x-1.5 text-sm font-semibold text-slate-700">
               <HelpCircle className="w-4 h-4 text-slate-400" />
               <span>Approved Parts Markup Matrix Tiers (SW-004)</span>
             </div>
-            <div className="border border-slate-200 rounded-md overflow-hidden text-xs">
+            <div className="border border-slate-200 rounded-md overflow-hidden text-sm">
               <table className="w-full text-left">
                 <thead className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                   <tr>
@@ -183,7 +183,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="px-4 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
+            className="px-4 py-1.5 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
           >
             Close Calculator
           </button>

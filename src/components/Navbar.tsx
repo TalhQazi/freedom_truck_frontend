@@ -74,6 +74,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-haspopup="menu"
+              aria-expanded={menuOpen}
               className="flex items-center gap-2 rounded-md px-2 py-1 hover:bg-slate-100"
             >
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-200 text-xs font-medium text-slate-700">

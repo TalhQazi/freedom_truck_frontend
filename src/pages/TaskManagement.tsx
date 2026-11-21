@@ -188,11 +188,11 @@ export default function TaskManagement() {
             <div>
               <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Standard Operating Procedure (SOP) Task Management
-                <span className="text-xs px-2 py-0.5 rounded-md bg-white text-slate-500 border border-slate-200">
+                <span className="text-sm px-2 py-0.5 rounded-md bg-white text-slate-500 border border-slate-200">
                   {filteredTasks.length} Tracked
                 </span>
               </h1>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-sm text-slate-500 mt-0.5">
                 Real-time execution, verification, and supervisory signoff of SW-001..015, TECH-001..013, and OFF-001..012.
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function TaskManagement() {
             <button
               key={tab.id}
               onClick={() => setDepartmentFilter(tab.id)}
-              className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
+              className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
                 departmentFilter === tab.id
                   ? 'bg-blue-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -237,18 +237,18 @@ export default function TaskManagement() {
                 placeholder="Search by SOP ID (e.g. SW-004, TECH-002)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
 
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-              <span className="text-xs text-slate-500 flex items-center gap-1">
+              <span className="text-sm text-slate-500 flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5" /> Status:
               </span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
               >
                 <option value="ALL">All Statuses</option>
                 <option value="PENDING">Pending</option>
@@ -262,7 +262,7 @@ export default function TaskManagement() {
           {/* Table */}
           <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border-collapse">
+              <table className="w-full text-left text-sm border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">SOP ID</th>
@@ -385,10 +385,10 @@ export default function TaskManagement() {
             <div className="flex items-start justify-between border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
+                  <span className="text-sm font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
                     {selectedTask.sopId}
                   </span>
-                  <span className="text-xs text-slate-500">
+                  <span className="text-sm text-slate-500">
                     {selectedTask.taskId}
                   </span>
                   <StatusBadge status={selectedTask.status} />
@@ -396,12 +396,12 @@ export default function TaskManagement() {
                 <h2 className="text-base font-bold text-slate-900 mt-1.5">
                   {selectedTask.title}
                 </h2>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-sm text-slate-500 mt-1">
                   {selectedTask.description}
                 </p>
               </div>
 
-              <button
+              <button aria-label="Close"
                 onClick={() => setSelectedTask(null)}
                 className="p-1.5 rounded-md hover:bg-slate-200 text-slate-500 hover:text-slate-900"
               >
@@ -411,13 +411,13 @@ export default function TaskManagement() {
 
             {/* Notifications / Messages */}
             {actionSuccess && (
-              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-md flex items-center gap-2">
+              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm rounded-md flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
                 <span>{actionSuccess}</span>
               </div>
             )}
             {actionError && (
-              <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-md flex items-center gap-2">
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-md flex items-center gap-2">
                 <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                 <span>{actionError}</span>
               </div>
@@ -426,11 +426,11 @@ export default function TaskManagement() {
             {/* SOP Checklist */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+                <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
                   <CheckSquare className="w-4 h-4 text-blue-600" />
                   Mandatory SOP Checklist Steps
                 </h3>
-                <span className="text-xs text-slate-500">
+                <span className="text-sm text-slate-500">
                   {checklistState.filter((c) => c.completed).length} / {checklistState.length} Done
                 </span>
               </div>
@@ -440,7 +440,7 @@ export default function TaskManagement() {
                   <div
                     key={idx}
                     onClick={() => handleToggleChecklistItem(idx)}
-                    className={`p-2.5 rounded-md border text-xs cursor-pointer flex items-start gap-2.5 transition-all ${
+                    className={`p-2.5 rounded-md border text-sm cursor-pointer flex items-start gap-2.5 transition-all ${
                       step.completed
                         ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
                         : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-200'
@@ -453,7 +453,7 @@ export default function TaskManagement() {
                       className="mt-0.5 rounded-md border-slate-200 text-blue-600 focus:ring-0 cursor-pointer"
                     />
                     <div className="flex-1">
-                      <span className={`block ${step.completed ? 'line-through text-slate-400' : ''}`}>
+                      <span className={`block ${step.completed ? 'line-through text-slate-500' : ''}`}>
                         {step.stepText}
                       </span>
                       {step.completed && (
@@ -469,7 +469,7 @@ export default function TaskManagement() {
 
             {/* Evidence & Completion Notes */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold text-slate-700">
+              <label className="block text-sm font-bold text-slate-700">
                 Execution Evidence & Work Notes
               </label>
               <textarea
@@ -477,7 +477,7 @@ export default function TaskManagement() {
                 value={evidenceNotes}
                 onChange={(e) => setEvidenceNotes(e.target.value)}
                 placeholder="Record compliance evidence, part serial numbers, invoice # or authorization notes..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
 
@@ -487,7 +487,7 @@ export default function TaskManagement() {
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress('IN_PROGRESS')}
-                className="px-3 py-1.5 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-xs font-semibold disabled:opacity-50"
+                className="px-3 py-1.5 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-sm font-semibold disabled:opacity-50"
               >
                 Mark In Progress
               </button>
@@ -496,7 +496,7 @@ export default function TaskManagement() {
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress('COMPLETED')}
-                className="px-4 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-sm flex items-center gap-1.5 disabled:opacity-50"
+                className="px-4 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-sm flex items-center gap-1.5 disabled:opacity-50"
               >
                 <CheckCircle className="w-3.5 h-3.5" />
                 Complete SOP Task
@@ -506,7 +506,7 @@ export default function TaskManagement() {
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress()}
-                className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold ml-auto"
+                className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 text-slate-700 text-sm font-semibold ml-auto"
               >
                 Save Draft
               </button>
@@ -516,7 +516,7 @@ export default function TaskManagement() {
             {isSupervisor && (
               <div className="p-4 bg-slate-50 rounded-lg border border-amber-200 space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold text-amber-600 flex items-center gap-1.5">
+                  <h4 className="text-sm font-bold text-amber-600 flex items-center gap-1.5">
                     <Shield className="w-4 h-4" />
                     Supervisor SOP Verification (Rule Enforcement)
                   </h4>
@@ -532,7 +532,7 @@ export default function TaskManagement() {
                   value={supervisorNotes}
                   onChange={(e) => setSupervisorNotes(e.target.value)}
                   placeholder="Supervisor review notes, verification findings, or revision requirements..."
-                  className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500"
                 />
 
                 <div className="flex items-center gap-2">
@@ -540,7 +540,7 @@ export default function TaskManagement() {
                     type="button"
                     disabled={submitting}
                     onClick={() => handleSupervisorReview(true)}
-                    className="flex-1 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white text-xs font-bold rounded-md flex items-center justify-center gap-1 disabled:opacity-50 shadow-sm"
+                    className="flex-1 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white text-sm font-bold rounded-md flex items-center justify-center gap-1 disabled:opacity-50 shadow-sm"
                   >
                     <Check className="w-3.5 h-3.5" /> Approve & Sign Off
                   </button>
@@ -549,7 +549,7 @@ export default function TaskManagement() {
                     type="button"
                     disabled={submitting}
                     onClick={() => handleSupervisorReview(false)}
-                    className="flex-1 py-1.5 bg-red-800 hover:bg-red-700 text-white text-xs font-bold rounded-md flex items-center justify-center gap-1 disabled:opacity-50 shadow-sm"
+                    className="flex-1 py-1.5 bg-red-800 hover:bg-red-700 text-white text-sm font-bold rounded-md flex items-center justify-center gap-1 disabled:opacity-50 shadow-sm"
                   >
                     <X className="w-3.5 h-3.5" /> Request Revision
                   </button>
@@ -559,7 +559,7 @@ export default function TaskManagement() {
 
             {/* Comments Thread */}
             <div className="space-y-3 border-t border-slate-200 pt-3">
-              <h4 className="text-xs font-bold text-slate-500 flex items-center gap-1.5">
+              <h4 className="text-sm font-bold text-slate-500 flex items-center gap-1.5">
                 <MessageSquare className="w-3.5 h-3.5" />
                 SOP Activity & Operational Notes ({selectedTask.comments?.length || 0})
               </h4>
@@ -567,7 +567,7 @@ export default function TaskManagement() {
               <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
                 {selectedTask.comments?.length > 0 ? (
                   selectedTask.comments.map((c: any, i: number) => (
-                    <div key={i} className="p-2 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                    <div key={i} className="p-2 rounded-md bg-slate-50 border border-slate-200 text-sm">
                       <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
                         <span className="font-semibold text-slate-700">{c.userName} ({c.role})</span>
                         <span>{new Date(c.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
@@ -586,12 +586,12 @@ export default function TaskManagement() {
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="Add handoff note or query..."
-                  className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
                 />
                 <button
                   type="submit"
                   disabled={!newComment.trim()}
-                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-medium disabled:opacity-40"
+                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-medium disabled:opacity-40"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>

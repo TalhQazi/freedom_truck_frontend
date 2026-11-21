@@ -90,7 +90,7 @@ export const Dashboard: React.FC = () => {
           {/* Key Metric Grids */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Active Repair Orders</span>
                 <Wrench className="w-4 h-4 text-slate-400" />
               </div>
@@ -103,7 +103,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending QC Queue</span>
                 <AlertTriangle className="w-4 h-4 text-slate-400" />
               </div>
@@ -116,7 +116,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Today's Sales</span>
                 <DollarSign className="w-4 h-4 text-slate-400" />
               </div>
@@ -129,7 +129,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Cash Reconciliation ($100)</span>
                 <ShieldCheck className="w-4 h-4 text-slate-400" />
               </div>
@@ -144,19 +144,19 @@ export const Dashboard: React.FC = () => {
 
           {/* Secondary Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-xs flex justify-between items-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-sm flex justify-between items-center">
               <span className="text-slate-600">Total Customer Profiles:</span>
               <span className="font-bold text-slate-900">{stats?.totalCustomers || 0}</span>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-xs flex justify-between items-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-sm flex justify-between items-center">
               <span className="text-slate-600">Registered Vehicles:</span>
               <span className="font-bold text-slate-900">{stats?.totalVehicles || 0}</span>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-xs flex justify-between items-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-sm flex justify-between items-center">
               <span className="text-slate-600">Pending Customer Approvals:</span>
               <span className="font-bold text-amber-700">{stats?.pendingApprovals || 0}</span>
             </div>
-            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-xs flex justify-between items-center">
+            <div className="bg-slate-50 border border-slate-200 rounded-md p-3 text-sm flex justify-between items-center">
               <span className="text-slate-600">Pending 50% Deposits:</span>
               <span className="font-bold text-orange-700">{stats?.pendingDeposits || 0}</span>
             </div>
@@ -169,7 +169,7 @@ export const Dashboard: React.FC = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Customer Intake Queue</span>
                 <Clock className="w-4 h-4 text-slate-400" />
               </div>
@@ -180,7 +180,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending Authorizations</span>
                 <FileCheck className="w-4 h-4 text-slate-400" />
               </div>
@@ -191,7 +191,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending 50% Deposits</span>
                 <DollarSign className="w-4 h-4 text-slate-400" />
               </div>
@@ -202,7 +202,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Cleared for Invoice / Pickup</span>
                 <CheckCircle className="w-4 h-4 text-slate-400" />
               </div>
@@ -220,7 +220,7 @@ export const Dashboard: React.FC = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Assigned Bay Vehicles</span>
                 <Truck className="w-4 h-4 text-slate-400" />
               </div>
@@ -231,7 +231,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending Inspections</span>
                 <ClipboardList className="w-4 h-4 text-slate-400" />
               </div>
@@ -242,7 +242,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending Initial Signoffs</span>
                 <FileCheck className="w-4 h-4 text-slate-400" />
               </div>
@@ -253,7 +253,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>QC Flags / Discrepancies</span>
                 <AlertTriangle className="w-4 h-4 text-slate-400" />
               </div>
@@ -271,7 +271,7 @@ export const Dashboard: React.FC = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Vehicles Awaiting QC</span>
                 <Wrench className="w-4 h-4 text-slate-400" />
               </div>
@@ -282,7 +282,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>QC Discrepancy Queue</span>
                 <AlertTriangle className="w-4 h-4 text-slate-400" />
               </div>
@@ -293,7 +293,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>QC Approved Today</span>
                 <CheckCircle className="w-4 h-4 text-slate-400" />
               </div>
@@ -304,7 +304,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Mandatory Rule 4</span>
                 <ShieldCheck className="w-4 h-4 text-slate-400" />
               </div>
@@ -322,7 +322,7 @@ export const Dashboard: React.FC = () => {
         <div className="space-y-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Computer Mod Requests</span>
                 <ClipboardList className="w-4 h-4 text-slate-400" />
               </div>
@@ -333,7 +333,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Pending Manager Review</span>
                 <Clock className="w-4 h-4 text-slate-400" />
               </div>
@@ -344,7 +344,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Open Security Incidents</span>
                 <AlertTriangle className="w-4 h-4 text-slate-400" />
               </div>
@@ -355,7 +355,7 @@ export const Dashboard: React.FC = () => {
             </div>
 
             <div className="bg-white border border-slate-200 rounded-lg p-4 shadow-sm">
-              <div className="flex items-center justify-between text-xs text-slate-500">
+              <div className="flex items-center justify-between text-sm text-slate-500">
                 <span>Daily Security Walkthrough</span>
                 <ShieldCheck className="w-4 h-4 text-slate-400" />
               </div>
@@ -379,11 +379,11 @@ export const Dashboard: React.FC = () => {
             <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
               <span>Recent repair orders</span>
             </h2>
-            <p className="text-xs text-slate-500">Latest activity across the shop</p>
+            <p className="text-sm text-slate-500">Latest activity across the shop</p>
           </div>
           <Link
             to="/repair-orders"
-            className="text-xs font-semibold text-blue-700 hover:text-blue-700 flex items-center space-x-1"
+            className="text-sm font-semibold text-blue-700 hover:text-blue-700 flex items-center space-x-1"
           >
             <span>View all</span>
             <ArrowRight className="w-3.5 h-3.5" />
@@ -403,7 +403,7 @@ export const Dashboard: React.FC = () => {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {activeROs.map((ro) => (
                 <tr key={ro._id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="px-4 py-3 font-bold text-blue-700">
@@ -418,7 +418,7 @@ export const Dashboard: React.FC = () => {
                     <div className="font-semibold text-slate-800">
                       {ro.vehicle?.year} {ro.vehicle?.make} {ro.vehicle?.model}
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-slate-500">
                       Plate: {ro.vehicle?.licensePlate} | VIN: {ro.vehicle?.vin?.slice(-6)}
                     </div>
                   </td>
@@ -440,7 +440,7 @@ export const Dashboard: React.FC = () => {
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/repair-orders/${ro._id}`}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
+                      className="inline-flex items-center px-2.5 py-1 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <span>Manage</span>
                     </Link>
@@ -449,7 +449,7 @@ export const Dashboard: React.FC = () => {
               ))}
               {activeROs.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No active repair orders in the system.
                   </td>
                 </tr>

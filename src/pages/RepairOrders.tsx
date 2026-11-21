@@ -121,7 +121,7 @@ export const RepairOrders: React.FC = () => {
             <Wrench className="w-5 h-5 text-amber-600" />
             <span>Repair Orders (RO) &amp; Dispatch Queue</span>
           </h1>
-          <p className="text-xs text-slate-500">
+          <p className="text-sm text-slate-500">
             SOP Workflow: Intake &rarr; Estimate &rarr; Authorization &rarr; Deposit &rarr; Dispatch &rarr; Dual QC &rarr; Invoicing
           </p>
         </div>
@@ -129,7 +129,7 @@ export const RepairOrders: React.FC = () => {
         <button
           type="button"
           onClick={openIntakeModal}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Vehicle Intake / Create RO</span>
@@ -145,7 +145,7 @@ export const RepairOrders: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by RO number, customer, vehicle plate, or technician..."
-            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
 
@@ -154,7 +154,7 @@ export const RepairOrders: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-xs border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
+            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
           >
             <option value="">All Workflow Stages</option>
             <option value="INTAKE">Intake (Arrival)</option>
@@ -186,10 +186,10 @@ export const RepairOrders: React.FC = () => {
                 <th className="px-4 py-3 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
+            <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     Loading repair orders...
                   </td>
                 </tr>
@@ -207,7 +207,7 @@ export const RepairOrders: React.FC = () => {
                     <div className="font-semibold text-slate-800">
                       {ro.vehicle?.year} {ro.vehicle?.make} {ro.vehicle?.model}
                     </div>
-                    <div className="text-xs text-slate-400">
+                    <div className="text-xs text-slate-500">
                       Plate: {ro.vehicle?.licensePlate} | {Number(ro.mileageIn || 0).toLocaleString()} mi
                     </div>
                   </td>
@@ -229,7 +229,7 @@ export const RepairOrders: React.FC = () => {
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/repair-orders/${ro._id}`}
-                      className="inline-flex items-center px-3 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
+                      className="inline-flex items-center px-3 py-1 text-sm font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <span>Manage RO</span>
                     </Link>
@@ -238,7 +238,7 @@ export const RepairOrders: React.FC = () => {
               ))}
               {!loading && filteredROs.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-500 text-sm">
                     No repair orders found matching filter.
                   </td>
                 </tr>
@@ -259,7 +259,7 @@ export const RepairOrders: React.FC = () => {
                   Customer Intake &amp; Vehicle Check-In (SW-001/002)
                 </h3>
               </div>
-              <button
+              <button aria-label="Close"
                 type="button"
                 onClick={() => setModalOpen(false)}
                 className="text-slate-500 hover:text-slate-900 p-1"
@@ -270,21 +270,21 @@ export const RepairOrders: React.FC = () => {
 
             <form onSubmit={handleCreateIntake} className="p-6 space-y-4">
               {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-xs flex items-center space-x-2">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Customer Account *
                 </label>
                 <select
                   required
                   value={selectedCustomerId}
                   onChange={(e) => handleCustomerChange(e.target.value)}
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 >
                   <option value="">-- Choose Customer Profile --</option>
                   {customers.map((c) => (
@@ -297,7 +297,7 @@ export const RepairOrders: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Select Vehicle *
                   </label>
                   <select
@@ -309,7 +309,7 @@ export const RepairOrders: React.FC = () => {
                       const f = customerVehicles.find((v) => v._id === e.target.value);
                       if (f) setMileageIn(String(f.currentMileage || ''));
                     }}
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
                   >
                     <option value="">-- Choose Vehicle --</option>
                     {customerVehicles.map((v) => (
@@ -321,7 +321,7 @@ export const RepairOrders: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 mb-1">
+                  <label className="block text-sm font-semibold text-slate-700 mb-1">
                     Incoming Mileage (Odometer) *
                   </label>
                   <input
@@ -330,13 +330,13 @@ export const RepairOrders: React.FC = () => {
                     value={mileageIn}
                     onChange={(e) => setMileageIn(e.target.value)}
                     placeholder="e.g. 54200"
-                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-700 mb-1">
+                <label className="block text-sm font-semibold text-slate-700 mb-1">
                   Customer Complaint &amp; Stated Symptoms (SW-003) *
                 </label>
                 <textarea
@@ -345,7 +345,7 @@ export const RepairOrders: React.FC = () => {
                   value={customerComplaint}
                   onChange={(e) => setCustomerComplaint(e.target.value)}
                   placeholder="Record customer complaint verbatim: e.g. Steering vibration at highway speed, replace steer tires, brake pulsation."
-                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -353,14 +353,14 @@ export const RepairOrders: React.FC = () => {
                 <button
                   type="button"
                   onClick={() => setModalOpen(false)}
-                  className="px-4 py-2 text-xs font-medium text-slate-700 hover:text-slate-900"
+                  className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-slate-900"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Checking in...' : 'Complete Vehicle Intake'}
                 </button>
