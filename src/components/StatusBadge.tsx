@@ -57,13 +57,13 @@ const toneFor = (status: string): Tone => {
   }
 };
 
-const toneClasses: Record<Tone, string> = {
-  gray: 'bg-slate-100 text-slate-700',
-  blue: 'bg-blue-50 text-blue-700',
-  green: 'bg-green-50 text-green-700',
-  yellow: 'bg-yellow-50 text-yellow-800',
-  red: 'bg-red-50 text-red-700',
-  purple: 'bg-purple-50 text-purple-700',
+const toneClasses: Record<Tone, { badge: string; dot: string }> = {
+  gray: { badge: 'bg-slate-100 text-slate-700 ring-slate-200', dot: 'bg-slate-400' },
+  blue: { badge: 'bg-sky-50 text-sky-700 ring-sky-200', dot: 'bg-sky-500' },
+  green: { badge: 'bg-emerald-50 text-emerald-700 ring-emerald-200', dot: 'bg-emerald-500' },
+  yellow: { badge: 'bg-amber-50 text-amber-800 ring-amber-200', dot: 'bg-amber-500' },
+  red: { badge: 'bg-rose-50 text-rose-700 ring-rose-200', dot: 'bg-rose-500' },
+  purple: { badge: 'bg-violet-50 text-violet-700 ring-violet-200', dot: 'bg-violet-500' },
 };
 
 const formatText = (text: string) => {
@@ -78,14 +78,18 @@ const sizeClasses = {
   lg: 'px-3 py-1 text-sm',
 };
 
-export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, size = 'md' }) => (
-  <span
-    className={clsx(
-      'inline-flex items-center whitespace-nowrap rounded-full font-medium',
-      sizeClasses[size],
-      toneClasses[toneFor(status)]
-    )}
-  >
-    {formatText(status)}
-  </span>
-);
+export const StatusBadge: React.FC<StatusBadgeProps> = ({ status, size = 'md' }) => {
+  const tone = toneClasses[toneFor(status)];
+  return (
+    <span
+      className={clsx(
+        'inline-flex items-center gap-1.5 whitespace-nowrap rounded-full font-medium ring-1 ring-inset animate-fade-in',
+        sizeClasses[size],
+        tone.badge
+      )}
+    >
+      <span className={clsx('h-1.5 w-1.5 shrink-0 rounded-full', tone.dot)} aria-hidden="true" />
+      {formatText(status)}
+    </span>
+  );
+};

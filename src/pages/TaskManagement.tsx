@@ -163,7 +163,7 @@ export default function TaskManagement() {
   const getDepartmentIcon = (dept: string) => {
     switch (dept) {
       case 'SERVICE_WRITER':
-        return <FileText className="w-4 h-4 text-blue-600" />;
+        return <FileText className="w-4 h-4 text-indigo-600" />;
       case 'TECHNICIAN':
       case 'QC_TECHNICIAN':
         return <Wrench className="w-4 h-4 text-amber-600" />;
@@ -182,7 +182,7 @@ export default function TaskManagement() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-600">
+            <div className="p-2 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-600">
               <CheckSquare className="w-5 h-5" />
             </div>
             <div>
@@ -214,7 +214,7 @@ export default function TaskManagement() {
               onClick={() => setDepartmentFilter(tab.id)}
               className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
                 departmentFilter === tab.id
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
@@ -237,7 +237,7 @@ export default function TaskManagement() {
                 placeholder="Search by SOP ID (e.g. SW-004, TECH-002)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
@@ -248,7 +248,7 @@ export default function TaskManagement() {
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500"
               >
                 <option value="ALL">All Statuses</option>
                 <option value="PENDING">Pending</option>
@@ -278,7 +278,7 @@ export default function TaskManagement() {
                   {loading ? (
                     <tr>
                       <td colSpan={7} className="text-center py-12 text-slate-500">
-                        <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-blue-500 border-t-transparent mr-2" />
+                        <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-indigo-500 border-t-transparent mr-2" />
                         Loading SOP tasks...
                       </td>
                     </tr>
@@ -300,12 +300,12 @@ export default function TaskManagement() {
                           onClick={() => handleSelectTask(t)}
                           className={`cursor-pointer transition-colors ${
                             isSelected
-                              ? 'bg-blue-50 border-l-2 border-l-blue-500'
+                              ? 'bg-indigo-50 border-l-2 border-l-indigo-500'
                               : 'hover:bg-slate-50'
                           }`}
                         >
                           <td className="py-3 px-3 whitespace-nowrap">
-                            <span className="font-bold text-blue-600">
+                            <span className="font-bold text-indigo-600">
                               {t.sopId}
                             </span>
                             <span className="block text-xs text-slate-500">
@@ -327,7 +327,7 @@ export default function TaskManagement() {
                               <div className="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
                                 <div
                                   className={`h-full ${
-                                    completedCount === totalCount ? 'bg-emerald-500' : 'bg-blue-500'
+                                    completedCount === totalCount ? 'bg-emerald-500' : 'bg-indigo-500'
                                   }`}
                                   style={{
                                     width: `${totalCount ? (completedCount / totalCount) * 100 : 0}%`,
@@ -385,7 +385,7 @@ export default function TaskManagement() {
             <div className="flex items-start justify-between border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
+                  <span className="text-sm font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-600 border border-indigo-200">
                     {selectedTask.sopId}
                   </span>
                   <span className="text-sm text-slate-500">
@@ -427,7 +427,7 @@ export default function TaskManagement() {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                  <CheckSquare className="w-4 h-4 text-blue-600" />
+                  <CheckSquare className="w-4 h-4 text-indigo-600" />
                   Mandatory SOP Checklist Steps
                 </h3>
                 <span className="text-sm text-slate-500">
@@ -450,7 +450,7 @@ export default function TaskManagement() {
                       type="checkbox"
                       checked={step.completed}
                       onChange={() => {}}
-                      className="mt-0.5 rounded-md border-slate-200 text-blue-600 focus:ring-0 cursor-pointer"
+                      className="mt-0.5 rounded-md border-slate-200 text-indigo-600 focus:ring-0 cursor-pointer"
                     />
                     <div className="flex-1">
                       <span className={`block ${step.completed ? 'line-through text-slate-500' : ''}`}>
@@ -477,7 +477,7 @@ export default function TaskManagement() {
                 value={evidenceNotes}
                 onChange={(e) => setEvidenceNotes(e.target.value)}
                 placeholder="Record compliance evidence, part serial numbers, invoice # or authorization notes..."
-                className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
@@ -586,12 +586,12 @@ export default function TaskManagement() {
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="Add handoff note or query..."
-                  className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
                 />
                 <button
                   type="submit"
                   disabled={!newComment.trim()}
-                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-medium disabled:opacity-40"
+                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-medium disabled:opacity-40"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>

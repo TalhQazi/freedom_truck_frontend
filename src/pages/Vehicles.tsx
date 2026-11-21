@@ -34,7 +34,7 @@ export const Vehicles: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
-            <Truck className="w-5 h-5 text-blue-700" />
+            <Truck className="w-5 h-5 text-indigo-700" />
             <span>Vehicle Registry &amp; Fleet Inventory</span>
           </h1>
           <p className="text-sm text-slate-500">
@@ -44,7 +44,7 @@ export const Vehicles: React.FC = () => {
 
         <Link
           to="/customers"
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Register Vehicle for Customer</span>
@@ -52,7 +52,7 @@ export const Vehicles: React.FC = () => {
       </div>
 
       {/* Search Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-sm flex items-center gap-3">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm flex items-center gap-3">
         <div className="relative flex-1">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
@@ -60,13 +60,13 @@ export const Vehicles: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by license plate, full VIN, make, model, or fleet unit number..."
-            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Vehicles Table */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -88,9 +88,9 @@ export const Vehicles: React.FC = () => {
                   </td>
                 </tr>
               ) : vehicles.map((v: any) => (
-                <tr key={v._id} className="hover:bg-slate-50/80 transition-colors">
+                <tr key={v._id} className="hover:bg-indigo-50/50 transition-colors">
                   <td className="px-4 py-3">
-                    <span className="font-bold text-sm text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+                    <span className="font-bold text-sm text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
                       {v.licensePlate}
                     </span>
                     {v.unitNumber && (

@@ -210,7 +210,7 @@ export const RepairOrderDetail: React.FC = () => {
             <button
               type="button"
               onClick={openDispatchModal}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Dispatch Technician (SW-009)</span>
@@ -274,7 +274,7 @@ export const RepairOrderDetail: React.FC = () => {
         {/* Left 2 Cols: Details */}
         <div className="lg:col-span-2 space-y-6">
           {/* Customer & Vehicle Info Panel */}
-          <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <span className="text-xs text-slate-500 block mb-1">
                 Customer &amp; Contact
@@ -305,7 +305,7 @@ export const RepairOrderDetail: React.FC = () => {
           </div>
 
           {/* Customer Complaint */}
-          <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-2">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-2">
             <span className="text-xs text-slate-500 block">
               Customer Complaint / Primary Symptoms (SW-003)
             </span>
@@ -315,16 +315,16 @@ export const RepairOrderDetail: React.FC = () => {
           </div>
 
           {/* Financial Breakdown (Estimate & Deposit) */}
-          <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-4">
             <div className="flex items-center justify-between border-b border-slate-200 pb-2">
               <div className="flex items-center space-x-2">
-                <FileSpreadsheet className="w-4 h-4 text-blue-700" />
+                <FileSpreadsheet className="w-4 h-4 text-indigo-700" />
                 <h3 className="text-sm font-bold text-slate-900">
                   Financial Itemization &amp; Deposit Verification
                 </h3>
               </div>
               {est && (
-                <span className="text-sm font-bold text-blue-800">
+                <span className="text-sm font-bold text-indigo-800">
                   Estimate #{est.estimateNumber}
                 </span>
               )}
@@ -369,7 +369,7 @@ export const RepairOrderDetail: React.FC = () => {
                     <div>Labor: ${Number(est.laborTotal || 0).toFixed(2)} | Supplies: ${Number(est.shopSupplies || 0).toFixed(2)}</div>
                   </div>
                   <div className="text-right">
-                    <div className="text-sm font-semibold text-blue-950">
+                    <div className="text-sm font-semibold text-indigo-950">
                       Grand Total: ${Number(est.grandTotal || 0).toFixed(2)}
                     </div>
                     {est.depositRequired > 0 && (
@@ -404,7 +404,7 @@ export const RepairOrderDetail: React.FC = () => {
         {/* Right Col: Timeline & Audit History */}
         <div className="space-y-6">
           {/* Assigned Personnel Panel */}
-          <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-3">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-3">
             <h3 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-2">
               Assigned Personnel
             </h3>
@@ -431,7 +431,7 @@ export const RepairOrderDetail: React.FC = () => {
           </div>
 
           {/* Audit Timeline */}
-          <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-3">
+          <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between border-b border-slate-200 pb-2">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-slate-500" />
@@ -459,8 +459,8 @@ export const RepairOrderDetail: React.FC = () => {
 
       {/* Technician Dispatch Modal (SW-009) */}
       {dispatchModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <Send className="w-5 h-5 text-amber-600" />
@@ -485,7 +485,7 @@ export const RepairOrderDetail: React.FC = () => {
                 </div>
               )}
 
-              <div className="p-3 bg-blue-50 border border-blue-200 rounded-md text-sm text-blue-700 space-y-1">
+              <div className="p-3 bg-indigo-50 border border-indigo-200 rounded-md text-sm text-indigo-700 space-y-1">
                 <div className="font-bold">Backend SOP Verification Checks:</div>
                 <div className="flex items-center space-x-1.5 text-xs">
                   <CheckCircle className="w-3.5 h-3.5 text-emerald-600" />
@@ -505,7 +505,7 @@ export const RepairOrderDetail: React.FC = () => {
                   required
                   value={selectedTechId}
                   onChange={(e) => setSelectedTechId(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 >
                   {technicians.map((t) => (
                     <option key={t._id} value={t._id}>
@@ -526,7 +526,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Verifying & Dispatching...' : 'Dispatch to Bay (SW-009)'}
                 </button>
@@ -538,8 +538,8 @@ export const RepairOrderDetail: React.FC = () => {
 
       {/* Collect Deposit Modal (SW-008) */}
       {depositModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <DollarSign className="w-5 h-5 text-amber-600" />
@@ -579,7 +579,7 @@ export const RepairOrderDetail: React.FC = () => {
                   required
                   value={depositAmount}
                   onChange={(e) => setDepositAmount(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-bold focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-bold focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -590,7 +590,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <select
                   value={depositMethod}
                   onChange={(e) => setDepositMethod(e.target.value as any)}
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 >
                   <option value="CREDIT_CARD">Credit Card / pos Terminal</option>
                   <option value="CASH">Physical Cash</option>
@@ -609,7 +609,7 @@ export const RepairOrderDetail: React.FC = () => {
                   value={depositRef}
                   onChange={(e) => setDepositRef(e.target.value)}
                   placeholder="e.g. AUTH_98124 or PO-4902"
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -624,7 +624,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Recording Deposit...' : 'Record Deposit & Clear Dispatch'}
                 </button>
@@ -636,8 +636,8 @@ export const RepairOrderDetail: React.FC = () => {
 
       {/* Manager Override Modal (Rule 8 & Rule 9) */}
       {overrideModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <ShieldAlert className="w-5 h-5 text-amber-600" />
@@ -674,7 +674,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <select
                   value={targetStatus}
                   onChange={(e) => setTargetStatus(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 >
                   <option value="DISPATCHED">Dispatched</option>
                   <option value="QC_APPROVED">QC approved</option>
@@ -693,7 +693,7 @@ export const RepairOrderDetail: React.FC = () => {
                   value={overrideReason}
                   onChange={(e) => setOverrideReason(e.target.value)}
                   placeholder="Document specific business rationale for exception..."
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -707,7 +707,7 @@ export const RepairOrderDetail: React.FC = () => {
                   value={correctiveAction}
                   onChange={(e) => setCorrectiveAction(e.target.value)}
                   placeholder="e.g. Deposit verified via commercial net-30 fleet contract."
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 

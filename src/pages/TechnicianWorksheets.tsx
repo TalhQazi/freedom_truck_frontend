@@ -72,7 +72,7 @@ export const TechnicianWorksheets: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
@@ -80,7 +80,7 @@ export const TechnicianWorksheets: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by worksheet #, RO #, customer, plate, or technician ID..."
-            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
           />
         </div>
 
@@ -89,7 +89,7 @@ export const TechnicianWorksheets: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
+            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none w-full sm:w-auto"
           >
             <option value="">All Inspection Stages</option>
             <option value="IN_PROGRESS">In progress (Bay Work)</option>
@@ -102,7 +102,7 @@ export const TechnicianWorksheets: React.FC = () => {
       </div>
 
       {/* Worksheets Grid */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -127,13 +127,13 @@ export const TechnicianWorksheets: React.FC = () => {
               ) : filteredWorksheets.map((ws) => {
                 const roNumber = typeof ws.repairOrder === 'object' ? ws.repairOrder.roNumber : 'RO Ref';
                 return (
-                  <tr key={ws._id} className="hover:bg-slate-50/80 transition-colors">
+                  <tr key={ws._id} className="hover:bg-indigo-50/50 transition-colors">
                     <td className="px-4 py-3 font-bold text-teal-900">
                       <Link to={`/worksheets/${ws._id}`} className="hover:underline">
                         {ws.worksheetNumber}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 font-semibold text-blue-700">
+                    <td className="px-4 py-3 font-semibold text-indigo-700">
                       {typeof ws.repairOrder === 'object' ? (
                         <Link to={`/repair-orders/${ws.repairOrder._id}`} className="hover:underline">
                           {roNumber}

@@ -36,8 +36,8 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+      <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -71,7 +71,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
                   setItemType(e.target.value as any);
                   setCalculated(null);
                 }}
-                className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
               >
                 <option value="part">Automotive / Truck Part (SW-004 Matrix)</option>
                 <option value="tire">Commercial / Passenger Tire (SW-005 Flat +$20)</option>
@@ -90,7 +90,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
                   min="0"
                   value={costPrice}
                   onChange={(e) => setCostPrice(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md pl-7 pr-3 py-2 text-slate-900 font-semibold focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md pl-7 pr-3 py-2 text-slate-900 font-semibold focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   placeholder="0.00"
                 />
               </div>
@@ -101,7 +101,7 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
             type="button"
             onClick={handleCalculate}
             disabled={loading}
-            className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm rounded-md shadow-sm transition-colors flex items-center justify-center space-x-2"
+            className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm rounded-md shadow-sm transition-colors flex items-center justify-center space-x-2"
           >
             <Calculator className="w-4 h-4" />
             <span>{loading ? 'Calculating...' : 'Compute Approved Selling Price'}</span>
@@ -127,14 +127,14 @@ export const PricingCalculatorModal: React.FC<PricingCalculatorModalProps> = ({
 
                 <div className="bg-white p-2.5 rounded-md border border-slate-200">
                   <div className="text-xs text-slate-500">Approved Markup</div>
-                  <div className="text-base font-bold text-blue-700">
+                  <div className="text-base font-bold text-indigo-700">
                     {calculated.itemType === 'tire' ? '+$20.00 Flat' : `+${calculated.markupPercent}%`}
                   </div>
                 </div>
 
-                <div className="bg-blue-50 p-2.5 rounded-md border border-blue-200">
-                  <div className="text-xs text-blue-700 font-bold">Selling Price</div>
-                  <div className="text-base font-semibold text-blue-700">
+                <div className="bg-indigo-50 p-2.5 rounded-md border border-indigo-200">
+                  <div className="text-xs text-indigo-700 font-bold">Selling Price</div>
+                  <div className="text-base font-semibold text-indigo-700">
                     ${calculated.sellingPrice.toFixed(2)}
                   </div>
                 </div>

@@ -237,7 +237,7 @@ export default function Settings() {
             onClick={() => setActiveTab('markup')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'markup'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -248,7 +248,7 @@ export default function Settings() {
             onClick={() => setActiveTab('shop')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'shop'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -259,7 +259,7 @@ export default function Settings() {
             onClick={() => setActiveTab('employees')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'employees'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -270,7 +270,7 @@ export default function Settings() {
             onClick={() => setActiveTab('integrations')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'integrations'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -297,8 +297,8 @@ export default function Settings() {
       {activeTab === 'markup' && (
         <div className="space-y-6">
           {/* Strict SOP Notice */}
-          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-sm space-y-2">
-            <div className="flex items-center gap-2 text-blue-600 font-bold">
+          <div className="p-4 bg-indigo-50 border border-indigo-200 rounded-lg text-sm space-y-2">
+            <div className="flex items-center gap-2 text-indigo-600 font-bold">
               <Shield className="w-4 h-4" />
               SOP Pricing Compliance Notice (SW-004 & SW-005)
             </div>
@@ -315,7 +315,7 @@ export default function Settings() {
               <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <div>
                   <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-blue-600" />
+                    <Layers className="w-4 h-4 text-indigo-600" />
                     Approved Parts Markup Matrix Tiers
                   </h3>
                   <span className="text-xs text-slate-500">
@@ -345,7 +345,7 @@ export default function Settings() {
                   </thead>
                   <tbody className="divide-y divide-slate-200">
                     {markupMatrix.tiers.map((tier: any, idx: number) => (
-                      <tr key={idx} className="hover:bg-slate-50">
+                      <tr key={idx} className="hover:bg-indigo-50/50">
                         <td className="py-2.5 px-3 whitespace-nowrap">
                           {isManagement ? (
                             <div className="flex items-center gap-1.5">
@@ -385,7 +385,7 @@ export default function Settings() {
                             `${tier.markupPercent}%`
                           )}
                         </td>
-                        <td className="py-2.5 px-3 text-blue-600 font-bold">
+                        <td className="py-2.5 px-3 text-indigo-600 font-bold">
                           {tier.multiplier?.toFixed(2)}x
                         </td>
                         <td className="py-2.5 px-3 text-emerald-600 font-bold">
@@ -412,7 +412,7 @@ export default function Settings() {
                   <button
                     disabled={saving}
                     onClick={handleSaveMatrix}
-                    className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                    className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                   >
                     <Save className="w-3.5 h-3.5" /> Save Markup Matrix
                   </button>
@@ -438,7 +438,7 @@ export default function Settings() {
                       onClick={() => setTestType('part')}
                       className={`py-1.5 rounded text-sm font-semibold ${
                         testType === 'part'
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-indigo-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
                       }`}
                     >
@@ -449,7 +449,7 @@ export default function Settings() {
                       onClick={() => setTestType('tire')}
                       className={`py-1.5 rounded text-sm font-semibold ${
                         testType === 'tire'
-                          ? 'bg-blue-600 text-white'
+                          ? 'bg-indigo-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
                       }`}
                     >
@@ -651,7 +651,7 @@ export default function Settings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                 >
                   <Save className="w-4 h-4" /> Save Policy Parameters
                 </button>
@@ -674,7 +674,7 @@ export default function Settings() {
             {isManagement && (
               <button
                 onClick={() => setShowAddEmpModal(true)}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm"
+                className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm"
               >
                 <UserPlus className="w-3.5 h-3.5" /> Add Employee
               </button>
@@ -696,8 +696,8 @@ export default function Settings() {
                 </thead>
                 <tbody className="divide-y divide-slate-700/60">
                   {employees.map((emp) => (
-                    <tr key={emp._id} className="hover:bg-slate-50">
-                      <td className="py-3 px-3 font-bold text-blue-600 whitespace-nowrap">
+                    <tr key={emp._id} className="hover:bg-indigo-50/50">
+                      <td className="py-3 px-3 font-bold text-indigo-600 whitespace-nowrap">
                         {emp.employeeId || 'EMP-XXXX'}
                       </td>
                       <td className="py-3 px-3 text-slate-900 font-semibold whitespace-nowrap">
@@ -746,7 +746,7 @@ export default function Settings() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-bold text-blue-600">
+              <span className="text-sm font-bold text-indigo-600">
                 Mitchell 1 Manager SE
               </span>
               <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
@@ -757,7 +757,7 @@ export default function Settings() {
               API bridge for importing historical vehicle records, parts catalogs, and labor times.
             </p>
             <div className="text-xs text-slate-500">
-              Endpoint: <span className="text-blue-700">tcp://127.0.0.1:41100/mitchell</span>
+              Endpoint: <span className="text-indigo-700">tcp://127.0.0.1:41100/mitchell</span>
             </div>
           </div>
 
@@ -803,7 +803,7 @@ export default function Settings() {
           <div className="bg-white rounded-lg border border-slate-200 w-full max-w-md shadow-lg p-6 space-y-4">
             <div className="flex items-center justify-between border-b border-slate-200 pb-3">
               <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                <UserPlus className="w-4 h-4 text-blue-600" />
+                <UserPlus className="w-4 h-4 text-indigo-600" />
                 Register New Workshop Employee
               </h3>
               <button aria-label="Close"
@@ -889,7 +889,7 @@ export default function Settings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-sm font-semibold"
+                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold"
                 >
                   Create Employee
                 </button>

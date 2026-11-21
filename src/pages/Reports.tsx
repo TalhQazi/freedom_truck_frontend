@@ -110,7 +110,7 @@ export default function Reports() {
             onClick={() => setActiveTab('financial')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'financial'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -121,7 +121,7 @@ export default function Reports() {
             onClick={() => setActiveTab('operations')}
             className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'operations'
-                ? 'bg-blue-600 text-white shadow-sm'
+                ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
@@ -133,7 +133,7 @@ export default function Reports() {
               onClick={() => setActiveTab('audit')}
               className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
                 activeTab === 'audit'
-                  ? 'bg-blue-600 text-white shadow-sm'
+                  ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
@@ -177,9 +177,9 @@ export default function Reports() {
             <div className="bg-white p-4 rounded-lg border border-slate-200 shadow-sm">
               <div className="flex items-center justify-between text-slate-500 text-sm mb-2">
                 <span>Electronic / Card Receipts</span>
-                <CreditCard className="w-4 h-4 text-blue-600" />
+                <CreditCard className="w-4 h-4 text-indigo-600" />
               </div>
-              <p className="text-2xl font-bold text-blue-600">
+              <p className="text-2xl font-bold text-indigo-600">
                 ${Number(financialData.cardTotal || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </p>
               <span className="text-xs text-slate-500 mt-1 block">
@@ -210,7 +210,7 @@ export default function Reports() {
               <select
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500"
               >
                 <option value="ALL">All Available History</option>
                 <option value="TODAY">Today's Transactions</option>
@@ -266,11 +266,11 @@ export default function Reports() {
                     </tr>
                   ) : (
                     financialData.recentPayments.map((p: any) => (
-                      <tr key={p._id} className="hover:bg-slate-50">
+                      <tr key={p._id} className="hover:bg-indigo-50/50">
                         <td className="py-3 px-3 text-slate-500 whitespace-nowrap">
                           {new Date(p.processedAt).toLocaleString()}
                         </td>
-                        <td className="py-3 px-3 font-bold text-blue-600 whitespace-nowrap">
+                        <td className="py-3 px-3 font-bold text-indigo-600 whitespace-nowrap">
                           {p.receiptNumber || `REC-${p._id.slice(-6)}`}
                         </td>
                         <td className="py-3 px-3 text-slate-900 font-medium">
@@ -313,7 +313,7 @@ export default function Reports() {
         <div className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-4">
-              <h3 className="text-sm font-bold text-blue-600 flex items-center gap-2">
+              <h3 className="text-sm font-bold text-indigo-600 flex items-center gap-2">
                 <TrendingUp className="w-4 h-4" />
                 Current Repair Order Funnel
               </h3>
@@ -326,7 +326,7 @@ export default function Reports() {
                 </div>
                 <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Vehicles in Service Bays</span>
-                  <span className="font-bold text-blue-600 text-sm">
+                  <span className="font-bold text-indigo-600 text-sm">
                     {dashboardStats?.vehiclesUnderService ?? '—'}
                   </span>
                 </div>
@@ -377,7 +377,7 @@ export default function Reports() {
                 </div>
                 <div className="flex items-center justify-between p-2.5 rounded-md bg-slate-50 border border-slate-200 text-sm">
                   <span className="text-slate-700">Daily Cash-Up Status (SW-015)</span>
-                  <span className="font-bold text-blue-600 text-sm">
+                  <span className="font-bold text-indigo-600 text-sm">
                     {dashboardStats?.todayCashUpStatus || 'NOT_SUBMITTED'}
                   </span>
                 </div>
@@ -431,7 +431,7 @@ export default function Reports() {
                 placeholder="Search audit trail..."
                 value={auditSearch}
                 onChange={(e) => setAuditSearch(e.target.value)}
-                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500"
               />
             </div>
 
@@ -442,7 +442,7 @@ export default function Reports() {
               <select
                 value={auditActionFilter}
                 onChange={(e) => setAuditActionFilter(e.target.value)}
-                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-sm text-slate-900 focus:outline-none focus:border-indigo-500"
               >
                 <option value="">All Actions</option>
                 <option value="LOGIN">User Logins</option>
@@ -458,7 +458,7 @@ export default function Reports() {
           <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="p-3 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
               <h3 className="text-sm font-bold text-slate-700 flex items-center gap-2">
-                <History className="w-4 h-4 text-blue-600" />
+                <History className="w-4 h-4 text-indigo-600" />
                 Immutable System Audit Logs ({auditTotal} Entries)
               </h3>
               <span className="text-sm text-slate-500">
@@ -503,7 +503,7 @@ export default function Reports() {
                         );
                       })
                       .map((log) => (
-                        <tr key={log._id} className="hover:bg-slate-50">
+                        <tr key={log._id} className="hover:bg-indigo-50/50">
                           <td className="py-3 px-3 text-slate-500 whitespace-nowrap">
                             {new Date(log.createdAt).toLocaleString()}
                           </td>
@@ -522,7 +522,7 @@ export default function Reports() {
                                   ? 'bg-amber-50 border border-amber-200 text-amber-700'
                                   : log.action.includes('DELETE') || log.action.includes('REJECT')
                                   ? 'bg-red-50 border border-red-200 text-red-700'
-                                  : 'bg-slate-50 border border-slate-200 text-blue-700'
+                                  : 'bg-slate-50 border border-slate-200 text-indigo-700'
                               }`}
                             >
                               {log.action}

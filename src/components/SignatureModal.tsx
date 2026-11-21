@@ -100,8 +100,8 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+      <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
         {/* Header */}
         <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
@@ -181,7 +181,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
             <button
               type="button"
               onClick={handleConfirm}
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
             >
               <CheckCircle className="w-3.5 h-3.5" />
               <span>Confirm &amp; Record Signature</span>

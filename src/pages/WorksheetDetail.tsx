@@ -301,7 +301,7 @@ export const WorksheetDetail: React.FC = () => {
       )}
 
       {/* Vehicle & Customer Intake Summary (TECH-001) */}
-      <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm grid grid-cols-1 md:grid-cols-3 gap-6">
         <div>
           <span className="text-xs text-slate-500 block mb-1">
             TECH-001: Vehicle &amp; Odometer Record
@@ -311,7 +311,7 @@ export const WorksheetDetail: React.FC = () => {
           </div>
           <div className="text-sm text-slate-600 mt-0.5 space-y-0.5">
             <div>Plate: {worksheet.vehicle?.licensePlate} | VIN: {worksheet.vehicle?.vin}</div>
-            <div className="font-bold text-blue-700">Recorded Odometer: {Number(worksheet.recordedMileage || 0).toLocaleString()} mi</div>
+            <div className="font-bold text-indigo-700">Recorded Odometer: {Number(worksheet.recordedMileage || 0).toLocaleString()} mi</div>
           </div>
         </div>
 
@@ -319,7 +319,7 @@ export const WorksheetDetail: React.FC = () => {
           <span className="text-xs text-slate-500 block mb-1">
             Parent Repair Order Ref
           </span>
-          <div className="text-sm font-bold text-blue-700">
+          <div className="text-sm font-bold text-indigo-700">
             {ro ? (
               <Link to={`/repair-orders/${ro._id}`} className="hover:underline">
                 {ro.roNumber || 'Repair Order File'}
@@ -355,7 +355,7 @@ export const WorksheetDetail: React.FC = () => {
       </div>
 
       {/* SECTION 1: TECH-002 Two-Person Lighting Inspection */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Lightbulb className="w-4 h-4 text-amber-500" />
@@ -366,7 +366,7 @@ export const WorksheetDetail: React.FC = () => {
           <button
             type="button"
             onClick={handleSaveLighting}
-            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold shadow-sm"
+            className="inline-flex items-center space-x-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold shadow-sm"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Save Lighting Status</span>
@@ -434,10 +434,10 @@ export const WorksheetDetail: React.FC = () => {
       </div>
 
       {/* SECTION 2: TECH-003 Vehicle Lift Safety Verification */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <ShieldAlert className="w-4 h-4 text-blue-700" />
+            <ShieldAlert className="w-4 h-4 text-indigo-700" />
             <h3 className="text-sm font-bold text-slate-900">
               TECH-003: Vehicle Lift Safety Inspection
             </h3>
@@ -445,7 +445,7 @@ export const WorksheetDetail: React.FC = () => {
           <button
             type="button"
             onClick={handleSaveLiftSafety}
-            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold shadow-sm"
+            className="inline-flex items-center space-x-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold shadow-sm"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Verify Lift Safety</span>
@@ -459,7 +459,7 @@ export const WorksheetDetail: React.FC = () => {
                 type="checkbox"
                 checked={padsPositioned}
                 onChange={(e) => setPadsPositioned(e.target.checked)}
-                className="w-4 h-4 text-blue-700 rounded-md border-slate-300"
+                className="w-4 h-4 text-indigo-700 rounded-md border-slate-300"
               />
               <span>1. Lift arms and rubber pads properly positioned under OEM vehicle lift points</span>
             </label>
@@ -468,7 +468,7 @@ export const WorksheetDetail: React.FC = () => {
                 type="checkbox"
                 checked={locksEngaged}
                 onChange={(e) => setLocksEngaged(e.target.checked)}
-                className="w-4 h-4 text-blue-700 rounded-md border-slate-300"
+                className="w-4 h-4 text-indigo-700 rounded-md border-slate-300"
               />
               <span>2. Vehicle elevated, stability shake-tested, and mechanical safety lock engaged</span>
             </label>
@@ -488,7 +488,7 @@ export const WorksheetDetail: React.FC = () => {
       </div>
 
       {/* SECTION 3: TECH-004 & TECH-005 Full Vehicle Multi-Point Inspection (GREEN, YELLOW, RED) */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Wrench className="w-4 h-4 text-indigo-600" />
@@ -504,7 +504,7 @@ export const WorksheetDetail: React.FC = () => {
           <button
             type="button"
             onClick={handleSaveInspection}
-            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold shadow-sm"
+            className="inline-flex items-center space-x-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold shadow-sm"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Save Inspection Findings</span>
@@ -523,7 +523,7 @@ export const WorksheetDetail: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {inspectionItems.map((item, idx) => (
-                <tr key={idx} className="hover:bg-slate-50/70">
+                <tr key={idx} className="hover:bg-indigo-50/50">
                   <td className="px-4 py-2.5">
                     <div className="font-semibold text-slate-900">{item.name}</div>
                     <div className="text-xs text-slate-500">{item.category}</div>
@@ -589,7 +589,7 @@ export const WorksheetDetail: React.FC = () => {
       </div>
 
       {/* SECTION 4: TECH-006 & TECH-007 Fluid Specification & Leak Verification */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-3.5 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Droplet className="w-4 h-4 text-sky-600" />
@@ -600,7 +600,7 @@ export const WorksheetDetail: React.FC = () => {
           <button
             type="button"
             onClick={handleSaveFluids}
-            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold shadow-sm"
+            className="inline-flex items-center space-x-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold shadow-sm"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Save Fluid Verification</span>
@@ -620,7 +620,7 @@ export const WorksheetDetail: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm">
               {fluidItems.map((f, idx) => (
-                <tr key={idx} className="hover:bg-slate-50">
+                <tr key={idx} className="hover:bg-indigo-50/50">
                   <td className="px-3 py-2 font-semibold text-slate-900">{f.fluidName}</td>
                   <td className="px-3 py-2 text-center">
                     <input
@@ -631,7 +631,7 @@ export const WorksheetDetail: React.FC = () => {
                         updated[idx].specVerified = e.target.checked;
                         setFluidItems(updated);
                       }}
-                      className="w-4 h-4 text-blue-600 rounded-md"
+                      className="w-4 h-4 text-indigo-600 rounded-md"
                     />
                   </td>
                   <td className="px-3 py-2">
@@ -681,10 +681,10 @@ export const WorksheetDetail: React.FC = () => {
       {/* SECTION 5 & 6: DUAL TECHNICIAN VERIFICATION CARDS */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* TECH-008: Lead Technician #1 Signoff */}
-        <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-4">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <div className="flex items-center space-x-2">
-              <FileCheck className="w-4 h-4 text-blue-700" />
+              <FileCheck className="w-4 h-4 text-indigo-700" />
               <h3 className="text-sm font-bold text-slate-900">
                 TECH-008: Initial Tech Signoff (Tech #1)
               </h3>
@@ -717,7 +717,7 @@ export const WorksheetDetail: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setTech1SigModalOpen(true)}
-                className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors flex items-center justify-center space-x-1.5"
+                className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors flex items-center justify-center space-x-1.5"
               >
                 <FileCheck className="w-4 h-4" />
                 <span>Sign Initial Worksheet (TECH-008)</span>
@@ -727,7 +727,7 @@ export const WorksheetDetail: React.FC = () => {
         </div>
 
         {/* TECH-009, 010, 011: Independent Quality Control Signoff (Tech #2) */}
-        <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-4">
+        <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-4">
           <div className="flex items-center justify-between border-b border-slate-200 pb-2">
             <div className="flex items-center space-x-2">
               <CheckCircle className="w-4 h-4 text-violet-700" />
@@ -775,7 +775,7 @@ export const WorksheetDetail: React.FC = () => {
       </div>
 
       {/* SECTION 7: TECH-012 Vehicle Exit Observation */}
-      <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm space-y-4">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm space-y-4">
         <div className="flex items-center justify-between border-b border-slate-200 pb-2">
           <div className="flex items-center space-x-2">
             <Truck className="w-4 h-4 text-emerald-600" />
@@ -786,7 +786,7 @@ export const WorksheetDetail: React.FC = () => {
           <button
             type="button"
             onClick={handleSaveExit}
-            className="inline-flex items-center space-x-1 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md text-sm font-semibold shadow-sm"
+            className="inline-flex items-center space-x-1 px-3 py-1 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md text-sm font-semibold shadow-sm"
           >
             <Save className="w-3.5 h-3.5" />
             <span>Record Exit Audit</span>
@@ -839,8 +839,8 @@ export const WorksheetDetail: React.FC = () => {
 
       {/* Tech #2 QC Signature & Discrepancy Modal */}
       {qcSigModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl my-8 overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 overflow-y-auto animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl my-8 overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div>
                 <h3 className="font-bold text-base text-slate-900">

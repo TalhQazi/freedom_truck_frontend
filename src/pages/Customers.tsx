@@ -89,7 +89,7 @@ export const Customers: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
-            <Users className="w-5 h-5 text-blue-700" />
+            <Users className="w-5 h-5 text-indigo-700" />
             <span>Customer Profiles &amp; Fleet Accounts</span>
           </h1>
           <p className="text-sm text-slate-500">
@@ -100,7 +100,7 @@ export const Customers: React.FC = () => {
         <button
           type="button"
           onClick={() => setModalOpen(true)}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Register New Customer (SW-001)</span>
@@ -108,7 +108,7 @@ export const Customers: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-sm flex items-center gap-3">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm flex items-center gap-3">
         <div className="relative flex-1">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
@@ -116,13 +116,13 @@ export const Customers: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by customer name, phone number, email, or account #..."
-            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
           />
         </div>
       </div>
 
       {/* Customers Data Grid */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -144,8 +144,8 @@ export const Customers: React.FC = () => {
                   </td>
                 </tr>
               ) : customers.map((c) => (
-                <tr key={c._id} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="px-4 py-3 font-bold text-blue-700">
+                <tr key={c._id} className="hover:bg-indigo-50/50 transition-colors">
+                  <td className="px-4 py-3 font-bold text-indigo-700">
                     <Link to={`/customers/${c._id}`} className="hover:underline">
                       {c.customerNumber}
                     </Link>
@@ -210,8 +210,8 @@ export const Customers: React.FC = () => {
 
       {/* Create Customer Modal (SW-001) */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <Users className="w-5 h-5 text-amber-600" />
@@ -247,7 +247,7 @@ export const Customers: React.FC = () => {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="e.g. Lone Star Logistics LLC"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
 
@@ -261,7 +261,7 @@ export const Customers: React.FC = () => {
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="(214) 555-0199"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
               </div>
@@ -276,7 +276,7 @@ export const Customers: React.FC = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="fleet@company.com"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
 
@@ -287,7 +287,7 @@ export const Customers: React.FC = () => {
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as any)}
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   >
                     <option value="active">Active Standard</option>
                     <option value="vip">Vip / High-Priority Commercial Fleet</option>
@@ -305,7 +305,7 @@ export const Customers: React.FC = () => {
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                   placeholder="1234 Commerce Blvd"
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -317,7 +317,7 @@ export const Customers: React.FC = () => {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Dallas"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -327,7 +327,7 @@ export const Customers: React.FC = () => {
                     value={state}
                     onChange={(e) => setState(e.target.value)}
                     placeholder="TX"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
                 <div>
@@ -337,7 +337,7 @@ export const Customers: React.FC = () => {
                     value={zip}
                     onChange={(e) => setZip(e.target.value)}
                     placeholder="75201"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
               </div>
@@ -349,7 +349,7 @@ export const Customers: React.FC = () => {
                   value={notes}
                   onChange={(e) => setNotes(e.target.value)}
                   placeholder="Special instructions, fleet dispatch preferences, etc."
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -364,7 +364,7 @@ export const Customers: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Registering...' : 'Register Profile (SW-001)'}
                 </button>

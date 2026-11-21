@@ -190,7 +190,7 @@ export const CashUp: React.FC = () => {
       )}
 
       {/* Today's Reconciliation Form (SW-015) */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="bg-white text-slate-900 border-b border-slate-200 px-5 py-3.5 flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <FileText className="w-4 h-4 text-amber-600" />
@@ -215,7 +215,7 @@ export const CashUp: React.FC = () => {
                 required
                 value={businessDate}
                 onChange={(e) => setBusinessDate(e.target.value)}
-                className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
               />
             </div>
 
@@ -247,7 +247,7 @@ export const CashUp: React.FC = () => {
                   required
                   value={cashSales}
                   onChange={(e) => setCashSales(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md pl-7 pr-3 py-2 text-slate-900 font-bold focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md pl-7 pr-3 py-2 text-slate-900 font-bold focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
             </div>
@@ -347,7 +347,7 @@ export const CashUp: React.FC = () => {
                     required
                     value={actualCountedCash}
                     onChange={(e) => setActualCountedCash(e.target.value)}
-                    className="w-full text-base border-2 border-blue-600 rounded-md pl-7 pr-3 py-2 text-blue-950 font-semibold focus:outline-none"
+                    className="w-full text-base border-2 border-indigo-600 rounded-md pl-7 pr-3 py-2 text-indigo-950 font-semibold focus:outline-none"
                   />
                 </div>
                 <p className="text-xs text-slate-500 mt-1">
@@ -363,7 +363,7 @@ export const CashUp: React.FC = () => {
                 </div>
                 <div className="flex justify-between text-slate-600">
                   <span>Actual Counted Cash:</span>
-                  <span className="font-bold text-blue-700">${numActualCash.toFixed(2)}</span>
+                  <span className="font-bold text-indigo-700">${numActualCash.toFixed(2)}</span>
                 </div>
                 <div className={`flex justify-between font-bold pt-1 border-t border-slate-200 ${Math.abs(difference) > 0.01 ? 'text-red-600' : 'text-emerald-700'}`}>
                   <span>Reconciliation Difference:</span>
@@ -420,7 +420,7 @@ export const CashUp: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors"
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors"
             >
               {submitting ? 'Submitting...' : 'Reconcile & Close Cash Drawer (SW-015)'}
             </button>
@@ -429,7 +429,7 @@ export const CashUp: React.FC = () => {
       </div>
 
       {/* Historical Daily Cash-Up Records Table */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-200 bg-slate-50 flex items-center justify-between">
           <h2 className="text-sm font-bold text-slate-900">
             Historical Daily Cash Reconciliation Logs
@@ -453,8 +453,8 @@ export const CashUp: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-100 text-slate-700">
               {cashUps.map((c) => (
-                <tr key={c._id} className="hover:bg-slate-50">
-                  <td className="px-4 py-3 font-bold text-blue-700">
+                <tr key={c._id} className="hover:bg-indigo-50/50">
+                  <td className="px-4 py-3 font-bold text-indigo-700">
                     {c.cashUpNumber}
                   </td>
                   <td className="px-4 py-3 font-medium">{c.businessDate}</td>
@@ -514,8 +514,8 @@ export const CashUp: React.FC = () => {
 
       {/* Manager Review Modal for Discrepancy */}
       {reviewModalOpen && selectedCashUp && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <h3 className="font-bold text-sm text-slate-900">
                 Manager Review of Cash Variance (SW-015)
@@ -575,7 +575,7 @@ export const CashUp: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md"
+                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md"
                 >
                   Confirm Review
                 </button>

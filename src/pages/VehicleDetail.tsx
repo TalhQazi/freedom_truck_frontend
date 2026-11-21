@@ -54,7 +54,7 @@ export const VehicleDetail: React.FC = () => {
           </Link>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-sm font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
+              <span className="text-sm font-bold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-md border border-indigo-200">
                 {vehicle.licensePlate}
               </span>
               {vehicle.unitNumber && (
@@ -71,7 +71,7 @@ export const VehicleDetail: React.FC = () => {
 
         <Link
           to={`/repair-orders`}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Intake Vehicle for Service (RO)</span>
@@ -79,7 +79,7 @@ export const VehicleDetail: React.FC = () => {
       </div>
 
       {/* Vehicle Specification Card */}
-      <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-6">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-5 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
           <span className="text-xs text-slate-500 block mb-1">
             VIN (Vehicle Identification #)
@@ -118,7 +118,7 @@ export const VehicleDetail: React.FC = () => {
           <span className="text-xs text-slate-500 block mb-1">
             Registered Account Owner
           </span>
-          <div className="text-sm font-bold text-blue-700">
+          <div className="text-sm font-bold text-indigo-700">
             {vehicle.customer?.name ? (
               <Link to={`/customers/${vehicle.customer._id}`} className="hover:underline">
                 {vehicle.customer.name}
@@ -149,7 +149,7 @@ export const VehicleDetail: React.FC = () => {
       )}
 
       {/* Repair Orders & Service History */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-200 bg-slate-50/50">
           <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
             <Wrench className="w-4 h-4 text-amber-600" />
@@ -172,8 +172,8 @@ export const VehicleDetail: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-slate-100 text-sm text-slate-700">
               {repairOrders.map((ro: any) => (
-                <tr key={ro._id} className="hover:bg-slate-50">
-                  <td className="px-4 py-2.5 font-bold text-blue-700">
+                <tr key={ro._id} className="hover:bg-indigo-50/50">
+                  <td className="px-4 py-2.5 font-bold text-indigo-700">
                     <Link to={`/repair-orders/${ro._id}`} className="hover:underline">
                       {ro.roNumber}
                     </Link>
@@ -199,7 +199,7 @@ export const VehicleDetail: React.FC = () => {
                   <td className="px-4 py-2.5 text-right">
                     <Link
                       to={`/repair-orders/${ro._id}`}
-                      className="text-sm font-semibold text-blue-700 hover:underline"
+                      className="text-sm font-semibold text-indigo-700 hover:underline"
                     >
                       Open &rarr;
                     </Link>

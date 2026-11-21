@@ -295,14 +295,14 @@ export const InvoiceDetail: React.FC = () => {
               </div>
 
               {invoice.amountPaid > 0 && (
-                <div className="flex justify-between text-blue-700 font-semibold px-2">
+                <div className="flex justify-between text-indigo-700 font-semibold px-2">
                   <span>Additional Paid:</span>
                   <span>-${Number(invoice.amountPaid || 0).toFixed(2)}</span>
                 </div>
               )}
 
               {/* Balance Due Highlight */}
-              <div className="flex justify-between items-center text-sm font-semibold text-blue-950 bg-blue-50 px-3 py-2 rounded-md border border-blue-200 mt-2">
+              <div className="flex justify-between items-center text-sm font-semibold text-indigo-950 bg-indigo-50 px-3 py-2 rounded-md border border-indigo-200 mt-2">
                 <span>Total balance due:</span>
                 <span className="text-base">${Number(invoice.balanceDue || 0).toFixed(2)}</span>
               </div>
@@ -318,8 +318,8 @@ export const InvoiceDetail: React.FC = () => {
 
       {/* SW-012: Payment Collection Modal */}
       {payModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-md overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <DollarSign className="w-5 h-5 text-amber-600" />

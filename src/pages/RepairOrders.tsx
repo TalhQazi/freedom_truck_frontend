@@ -129,7 +129,7 @@ export const RepairOrders: React.FC = () => {
         <button
           type="button"
           onClick={openIntakeModal}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Vehicle Intake / Create RO</span>
@@ -137,7 +137,7 @@ export const RepairOrders: React.FC = () => {
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-slate-200 rounded-lg p-3 shadow-sm flex flex-col sm:flex-row items-center gap-3">
+      <div className="bg-white border border-slate-200/80 rounded-xl p-3 shadow-sm flex flex-col sm:flex-row items-center gap-3">
         <div className="relative flex-1 w-full">
           <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
           <input
@@ -145,7 +145,7 @@ export const RepairOrders: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by RO number, customer, vehicle plate, or technician..."
-            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-sm border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
           />
         </div>
 
@@ -154,7 +154,7 @@ export const RepairOrders: React.FC = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none w-full sm:w-auto"
+            className="text-sm border border-slate-200 rounded-md px-2.5 py-2 bg-white text-slate-800 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none w-full sm:w-auto"
           >
             <option value="">All Workflow Stages</option>
             <option value="INTAKE">Intake (Arrival)</option>
@@ -172,7 +172,7 @@ export const RepairOrders: React.FC = () => {
       </div>
 
       {/* Repair Orders Table */}
-      <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-200/80 rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
@@ -194,8 +194,8 @@ export const RepairOrders: React.FC = () => {
                   </td>
                 </tr>
               ) : filteredROs.map((ro) => (
-                <tr key={ro._id} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="px-4 py-3 font-bold text-blue-700">
+                <tr key={ro._id} className="hover:bg-indigo-50/50 transition-colors">
+                  <td className="px-4 py-3 font-bold text-indigo-700">
                     <Link to={`/repair-orders/${ro._id}`} className="hover:underline">
                       {ro.roNumber}
                     </Link>
@@ -250,8 +250,8 @@ export const RepairOrders: React.FC = () => {
 
       {/* Vehicle Intake Modal */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 animate-fade-in">
+          <div className="animate-scale-in bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
             <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
                 <Wrench className="w-5 h-5 text-amber-600" />
@@ -284,7 +284,7 @@ export const RepairOrders: React.FC = () => {
                   required
                   value={selectedCustomerId}
                   onChange={(e) => handleCustomerChange(e.target.value)}
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 >
                   <option value="">-- Choose Customer Profile --</option>
                   {customers.map((c) => (
@@ -309,7 +309,7 @@ export const RepairOrders: React.FC = () => {
                       const f = customerVehicles.find((v) => v._id === e.target.value);
                       if (f) setMileageIn(String(f.currentMileage || ''));
                     }}
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none disabled:bg-slate-100"
                   >
                     <option value="">-- Choose Vehicle --</option>
                     {customerVehicles.map((v) => (
@@ -330,7 +330,7 @@ export const RepairOrders: React.FC = () => {
                     value={mileageIn}
                     onChange={(e) => setMileageIn(e.target.value)}
                     placeholder="e.g. 54200"
-                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                   />
                 </div>
               </div>
@@ -345,7 +345,7 @@ export const RepairOrders: React.FC = () => {
                   value={customerComplaint}
                   onChange={(e) => setCustomerComplaint(e.target.value)}
                   placeholder="Record customer complaint verbatim: e.g. Steering vibration at highway speed, replace steer tires, brake pulsation."
-                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-sm border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-indigo-600 focus:outline-none"
                 />
               </div>
 
@@ -360,7 +360,7 @@ export const RepairOrders: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Checking in...' : 'Complete Vehicle Intake'}
                 </button>

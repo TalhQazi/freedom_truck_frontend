@@ -35,22 +35,24 @@ export const Login: React.FC = () => {
   };
 
   const inputClass =
-    'block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500';
+    'block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500';
 
   return (
-    <div className="flex min-h-screen flex-col justify-center bg-slate-50 px-4 py-12">
-      <div className="mx-auto w-full max-w-sm">
+    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-fuchsia-50 px-4 py-12">
+      <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-indigo-300/30 blur-3xl" aria-hidden="true" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 h-72 w-72 rounded-full bg-fuchsia-300/30 blur-3xl" aria-hidden="true" />
+      <div className="relative mx-auto w-full max-w-sm animate-fade-in-up">
         <div className="mb-6 flex flex-col items-center text-center">
-          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+          <div className="mb-3 flex h-12 w-12 animate-scale-in items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-violet-500 to-fuchsia-500 shadow-lg shadow-indigo-500/30">
             <Truck className="h-5 w-5 text-white" />
           </div>
           <h1 className="text-xl font-semibold text-slate-900">Sign in</h1>
           <p className="mt-1 text-sm text-slate-500">Freedom Car &amp; Truck</p>
         </div>
 
-        <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
+        <div className="rounded-xl border border-white/60 bg-white/90 p-6 shadow-xl shadow-indigo-500/10 backdrop-blur">
           {error && (
-            <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>
+            <div className="mb-4 animate-fade-in rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -87,7 +89,7 @@ export const Login: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-60"
+              className="w-full rounded-md bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-medium text-white shadow-sm shadow-indigo-500/30 transition hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
             >
               {loading ? 'Signing in…' : 'Sign in'}
             </button>
@@ -96,7 +98,7 @@ export const Login: React.FC = () => {
 
         <div className="mt-6">
           <p className="mb-2 text-center text-xs text-slate-500">Demo accounts (password: Password123!)</p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="stagger flex flex-wrap justify-center gap-2">
             {quickLogins.map((item) => (
               <button
                 key={item.id}
@@ -107,7 +109,7 @@ export const Login: React.FC = () => {
                 }}
                 className={`rounded-md border px-2.5 py-1 text-xs ${
                   emailOrEmployeeId === item.id
-                    ? 'border-blue-200 bg-blue-50 text-blue-700'
+                    ? 'border-indigo-200 bg-indigo-50 text-indigo-700'
                     : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
                 }`}
               >
