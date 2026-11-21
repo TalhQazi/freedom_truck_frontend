@@ -214,7 +214,7 @@ export default function Settings() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
+      <div className="flex flex-col gap-4 border-b border-slate-200 pb-4 2xl:flex-row 2xl:items-center 2xl:justify-between">
         <div>
           <div className="flex items-center gap-3">
             <div className="p-2 bg-slate-200 border border-slate-200 rounded-lg text-slate-700">
@@ -232,10 +232,10 @@ export default function Settings() {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
+        <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-lg border border-slate-200 bg-white p-1 [&>button]:whitespace-nowrap">
           <button
             onClick={() => setActiveTab('markup')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'markup'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -246,7 +246,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('shop')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'shop'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -257,7 +257,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('employees')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'employees'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -268,7 +268,7 @@ export default function Settings() {
 
           <button
             onClick={() => setActiveTab('integrations')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'integrations'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -412,7 +412,7 @@ export default function Settings() {
                   <button
                     disabled={saving}
                     onClick={handleSaveMatrix}
-                    className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                    className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50 whitespace-nowrap"
                   >
                     <Save className="w-3.5 h-3.5" /> Save Markup Matrix
                   </button>
@@ -436,7 +436,7 @@ export default function Settings() {
                     <button
                       type="button"
                       onClick={() => setTestType('part')}
-                      className={`py-1.5 rounded text-sm font-semibold ${
+                      className={`py-1.5 rounded-md text-sm font-semibold ${
                         testType === 'part'
                           ? 'bg-indigo-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
@@ -447,7 +447,7 @@ export default function Settings() {
                     <button
                       type="button"
                       onClick={() => setTestType('tire')}
-                      className={`py-1.5 rounded text-sm font-semibold ${
+                      className={`py-1.5 rounded-md text-sm font-semibold ${
                         testType === 'tire'
                           ? 'bg-indigo-600 text-white'
                           : 'bg-slate-50 border border-slate-200 text-slate-700'
@@ -651,7 +651,7 @@ export default function Settings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50 whitespace-nowrap"
                 >
                   <Save className="w-4 h-4" /> Save Policy Parameters
                 </button>
@@ -674,7 +674,7 @@ export default function Settings() {
             {isManagement && (
               <button
                 onClick={() => setShowAddEmpModal(true)}
-                className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm"
+                className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold flex items-center gap-1.5 shadow-sm whitespace-nowrap"
               >
                 <UserPlus className="w-3.5 h-3.5" /> Add Employee
               </button>
@@ -694,7 +694,7 @@ export default function Settings() {
                     {isManagement && <th className="py-3 px-3 text-right">Actions</th>}
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/60">
+                <tbody className="divide-y divide-slate-100">
                   {employees.map((emp) => (
                     <tr key={emp._id} className="hover:bg-indigo-50/50">
                       <td className="py-3 px-3 font-bold text-indigo-600 whitespace-nowrap">
@@ -713,7 +713,7 @@ export default function Settings() {
                       </td>
                       <td className="py-3 px-3 whitespace-nowrap">
                         <span
-                          className={`px-2 py-0.5 rounded text-[10px] font-bold ${
+                          className={`px-2 py-0.5 rounded-md text-xs font-bold ${
                             emp.isActive
                               ? 'bg-emerald-50 border border-emerald-200 text-emerald-700'
                               : 'bg-red-50 border border-red-200 text-red-700'
@@ -889,7 +889,7 @@ export default function Settings() {
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold"
+                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-semibold whitespace-nowrap"
                 >
                   Create Employee
                 </button>

@@ -172,7 +172,7 @@ export const RepairOrderDetail: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Breadcrumb & Actions */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex items-center space-x-3">
           <Link
             to="/repair-orders"
@@ -194,12 +194,12 @@ export const RepairOrderDetail: React.FC = () => {
         </div>
 
         {/* Workflow Action Buttons */}
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           {ro.status === 'DEPOSIT_REQUIRED' && (
             <button
               type="button"
               onClick={openDepositModal}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-orange-700 hover:bg-orange-800 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-orange-700 hover:bg-orange-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <DollarSign className="w-3.5 h-3.5" />
               <span>Collect 50% Deposit (SW-008)</span>
@@ -210,7 +210,7 @@ export const RepairOrderDetail: React.FC = () => {
             <button
               type="button"
               onClick={openDispatchModal}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <Send className="w-3.5 h-3.5" />
               <span>Dispatch Technician (SW-009)</span>
@@ -220,7 +220,7 @@ export const RepairOrderDetail: React.FC = () => {
           {ro.worksheet && (
             <Link
               to={`/worksheets/${typeof ro.worksheet === 'string' ? ro.worksheet : ro.worksheet._id}`}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <ClipboardCheck className="w-3.5 h-3.5" />
               <span>Open Technician Worksheet</span>
@@ -231,7 +231,7 @@ export const RepairOrderDetail: React.FC = () => {
             <button
               type="button"
               onClick={handleGenerateInvoice}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <Receipt className="w-3.5 h-3.5" />
               <span>Generate Invoice (SW-011)</span>
@@ -526,7 +526,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Verifying & Dispatching...' : 'Dispatch to Bay (SW-009)'}
                 </button>
@@ -624,7 +624,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Recording Deposit...' : 'Record Deposit & Clear Dispatch'}
                 </button>
@@ -722,7 +722,7 @@ export const RepairOrderDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Auditing...' : 'Execute Documented Override (Rule 8)'}
                 </button>

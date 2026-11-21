@@ -54,7 +54,7 @@ export const TechnicianWorksheets: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <ClipboardCheck className="w-5 h-5 text-teal-700" />
@@ -191,7 +191,7 @@ export const TechnicianWorksheets: React.FC = () => {
                     <td className="px-4 py-3 text-right">
                       <Link
                         to={`/worksheets/${ws._id}`}
-                        className="inline-flex items-center px-3 py-1 text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center px-3 py-1 text-sm font-bold text-white bg-teal-700 hover:bg-teal-800 rounded-md transition-colors shadow-sm whitespace-nowrap"
                       >
                         <span>Open Sheet</span>
                       </Link>

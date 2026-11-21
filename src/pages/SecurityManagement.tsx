@@ -180,7 +180,7 @@ export const SecurityManagement: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <ShieldAlert className="w-5 h-5 text-red-600" />
@@ -191,11 +191,11 @@ export const SecurityManagement: React.FC = () => {
           </p>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={() => setCmrModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
           >
             <Plus className="w-4 h-4" />
             <span>New Computer Mod Request (OFF-005)</span>
@@ -203,7 +203,7 @@ export const SecurityManagement: React.FC = () => {
           <button
             type="button"
             onClick={() => setIncModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-sm font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
           >
             <AlertTriangle className="w-4 h-4" />
             <span>Report Security Incident (OFF-012)</span>
@@ -226,7 +226,7 @@ export const SecurityManagement: React.FC = () => {
       )}
 
       {/* Tabs */}
-      <div className="border-b border-slate-200 flex space-x-6 text-sm font-bold">
+      <div className="flex gap-6 overflow-x-auto border-b border-slate-200 text-sm font-semibold [&>button]:whitespace-nowrap">
         <button
           type="button"
           onClick={() => setActiveTab('modifications')}
@@ -317,14 +317,14 @@ export const SecurityManagement: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleReviewCMR(cmr._id, 'APPROVED')}
-                              className="px-2 py-0.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-md text-xs"
+                              className="px-2 py-0.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-md text-xs whitespace-nowrap"
                             >
                               Approve
                             </button>
                             <button
                               type="button"
                               onClick={() => handleReviewCMR(cmr._id, 'REJECTED')}
-                              className="px-2 py-0.5 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md text-xs"
+                              className="px-2 py-0.5 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md text-xs whitespace-nowrap"
                             >
                               Reject
                             </button>
@@ -334,7 +334,7 @@ export const SecurityManagement: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleImplementCMR(cmr._id)}
-                            className="px-2 py-0.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md text-xs"
+                            className="px-2 py-0.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md text-xs whitespace-nowrap"
                           >
                             Mark Implemented
                           </button>
@@ -369,7 +369,7 @@ export const SecurityManagement: React.FC = () => {
                 setChkSignature(null);
                 setChecklistModalOpen(true);
               }}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm whitespace-nowrap"
             >
               <CheckSquare className="w-4 h-4" />
               <span>Submit Daily Security Walkthrough (OFF-008)</span>
@@ -448,7 +448,7 @@ export const SecurityManagement: React.FC = () => {
                       <td className="px-4 py-3">{inc.reporterName}</td>
                       <td className="px-4 py-3 text-xs">{inc.workstationOrDevice}</td>
                       <td className="px-4 py-3">
-                        <span className={`px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase ${
+                        <span className={`px-2 py-0.5 rounded-md font-bold text-xs ${
                           inc.severity === 'CRITICAL' ? 'bg-red-200 text-red-900' : inc.severity === 'HIGH' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-900'
                         }`}>
                           {inc.severity}
@@ -563,7 +563,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md"
+                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md whitespace-nowrap"
                 >
                   Submit for Management Review (OFF-005)
                 </button>
@@ -670,7 +670,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md"
+                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md whitespace-nowrap"
                 >
                   Submit Checklist (OFF-008)
                 </button>
@@ -765,7 +765,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md"
+                  className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md whitespace-nowrap"
                 >
                   Escalate Incident to Management (OFF-012)
                 </button>

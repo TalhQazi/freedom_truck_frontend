@@ -159,7 +159,7 @@ export const CashUp: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <DollarSign className="w-5 h-5 text-emerald-700" />
@@ -420,7 +420,7 @@ export const CashUp: React.FC = () => {
             <button
               type="submit"
               disabled={submitting}
-              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors"
+              className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               {submitting ? 'Submitting...' : 'Reconcile & Close Cash Drawer (SW-015)'}
             </button>
@@ -575,7 +575,7 @@ export const CashUp: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md"
+                  className="px-4 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-md whitespace-nowrap"
                 >
                   Confirm Review
                 </button>

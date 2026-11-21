@@ -71,7 +71,7 @@ export const VehicleDetail: React.FC = () => {
 
         <Link
           to={`/repair-orders`}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
         >
           <Plus className="w-4 h-4" />
           <span>Intake Vehicle for Service (RO)</span>

@@ -42,7 +42,7 @@ export const Invoices: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <Receipt className="w-5 h-5 text-emerald-700" />

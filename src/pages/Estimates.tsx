@@ -243,7 +243,7 @@ export const Estimates: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <FileSpreadsheet className="w-5 h-5 text-indigo-700" />
@@ -257,7 +257,7 @@ export const Estimates: React.FC = () => {
         <button
           type="button"
           onClick={openCreateModal}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
         >
           <Plus className="w-4 h-4" />
           <span>New Itemized Estimate (SW-003)</span>
@@ -330,7 +330,7 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleAuthorizeClick(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors shadow-sm whitespace-nowrap"
                       >
                         <FileCheck className="w-3.5 h-3.5" />
                         <span>Sign (SW-007)</span>
@@ -340,7 +340,7 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleConvertToRO(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-colors shadow-sm"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md transition-colors shadow-sm whitespace-nowrap"
                       >
                         <span>Convert to RO (SW-006)</span>
                       </button>
@@ -522,7 +522,7 @@ export const Estimates: React.FC = () => {
                       {lineItems.map((item, idx) => (
                         <tr key={idx} className="hover:bg-indigo-50/50">
                           <td className="p-2 text-xs">
-                            <span className={`px-1.5 py-0.5 rounded font-bold ${
+                            <span className={`px-1.5 py-0.5 rounded-md font-bold ${
                               item.itemType === 'tire' ? 'bg-amber-100 text-amber-900' : item.itemType === 'part' ? 'bg-slate-200 text-slate-800' : 'bg-indigo-100 text-indigo-700'
                             }`}>
                               {item.itemType}
@@ -643,7 +643,7 @@ export const Estimates: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+                  className="px-5 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Creating Estimate...' : 'Save Estimate (SW-003)'}
                 </button>

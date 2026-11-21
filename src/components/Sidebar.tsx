@@ -84,8 +84,9 @@ const Section: React.FC<{ title?: string; children: React.ReactNode }> = ({ titl
 );
 
 export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
-  const { hasRole } = useAuth();
-  const isTech = hasRole('technician', 'qc_technician');
+  const { user, hasRole } = useAuth();
+  // hasRole() always passes for admins, so check the actual role here to avoid a duplicate entry.
+  const isTech = user?.role === 'technician' || user?.role === 'qc_technician';
 
   return (
     <>

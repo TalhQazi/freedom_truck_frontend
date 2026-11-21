@@ -118,7 +118,7 @@ export const InvoiceDetail: React.FC = () => {
           </div>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           {invoice.status !== 'PAID' && (
             <button
               type="button"
@@ -127,7 +127,7 @@ export const InvoiceDetail: React.FC = () => {
                 setPayAmount(invoice.balanceDue.toFixed(2));
                 setPayModalOpen(true);
               }}
-              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <DollarSign className="w-3.5 h-3.5" />
               <span>Record Customer Payment (SW-012)</span>
@@ -162,7 +162,7 @@ export const InvoiceDetail: React.FC = () => {
           <div>
             <div className="flex items-center space-x-2">
               <span className="font-semibold text-lg text-slate-900 font-sans">
-                FREEDOM <span className="text-amber-500">CAR &amp; TRUCK</span>
+                Freedom <span className="text-indigo-600">Car &amp; Truck</span>
               </span>
             </div>
             <div className="text-xs text-slate-700 mt-1">
@@ -208,7 +208,7 @@ export const InvoiceDetail: React.FC = () => {
 
           <div>
             <span className="text-xs text-slate-500 font-bold block mb-1">
-              VEHICLE IDENTIFICATION &amp; REPAIR REF:
+              Vehicle identification &amp; repair ref:
             </span>
             <div className="font-bold text-slate-900 text-sm">
               {invoice.vehicle?.year} {invoice.vehicle?.make} {invoice.vehicle?.model}
@@ -400,7 +400,7 @@ export const InvoiceDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Processing Payment...' : 'Record Payment & Issue Receipts (SW-012/013)'}
                 </button>
@@ -427,7 +427,7 @@ export const InvoiceDetail: React.FC = () => {
           <button
             type="button"
             onClick={() => setOfficeSignModalOpen(true)}
-            className="px-3 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm"
+            className="px-3 py-1.5 text-sm font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md shadow-sm whitespace-nowrap"
           >
             Capture Signed Office Copy (SW-013)
           </button>

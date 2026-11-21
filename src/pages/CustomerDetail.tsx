@@ -173,7 +173,7 @@ export const CustomerDetail: React.FC = () => {
           <button
             type="button"
             onClick={() => setVehicleModalOpen(true)}
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
           >
             <Plus className="w-3.5 h-3.5" />
             <span>Register Vehicle (SW-002)</span>
@@ -412,7 +412,7 @@ export const CustomerDetail: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+                  className="px-4 py-2 text-sm font-bold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
                 >
                   {submitting ? 'Registering...' : 'Complete Vehicle Registration (SW-002)'}
                 </button>

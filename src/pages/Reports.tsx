@@ -87,7 +87,7 @@ export default function Reports() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
+      <div className="flex flex-col gap-4 border-b border-slate-200 pb-4 2xl:flex-row 2xl:items-center 2xl:justify-between">
         <div>
           <div className="flex items-center gap-3">
             <div className="p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-emerald-600">
@@ -105,10 +105,10 @@ export default function Reports() {
         </div>
 
         {/* Tab Selector */}
-        <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
+        <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-lg border border-slate-200 bg-white p-1 [&>button]:whitespace-nowrap">
           <button
             onClick={() => setActiveTab('financial')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'financial'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -119,7 +119,7 @@ export default function Reports() {
 
           <button
             onClick={() => setActiveTab('operations')}
-            className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+            className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'operations'
                 ? 'bg-indigo-600 text-white shadow-sm'
                 : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -131,7 +131,7 @@ export default function Reports() {
           {isManagement && (
             <button
               onClick={() => setActiveTab('audit')}
-              className={`px-3 py-1.5 rounded text-sm font-semibold flex items-center gap-1.5 transition-all ${
+              className={`px-3 py-1.5 rounded-md text-sm font-semibold flex items-center gap-1.5 transition-all ${
                 activeTab === 'audit'
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -251,7 +251,7 @@ export default function Reports() {
                     <th className="py-3 px-3 text-center">Office Copy</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/60">
+                <tbody className="divide-y divide-slate-100">
                   {loading ? (
                     <tr>
                       <td colSpan={7} className="text-center py-12 text-slate-500">
@@ -477,7 +477,7 @@ export default function Reports() {
                     <th className="py-3 px-3">Audit Details / Payload</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/60">
+                <tbody className="divide-y divide-slate-100">
                   {loading ? (
                     <tr>
                       <td colSpan={5} className="text-center py-12 text-slate-500">
@@ -517,7 +517,7 @@ export default function Reports() {
                           </td>
                           <td className="py-3 px-3 whitespace-nowrap">
                             <span
-                              className={`px-2 py-0.5 rounded font-mono text-[10px] font-bold ${
+                              className={`px-2 py-0.5 rounded-md text-xs font-bold ${
                                 log.action.includes('OVERRIDE')
                                   ? 'bg-amber-50 border border-amber-200 text-amber-700'
                                   : log.action.includes('DELETE') || log.action.includes('REJECT')

@@ -69,7 +69,11 @@ const toneClasses: Record<Tone, { badge: string; dot: string }> = {
 const formatText = (text: string) => {
   if (!text) return '';
   const s = text.replace(/_/g, ' ').toLowerCase();
-  return s.charAt(0).toUpperCase() + s.slice(1);
+  const out = s.charAt(0).toUpperCase() + s.slice(1);
+  // Keep abbreviations readable: "Qc pending" -> "QC pending", "Vip" -> "VIP", "Tech1" -> "Tech #1"
+  return out
+    .replace(/\b(qc|vip|ro|sop|na)\b/gi, (m) => m.toUpperCase())
+    .replace(/\btech(\d)\b/gi, (_, n) => `Tech #${n}`);
 };
 
 const sizeClasses = {

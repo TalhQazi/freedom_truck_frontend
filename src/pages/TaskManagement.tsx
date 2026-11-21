@@ -179,16 +179,16 @@ export default function TaskManagement() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
+      <div className="flex flex-col gap-4 border-b border-slate-200 pb-4">
         <div>
           <div className="flex items-center gap-3">
             <div className="p-2 bg-indigo-50 border border-indigo-200 rounded-lg text-indigo-600">
               <CheckSquare className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 flex flex-wrap items-center gap-2">
                 Standard Operating Procedure (SOP) Task Management
-                <span className="text-sm px-2 py-0.5 rounded-md bg-white text-slate-500 border border-slate-200">
+                <span className="whitespace-nowrap rounded-full bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700">
                   {filteredTasks.length} Tracked
                 </span>
               </h1>
@@ -200,7 +200,7 @@ export default function TaskManagement() {
         </div>
 
         {/* Department Quick Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
+        <div className="flex max-w-full items-center gap-1 overflow-x-auto rounded-lg border border-slate-200 bg-white p-1 [&>button]:whitespace-nowrap">
           {[
             { id: 'ALL', label: 'All SOPs' },
             { id: 'SERVICE_WRITER', label: 'Service Writer' },
@@ -212,7 +212,7 @@ export default function TaskManagement() {
             <button
               key={tab.id}
               onClick={() => setDepartmentFilter(tab.id)}
-              className={`px-3 py-1.5 rounded text-sm font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                 departmentFilter === tab.id
                   ? 'bg-indigo-600 text-white shadow-sm'
                   : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
@@ -274,7 +274,7 @@ export default function TaskManagement() {
                     <th className="py-3 px-3 text-right">Action</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-700/60">
+                <tbody className="divide-y divide-slate-100">
                   {loading ? (
                     <tr>
                       <td colSpan={7} className="text-center py-12 text-slate-500">
@@ -496,7 +496,7 @@ export default function TaskManagement() {
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress('COMPLETED')}
-                className="px-4 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-sm flex items-center gap-1.5 disabled:opacity-50"
+                className="px-4 py-1.5 rounded-md bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold shadow-sm flex items-center gap-1.5 disabled:opacity-50 whitespace-nowrap"
               >
                 <CheckCircle className="w-3.5 h-3.5" />
                 Complete SOP Task
@@ -591,7 +591,7 @@ export default function TaskManagement() {
                 <button
                   type="submit"
                   disabled={!newComment.trim()}
-                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-medium disabled:opacity-40"
+                  className="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-md text-sm font-medium disabled:opacity-40 whitespace-nowrap"
                 >
                   <Send className="w-3.5 h-3.5" />
                 </button>

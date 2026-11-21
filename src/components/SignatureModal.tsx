@@ -181,7 +181,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
             <button
               type="button"
               onClick={handleConfirm}
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-md shadow-sm transition-colors whitespace-nowrap"
             >
               <CheckCircle className="w-3.5 h-3.5" />
               <span>Confirm &amp; Record Signature</span>
