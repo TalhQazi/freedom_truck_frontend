@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext.js';
-import { Wrench, Shield, Lock, ArrowRight, UserCheck } from 'lucide-react';
+import { Truck } from 'lucide-react';
+
+const quickLogins = [
+  { label: 'Admin', id: 'admin@freedomcartruck.com' },
+  { label: 'Manager', id: 'manager@freedomcartruck.com' },
+  { label: 'Service writer', id: 'writer@freedomcartruck.com' },
+  { label: 'Technician', id: 'tech1@freedomcartruck.com' },
+  { label: 'QC technician', id: 'tech2@freedomcartruck.com' },
+  { label: 'Office assistant', id: 'office@freedomcartruck.com' },
+];
 
 export const Login: React.FC = () => {
   const [emailOrEmployeeId, setEmailOrEmployeeId] = useState('admin@freedomcartruck.com');
@@ -19,113 +28,92 @@ export const Login: React.FC = () => {
       await login(emailOrEmployeeId, password);
       navigate('/');
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Authentication failed. Please verify credentials.');
+      setError(err.response?.data?.message || 'Invalid email or password.');
     } finally {
       setLoading(false);
     }
   };
 
-  const quickLogins = [
-    { label: 'Admin (Robert Miller)', id: 'admin@freedomcartruck.com', role: 'admin' },
-    { label: 'Manager (David Sterling)', id: 'manager@freedomcartruck.com', role: 'manager' },
-    { label: 'Service Writer (Sarah Jenkins)', id: 'writer@freedomcartruck.com', role: 'service_writer' },
-    { label: 'Technician #1 (Marcus Cole)', id: 'tech1@freedomcartruck.com', role: 'technician' },
-    { label: 'QC Tech #2 (Alexander Hayes)', id: 'tech2@freedomcartruck.com', role: 'qc_technician' },
-    { label: 'Office Assistant (Emily Watson)', id: 'office@freedomcartruck.com', role: 'office_assistant' },
-  ];
+  const inputClass =
+    'block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 placeholder-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500';
 
   return (
-    <div className="min-h-screen bg-brand-950 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-sans">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md text-center">
-        <div className="inline-flex items-center justify-center w-14 h-14 rounded-lg bg-blue-700 border border-blue-500 shadow-xl mb-4">
-          <Wrench className="w-8 h-8 text-amber-400" />
+    <div className="flex min-h-screen flex-col justify-center bg-slate-50 px-4 py-12">
+      <div className="mx-auto w-full max-w-sm">
+        <div className="mb-6 flex flex-col items-center text-center">
+          <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600">
+            <Truck className="h-5 w-5 text-white" />
+          </div>
+          <h1 className="text-xl font-semibold text-slate-900">Sign in</h1>
+          <p className="mt-1 text-sm text-slate-500">Freedom Car &amp; Truck</p>
         </div>
-        <h2 className="text-2xl font-extrabold text-white tracking-wider uppercase">
-          Freedom Car &amp; Truck
-        </h2>
-        <p className="mt-1 text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">
-          Workshop Management Operating System
-        </p>
-        <p className="mt-2 text-xs text-slate-400">
-          Authorized Workshop Personnel &amp; SOP Enforcement Portal
-        </p>
-      </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
-        <div className="bg-brand-900 py-8 px-6 shadow-2xl rounded-lg border border-brand-800 sm:px-10">
+        <div className="rounded-lg border border-slate-200 bg-white p-6 shadow-sm">
           {error && (
-            <div className="mb-5 p-3 rounded bg-red-950/80 border border-red-700 text-red-200 text-xs flex items-center space-x-2">
-              <Shield className="w-4 h-4 text-red-400 shrink-0" />
-              <span>{error}</span>
-            </div>
+            <div className="mb-4 rounded-md border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                Employee ID or Company Email
+              <label htmlFor="login-id" className="mb-1 block text-sm font-medium text-slate-700">
+                Email or employee ID
               </label>
               <input
+                id="login-id"
                 type="text"
                 required
+                autoComplete="username"
                 value={emailOrEmployeeId}
                 onChange={(e) => setEmailOrEmployeeId(e.target.value)}
-                placeholder="EMP-1001 or user@freedomcartruck.com"
-                className="w-full text-sm bg-brand-950 border border-brand-700 rounded px-3 py-2.5 text-white font-medium focus:ring-1 focus:ring-blue-500 focus:outline-none"
+                className={inputClass}
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1">
+              <label htmlFor="login-password" className="mb-1 block text-sm font-medium text-slate-700">
                 Password
               </label>
-              <div className="relative">
-                <input
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="w-full text-sm bg-brand-950 border border-brand-700 rounded px-3 py-2.5 text-white font-medium focus:ring-1 focus:ring-blue-500 focus:outline-none"
-                />
-                <Lock className="w-4 h-4 text-slate-500 absolute right-3 top-3 pointer-events-none" />
-              </div>
+              <input
+                id="login-password"
+                type="password"
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className={inputClass}
+              />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-2.5 px-4 bg-blue-700 hover:bg-blue-600 font-bold text-xs uppercase tracking-wider text-white rounded shadow-md transition-colors flex items-center justify-center space-x-2"
+              className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-60"
             >
-              <span>{loading ? 'Authenticating...' : 'Sign In To Terminal'}</span>
-              <ArrowRight className="w-4 h-4" />
+              {loading ? 'Signing in…' : 'Sign in'}
             </button>
           </form>
+        </div>
 
-          {/* Quick Demo Switcher */}
-          <div className="mt-6 pt-5 border-t border-brand-800">
-            <div className="flex items-center space-x-1.5 text-slate-400 text-[11px] font-mono uppercase mb-3">
-              <UserCheck className="w-3.5 h-3.5 text-blue-400" />
-              <span>Quick Login by Role (Test Environments)</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 text-left">
-              {quickLogins.map((item) => (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => {
-                    setEmailOrEmployeeId(item.id);
-                    setPassword('Password123!');
-                  }}
-                  className="px-2.5 py-1.5 bg-brand-950/80 hover:bg-brand-800 border border-brand-800 rounded text-[11px] text-slate-300 hover:text-white transition-colors truncate"
-                  title={item.id}
-                >
-                  <span className="font-semibold block truncate">{item.label}</span>
-                </button>
-              ))}
-            </div>
-            <p className="mt-2 text-[10px] text-slate-500 text-center font-mono">
-              Default password for all accounts: <code className="text-slate-300">Password123!</code>
-            </p>
+        <div className="mt-6">
+          <p className="mb-2 text-center text-xs text-slate-500">Demo accounts (password: Password123!)</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {quickLogins.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                onClick={() => {
+                  setEmailOrEmployeeId(item.id);
+                  setPassword('Password123!');
+                }}
+                className={`rounded-md border px-2.5 py-1 text-xs ${
+                  emailOrEmployeeId === item.id
+                    ? 'border-blue-200 bg-blue-50 text-blue-700'
+                    : 'border-slate-200 bg-white text-slate-600 hover:bg-slate-50'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         </div>
       </div>

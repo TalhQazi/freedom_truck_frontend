@@ -36,7 +36,7 @@ export const VehicleDetail: React.FC = () => {
   }, [id]);
 
   if (loading || !data) {
-    return <div className="p-8 text-center text-xs font-mono text-slate-500">Loading vehicle service record...</div>;
+    return <div className="p-8 text-center text-xs text-slate-500">Loading vehicle service record...</div>;
   }
 
   const { vehicle, repairOrders = [], worksheets = [] } = data;
@@ -48,22 +48,22 @@ export const VehicleDetail: React.FC = () => {
         <div className="flex items-center space-x-3">
           <Link
             to="/vehicles"
-            className="p-1.5 rounded hover:bg-slate-200 text-slate-600 transition-colors"
+            className="p-1.5 rounded-md hover:bg-slate-200 text-slate-600 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
             <div className="flex items-center space-x-2">
-              <span className="text-xs font-mono font-bold text-blue-900 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+              <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                 {vehicle.licensePlate}
               </span>
               {vehicle.unitNumber && (
-                <span className="text-xs font-mono text-slate-600 font-semibold">
+                <span className="text-xs text-slate-600 font-semibold">
                   Unit: {vehicle.unitNumber}
                 </span>
               )}
             </div>
-            <h1 className="text-2xl font-extrabold text-slate-900 mt-1">
+            <h1 className="text-2xl font-semibold text-slate-900 mt-1">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
           </div>
@@ -71,7 +71,7 @@ export const VehicleDetail: React.FC = () => {
 
         <Link
           to={`/repair-orders`}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Intake Vehicle for Service (RO)</span>
@@ -81,44 +81,44 @@ export const VehicleDetail: React.FC = () => {
       {/* Vehicle Specification Card */}
       <div className="bg-white border border-slate-200 rounded-lg p-5 shadow-sm grid grid-cols-1 md:grid-cols-4 gap-6">
         <div>
-          <span className="text-[11px] font-mono uppercase text-slate-400 block mb-1">
+          <span className="text-xs text-slate-400 block mb-1">
             VIN (Vehicle Identification #)
           </span>
-          <div className="font-mono text-xs font-bold text-slate-900 tracking-wider">
+          <div className="text-xs font-bold text-slate-900">
             {vehicle.vin}
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">
+          <div className="text-xs text-slate-500 mt-1">
             Color: {vehicle.color || 'Unspecified'}
           </div>
         </div>
 
         <div>
-          <span className="text-[11px] font-mono uppercase text-slate-400 block mb-1">
+          <span className="text-xs text-slate-400 block mb-1">
             Engine &amp; Sub-Model
           </span>
           <div className="text-xs font-semibold text-slate-800">
             {vehicle.engine || 'Standard Factory Spec'}
           </div>
-          <div className="text-[11px] text-slate-500 mt-0.5">{vehicle.subModel}</div>
+          <div className="text-xs text-slate-500 mt-0.5">{vehicle.subModel}</div>
         </div>
 
         <div>
-          <span className="text-[11px] font-mono uppercase text-slate-400 block mb-1">
+          <span className="text-xs text-slate-400 block mb-1">
             Odometer Tracking
           </span>
-          <div className="font-mono text-sm font-bold text-slate-900">
+          <div className="text-sm font-bold text-slate-900">
             {Number(vehicle.currentMileage || 0).toLocaleString()} miles
           </div>
-          <div className="text-[11px] text-slate-400 font-mono mt-0.5">
+          <div className="text-xs text-slate-400 mt-0.5">
             Previous: {Number(vehicle.previousMileage || vehicle.currentMileage).toLocaleString()} mi
           </div>
         </div>
 
         <div>
-          <span className="text-[11px] font-mono uppercase text-slate-400 block mb-1">
+          <span className="text-xs text-slate-400 block mb-1">
             Registered Account Owner
           </span>
-          <div className="text-xs font-bold text-blue-900">
+          <div className="text-xs font-bold text-blue-700">
             {vehicle.customer?.name ? (
               <Link to={`/customers/${vehicle.customer._id}`} className="hover:underline">
                 {vehicle.customer.name}
@@ -127,7 +127,7 @@ export const VehicleDetail: React.FC = () => {
               'N/A'
             )}
           </div>
-          <div className="text-[11px] text-slate-500 font-mono">{vehicle.customer?.phone}</div>
+          <div className="text-xs text-slate-500">{vehicle.customer?.phone}</div>
         </div>
       </div>
 
@@ -136,7 +136,7 @@ export const VehicleDetail: React.FC = () => {
         <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg flex items-start space-x-3">
           <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-amber-900">
+            <h3 className="text-xs font-bold text-amber-900">
               Outstanding Vehicle Concerns &amp; Recommendations
             </h3>
             <ul className="mt-1 list-disc list-inside text-xs text-amber-800 space-y-0.5">
@@ -151,7 +151,7 @@ export const VehicleDetail: React.FC = () => {
       {/* Repair Orders & Service History */}
       <div className="bg-white border border-slate-200 rounded-lg shadow-sm overflow-hidden">
         <div className="px-5 py-4 border-b border-slate-200 bg-slate-50/50">
-          <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 font-mono flex items-center gap-2">
+          <h2 className="text-sm font-bold text-slate-900 flex items-center gap-2">
             <Wrench className="w-4 h-4 text-amber-600" />
             <span>Complete Repair Order History ({repairOrders.length})</span>
           </h2>
@@ -159,7 +159,7 @@ export const VehicleDetail: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-100 text-[11px] font-mono uppercase text-slate-600 border-b border-slate-200">
+              <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                 <th className="px-4 py-2.5">RO #</th>
                 <th className="px-4 py-2.5">Date</th>
                 <th className="px-4 py-2.5">Odometer In</th>
@@ -173,15 +173,15 @@ export const VehicleDetail: React.FC = () => {
             <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
               {repairOrders.map((ro: any) => (
                 <tr key={ro._id} className="hover:bg-slate-50">
-                  <td className="px-4 py-2.5 font-mono font-bold text-blue-900">
+                  <td className="px-4 py-2.5 font-bold text-blue-700">
                     <Link to={`/repair-orders/${ro._id}`} className="hover:underline">
                       {ro.roNumber}
                     </Link>
                   </td>
-                  <td className="px-4 py-2.5 font-mono text-[11px] text-slate-500">
+                  <td className="px-4 py-2.5 text-xs text-slate-500">
                     {new Date(ro.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="px-4 py-2.5 font-mono text-slate-800">
+                  <td className="px-4 py-2.5 text-slate-800">
                     {Number(ro.mileageIn || 0).toLocaleString()} mi
                   </td>
                   <td className="px-4 py-2.5 max-w-xs truncate text-slate-600">

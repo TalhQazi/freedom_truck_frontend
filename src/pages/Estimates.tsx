@@ -245,11 +245,11 @@ export const Estimates: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-2">
+          <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <FileSpreadsheet className="w-5 h-5 text-blue-700" />
             <span>Estimates &amp; Customer Authorizations</span>
           </h1>
-          <p className="text-xs text-slate-500 font-mono">
+          <p className="text-xs text-slate-500">
             SOP SW-003, SW-004 (Parts Matrix), SW-005 (Tire +$20 Flat), SW-007 (Authorization), SW-008 (50% Deposit)
           </p>
         </div>
@@ -257,7 +257,7 @@ export const Estimates: React.FC = () => {
         <button
           type="button"
           onClick={openCreateModal}
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>New Itemized Estimate (SW-003)</span>
@@ -269,7 +269,7 @@ export const Estimates: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-100 text-[11px] font-mono uppercase text-slate-600 border-b border-slate-200">
+              <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                 <th className="px-4 py-3">Estimate #</th>
                 <th className="px-4 py-3">Customer</th>
                 <th className="px-4 py-3">Vehicle</th>
@@ -283,15 +283,15 @@ export const Estimates: React.FC = () => {
             <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs font-mono">
+                  <td colSpan={8} className="px-4 py-8 text-center text-slate-400 text-xs">
                     Loading estimates...
                   </td>
                 </tr>
               ) : estimates.map((est) => (
                 <tr key={est._id} className="hover:bg-slate-50/80 transition-colors">
-                  <td className="px-4 py-3 font-mono font-bold text-blue-900">
+                  <td className="px-4 py-3 font-bold text-blue-700">
                     {est.estimateNumber}
-                    <span className="text-[10px] text-slate-400 block font-normal">v{est.version}</span>
+                    <span className="text-xs text-slate-400 block font-normal">v{est.version}</span>
                   </td>
                   <td className="px-4 py-3 font-medium text-slate-900">
                     {est.customer?.name}
@@ -300,26 +300,26 @@ export const Estimates: React.FC = () => {
                     <div className="font-semibold text-slate-800">
                       {est.vehicle?.year} {est.vehicle?.make} {est.vehicle?.model}
                     </div>
-                    <div className="text-[11px] font-mono text-slate-400">
+                    <div className="text-xs text-slate-400">
                       {est.vehicle?.licensePlate} ({Number(est.mileageIn || 0).toLocaleString()} mi)
                     </div>
                   </td>
                   <td className="px-4 py-3 max-w-xs truncate text-slate-600">
                     {est.customerComplaint}
                   </td>
-                  <td className="px-4 py-3 font-mono font-bold text-slate-900">
+                  <td className="px-4 py-3 font-bold text-slate-900">
                     ${Number(est.grandTotal || 0).toFixed(2)}
                   </td>
                   <td className="px-4 py-3">
                     {est.depositRequired > 0 ? (
-                      <div className="font-mono text-xs font-semibold text-orange-800">
+                      <div className="text-xs font-semibold text-orange-800">
                         ${est.depositRequired.toFixed(2)} (50%)
-                        <span className="block text-[10px] text-slate-500">
+                        <span className="block text-xs text-slate-500">
                           {est.depositMet ? '✓ Deposit Verified' : '⚠ Required before dispatch'}
                         </span>
                       </div>
                     ) : (
-                      <span className="text-slate-400 text-[11px] font-mono">Under $500 threshold</span>
+                      <span className="text-slate-400 text-xs">Under $500 threshold</span>
                     )}
                   </td>
                   <td className="px-4 py-3">
@@ -330,7 +330,7 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleAuthorizeClick(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded transition-colors shadow-2xs"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-emerald-700 hover:bg-emerald-800 rounded-md transition-colors shadow-sm"
                       >
                         <FileCheck className="w-3.5 h-3.5" />
                         <span>Sign (SW-007)</span>
@@ -340,13 +340,13 @@ export const Estimates: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => handleConvertToRO(est)}
-                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded transition-colors shadow-2xs"
+                        className="inline-flex items-center space-x-1 px-2.5 py-1 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md transition-colors shadow-sm"
                       >
                         <span>Convert to RO (SW-006)</span>
                       </button>
                     )}
                     {est.repairOrder && (
-                      <span className="text-[11px] font-mono text-blue-700 font-bold">
+                      <span className="text-xs text-blue-700 font-bold">
                         Linked to RO
                       </span>
                     )}
@@ -367,16 +367,16 @@ export const Estimates: React.FC = () => {
 
       {/* New Estimate Modal (SW-003, SW-004, SW-005) */}
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-950/70 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-300 w-full max-w-4xl my-8 overflow-hidden flex flex-col">
-            <div className="bg-brand-900 text-white px-6 py-4 flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4 overflow-y-auto">
+          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-4xl my-8 overflow-hidden flex flex-col">
+            <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
-                <FileSpreadsheet className="w-5 h-5 text-amber-400" />
+                <FileSpreadsheet className="w-5 h-5 text-amber-600" />
                 <div>
-                  <h3 className="font-bold text-base tracking-wide uppercase text-white">
+                  <h3 className="font-bold text-base text-slate-900">
                     New Itemized Estimate (SW-003)
                   </h3>
-                  <p className="text-xs text-slate-300 font-mono">
+                  <p className="text-xs text-slate-700">
                     Enforcing SW-004 (Parts Matrix Markup) &amp; SW-005 (Tire +$20 Flat)
                   </p>
                 </div>
@@ -384,7 +384,7 @@ export const Estimates: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setModalOpen(false)}
-                className="text-slate-400 hover:text-white p-1"
+                className="text-slate-500 hover:text-slate-900 p-1"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -392,7 +392,7 @@ export const Estimates: React.FC = () => {
 
             <form onSubmit={handleCreateEstimate} className="p-6 space-y-5">
               {error && (
-                <div className="p-3 bg-red-50 border border-red-200 rounded text-red-700 text-xs flex items-center space-x-2">
+                <div className="p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-xs flex items-center space-x-2">
                   <AlertCircle className="w-4 h-4 shrink-0" />
                   <span>{error}</span>
                 </div>
@@ -401,14 +401,14 @@ export const Estimates: React.FC = () => {
               {/* Customer & Vehicle Select */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-lg border border-slate-200">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
                     Select Customer Profile *
                   </label>
                   <select
                     required
                     value={selectedCustomerId}
                     onChange={(e) => handleCustomerChange(e.target.value)}
-                    className="w-full text-xs border border-slate-300 rounded px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   >
                     <option value="">-- Choose Customer --</option>
                     {customers.map((c) => (
@@ -420,7 +420,7 @@ export const Estimates: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
                     Select Vehicle *
                   </label>
                   <select
@@ -428,7 +428,7 @@ export const Estimates: React.FC = () => {
                     disabled={!selectedCustomerId}
                     value={selectedVehicleId}
                     onChange={(e) => handleVehicleChange(e.target.value)}
-                    className="w-full text-xs border border-slate-300 rounded px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
+                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none disabled:bg-slate-100"
                   >
                     <option value="">-- Choose Registered Vehicle --</option>
                     {customerVehicles.map((v) => (
@@ -440,7 +440,7 @@ export const Estimates: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 mb-1">
                     Odometer In (Mileage) *
                   </label>
                   <input
@@ -449,14 +449,14 @@ export const Estimates: React.FC = () => {
                     value={mileageIn}
                     onChange={(e) => setMileageIn(e.target.value)}
                     placeholder="e.g. 54280"
-                    className="w-full text-xs font-mono border border-slate-300 rounded px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                    className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
                   />
                 </div>
               </div>
 
               {/* Customer Complaint */}
               <div>
-                <label className="block text-xs font-semibold text-slate-700 uppercase mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Customer Complaint &amp; Requested Symptoms (SW-003) *
                 </label>
                 <textarea
@@ -465,7 +465,7 @@ export const Estimates: React.FC = () => {
                   value={customerComplaint}
                   onChange={(e) => setCustomerComplaint(e.target.value)}
                   placeholder="Verbatim customer complaint: e.g., Brake squeal, steering pull right under heavy braking, check engine lamp."
-                  className="w-full text-xs border border-slate-300 rounded px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
+                  className="w-full text-xs border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:ring-1 focus:ring-blue-600 focus:outline-none"
                 />
               </div>
 
@@ -473,10 +473,10 @@ export const Estimates: React.FC = () => {
               <div className="space-y-3">
                 <div className="flex items-center justify-between border-b border-slate-200 pb-2">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono">
+                    <h4 className="text-xs font-bold text-slate-900">
                       Itemized Services, Parts &amp; Tires
                     </h4>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-xs text-slate-500">
                       Parts apply company markup matrix (SW-004). Tires apply cost + $20 flat markup (SW-005).
                     </p>
                   </div>
@@ -484,30 +484,30 @@ export const Estimates: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => addLineItem('part')}
-                      className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded text-[11px] font-semibold text-slate-700"
+                      className="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 border border-slate-300 rounded-md text-xs font-semibold text-slate-700"
                     >
                       + Add Part (SW-004)
                     </button>
                     <button
                       type="button"
                       onClick={() => addLineItem('tire')}
-                      className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 border border-amber-300 rounded text-[11px] font-bold text-amber-900"
+                      className="px-2.5 py-1 bg-amber-50 hover:bg-amber-100 border border-amber-300 rounded-md text-xs font-bold text-amber-900"
                     >
                       + Add Tire (+$20 Flat)
                     </button>
                     <button
                       type="button"
                       onClick={() => addLineItem('labor')}
-                      className="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 border border-blue-300 rounded text-[11px] font-bold text-blue-900"
+                      className="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 border border-blue-300 rounded-md text-xs font-bold text-blue-700"
                     >
                       + Add Labor ($145/hr)
                     </button>
                   </div>
                 </div>
 
-                <div className="border border-slate-200 rounded overflow-hidden">
+                <div className="border border-slate-200 rounded-md overflow-hidden">
                   <table className="w-full text-left text-xs">
-                    <thead className="bg-slate-100 font-mono text-[10px] uppercase text-slate-600 border-b border-slate-200">
+                    <thead className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                       <tr>
                         <th className="p-2">Type</th>
                         <th className="p-2">Description / Part #</th>
@@ -521,9 +521,9 @@ export const Estimates: React.FC = () => {
                     <tbody className="divide-y divide-slate-100">
                       {lineItems.map((item, idx) => (
                         <tr key={idx} className="hover:bg-slate-50">
-                          <td className="p-2 font-mono uppercase text-[10px]">
+                          <td className="p-2 text-xs">
                             <span className={`px-1.5 py-0.5 rounded font-bold ${
-                              item.itemType === 'tire' ? 'bg-amber-100 text-amber-900' : item.itemType === 'part' ? 'bg-slate-200 text-slate-800' : 'bg-blue-100 text-blue-900'
+                              item.itemType === 'tire' ? 'bg-amber-100 text-amber-900' : item.itemType === 'part' ? 'bg-slate-200 text-slate-800' : 'bg-blue-100 text-blue-700'
                             }`}>
                               {item.itemType}
                             </span>
@@ -534,7 +534,7 @@ export const Estimates: React.FC = () => {
                               value={item.description}
                               onChange={(e) => updateLineItem(idx, 'description', e.target.value)}
                               placeholder={item.itemType === 'tire' ? 'e.g. Michelin Agilis 275/70R18' : 'Description'}
-                              className="w-full text-xs border border-slate-200 rounded px-2 py-1 text-slate-900 focus:outline-none"
+                              className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900 focus:outline-none"
                             />
                             {item.itemType === 'part' && (
                               <input
@@ -542,7 +542,7 @@ export const Estimates: React.FC = () => {
                                 value={item.partNumber || ''}
                                 onChange={(e) => updateLineItem(idx, 'partNumber', e.target.value)}
                                 placeholder="Part # (e.g. BRRF-214)"
-                                className="w-full text-[10px] font-mono border border-slate-100 rounded px-2 py-0.5 text-slate-600 mt-1 focus:outline-none"
+                                className="w-full text-xs border border-slate-100 rounded-md px-2 py-0.5 text-slate-600 mt-1 focus:outline-none"
                               />
                             )}
                           </td>
@@ -559,7 +559,7 @@ export const Estimates: React.FC = () => {
                                   e.target.value
                                 )
                               }
-                              className="w-full text-xs font-mono border border-slate-200 rounded px-2 py-1 text-slate-900"
+                              className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900"
                             />
                           </td>
                           <td className="p-2">
@@ -570,24 +570,24 @@ export const Estimates: React.FC = () => {
                                 min="0"
                                 value={item.costPrice}
                                 onChange={(e) => updateLineItem(idx, 'costPrice', e.target.value)}
-                                className="w-full text-xs font-mono border border-slate-200 rounded px-2 py-1 text-slate-900"
+                                className="w-full text-xs border border-slate-200 rounded-md px-2 py-1 text-slate-900"
                               />
                             ) : (
-                              <span className="text-slate-400 font-mono text-[11px]">-</span>
+                              <span className="text-slate-400 text-xs">-</span>
                             )}
                           </td>
                           <td className="p-2">
-                            <div className="font-mono text-xs font-semibold text-slate-900">
+                            <div className="text-xs font-semibold text-slate-900">
                               ${Number(item.sellingPrice || 0).toFixed(2)}
                             </div>
                             {item.itemType === 'tire' && (
-                              <span className="text-[9px] font-mono text-amber-700 block">+ $20.00 flat</span>
+                              <span className="text-xs text-amber-700 block">+ $20.00 flat</span>
                             )}
                             {item.itemType === 'part' && (
-                              <span className="text-[9px] font-mono text-blue-700 block">Matrix tier</span>
+                              <span className="text-xs text-blue-700 block">Matrix tier</span>
                             )}
                           </td>
-                          <td className="p-2 font-mono font-bold text-right text-slate-900">
+                          <td className="p-2 font-bold text-right text-slate-900">
                             ${Number(item.subtotal || 0).toFixed(2)}
                           </td>
                           <td className="p-2 text-right">
@@ -609,22 +609,22 @@ export const Estimates: React.FC = () => {
               {/* Financial Calculation Summary (Section 11) */}
               <div className="bg-slate-50 border border-slate-200 rounded-lg p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="space-y-1 text-xs text-slate-600">
-                  <div>Parts/Tires/Labor Subtotal: <span className="font-mono font-semibold text-slate-900">${totals.subtotal.toFixed(2)}</span></div>
-                  <div>Shop Supplies &amp; EPA: <span className="font-mono font-semibold text-slate-900">${totals.supplies.toFixed(2)}</span></div>
-                  <div>Sales Tax (8.25%): <span className="font-mono font-semibold text-slate-900">${totals.tax.toFixed(2)}</span></div>
+                  <div>Parts/Tires/Labor Subtotal: <span className="font-semibold text-slate-900">${totals.subtotal.toFixed(2)}</span></div>
+                  <div>Shop Supplies &amp; EPA: <span className="font-semibold text-slate-900">${totals.supplies.toFixed(2)}</span></div>
+                  <div>Sales Tax (8.25%): <span className="font-semibold text-slate-900">${totals.tax.toFixed(2)}</span></div>
                 </div>
 
                 <div className="text-right border-t sm:border-t-0 sm:border-l border-slate-200 pt-2 sm:pt-0 sm:pl-6 space-y-1">
-                  <div className="text-[11px] font-mono uppercase text-slate-500">Estimate Total</div>
-                  <div className="text-2xl font-extrabold text-blue-900 font-mono">
+                  <div className="text-xs text-slate-500">Estimate Total</div>
+                  <div className="text-2xl font-semibold text-blue-700">
                     ${totals.grand.toFixed(2)}
                   </div>
                   {totals.deposit > 0 ? (
-                    <div className="text-xs font-bold font-mono text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
+                    <div className="text-xs font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded-md">
                       Mandatory 50% Deposit: ${totals.deposit.toFixed(2)} (SW-008)
                     </div>
                   ) : (
-                    <div className="text-[10px] text-slate-500 font-mono">
+                    <div className="text-xs text-slate-500">
                       No deposit required (total &lt; $500)
                     </div>
                   )}
@@ -643,7 +643,7 @@ export const Estimates: React.FC = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="px-5 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+                  className="px-5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
                 >
                   {submitting ? 'Creating Estimate...' : 'Save Estimate (SW-003)'}
                 </button>

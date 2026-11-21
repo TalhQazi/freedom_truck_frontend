@@ -33,18 +33,18 @@ export const Vehicles: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-2">
+          <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <Truck className="w-5 h-5 text-blue-700" />
             <span>Vehicle Registry &amp; Fleet Inventory</span>
           </h1>
-          <p className="text-xs text-slate-500 font-mono">
+          <p className="text-xs text-slate-500">
             SOP SW-002: Mandatory registration of VIN, license plate, year, make, model &amp; mileage
           </p>
         </div>
 
         <Link
           to="/customers"
-          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+          className="inline-flex items-center space-x-1.5 px-3.5 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
         >
           <Plus className="w-4 h-4" />
           <span>Register Vehicle for Customer</span>
@@ -60,7 +60,7 @@ export const Vehicles: React.FC = () => {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search by license plate, full VIN, make, model, or fleet unit number..."
-            className="w-full text-xs border border-slate-200 rounded pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
+            className="w-full text-xs border border-slate-200 rounded-md pl-9 pr-3 py-2 text-slate-900 font-medium focus:ring-1 focus:ring-blue-600 focus:outline-none"
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export const Vehicles: React.FC = () => {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-100 text-[11px] font-mono uppercase text-slate-600 border-b border-slate-200">
+              <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                 <th className="px-4 py-3">License Plate</th>
                 <th className="px-4 py-3">Vehicle Description</th>
                 <th className="px-4 py-3">17-Digit VIN</th>
@@ -83,18 +83,18 @@ export const Vehicles: React.FC = () => {
             <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs font-mono">
+                  <td colSpan={7} className="px-4 py-8 text-center text-slate-400 text-xs">
                     Searching vehicle registry...
                   </td>
                 </tr>
               ) : vehicles.map((v: any) => (
                 <tr key={v._id} className="hover:bg-slate-50/80 transition-colors">
                   <td className="px-4 py-3">
-                    <span className="font-mono font-bold text-xs text-blue-900 bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+                    <span className="font-bold text-xs text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                       {v.licensePlate}
                     </span>
                     {v.unitNumber && (
-                      <span className="block text-[10px] font-mono text-slate-500 mt-0.5">
+                      <span className="block text-xs text-slate-500 mt-0.5">
                         Unit: {v.unitNumber}
                       </span>
                     )}
@@ -104,10 +104,10 @@ export const Vehicles: React.FC = () => {
                       {v.year} {v.make} {v.model}
                     </div>
                     {v.subModel && (
-                      <div className="text-[11px] text-slate-500">{v.subModel}</div>
+                      <div className="text-xs text-slate-500">{v.subModel}</div>
                     )}
                   </td>
-                  <td className="px-4 py-3 font-mono text-[11px] text-slate-800 tracking-wider">
+                  <td className="px-4 py-3 text-xs text-slate-800">
                     {v.vin}
                   </td>
                   <td className="px-4 py-3 font-medium text-slate-900">
@@ -119,23 +119,23 @@ export const Vehicles: React.FC = () => {
                       'N/A'
                     )}
                   </td>
-                  <td className="px-4 py-3 font-mono font-semibold text-slate-800">
+                  <td className="px-4 py-3 font-semibold text-slate-800">
                     {Number(v.currentMileage || 0).toLocaleString()} mi
                   </td>
                   <td className="px-4 py-3">
                     {v.outstandingIssues && v.outstandingIssues.length > 0 ? (
-                      <div className="flex items-center space-x-1 text-amber-700 font-medium text-[11px]">
+                      <div className="flex items-center space-x-1 text-amber-700 font-medium text-xs">
                         <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
                         <span className="truncate max-w-xs">{v.outstandingIssues.join(', ')}</span>
                       </div>
                     ) : (
-                      <span className="text-slate-400 text-[11px] italic">None flagged</span>
+                      <span className="text-slate-400 text-xs">None flagged</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <Link
                       to={`/vehicles/${v._id}`}
-                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors shadow-2xs"
+                      className="inline-flex items-center px-2.5 py-1 text-xs font-semibold text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors shadow-sm"
                     >
                       <span>History</span>
                     </Link>

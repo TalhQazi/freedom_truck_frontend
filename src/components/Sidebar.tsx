@@ -5,147 +5,119 @@ import {
   LayoutDashboard,
   Users,
   Truck,
-  FileSpreadsheet,
+  FileText,
   Wrench,
   ClipboardCheck,
   Receipt,
-  DollarSign,
-  ShieldAlert,
-  ListTodo,
+  Wallet,
+  Shield,
+  ListChecks,
   BarChart3,
-  Sliders,
-  CheckCircle,
+  Settings,
+  X,
+  type LucideIcon,
 } from 'lucide-react';
 
-export const Sidebar: React.FC = () => {
-  const { user, hasRole } = useAuth();
+interface SidebarProps {
+  mobileOpen: boolean;
+  onClose: () => void;
+}
 
-  const navItemClass = ({ isActive }: { isActive: boolean }) =>
-    `flex items-center space-x-2.5 px-3 py-2 rounded text-xs font-semibold tracking-wide transition-colors ${
-      isActive
-        ? 'bg-blue-800 text-white shadow-sm'
-        : 'text-slate-300 hover:text-white hover:bg-brand-900/80'
-    }`;
+interface NavItem {
+  to: string;
+  label: string;
+  icon: LucideIcon;
+}
+
+const Item: React.FC<NavItem & { onClick: () => void }> = ({ to, label, icon: Icon, onClick }) => (
+  <NavLink
+    to={to}
+    end={to === '/'}
+    onClick={onClick}
+    className={({ isActive }) =>
+      `flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors ${
+        isActive
+          ? 'bg-slate-100 font-medium text-slate-900'
+          : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900'
+      }`
+    }
+  >
+    <Icon className="h-4 w-4 shrink-0 text-slate-400" />
+    <span className="truncate">{label}</span>
+  </NavLink>
+);
+
+const Section: React.FC<{ title?: string; children: React.ReactNode }> = ({ title, children }) => (
+  <div className="space-y-0.5">
+    {title && <div className="px-3 pb-1 pt-4 text-xs font-medium text-slate-400">{title}</div>}
+    {children}
+  </div>
+);
+
+export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onClose }) => {
+  const { hasRole } = useAuth();
+  const isTech = hasRole('technician', 'qc_technician');
 
   return (
-    <aside className="w-64 bg-brand-900 border-r border-brand-800 flex flex-col shrink-0 select-none overflow-y-auto">
-      {/* Role Indicator Banner */}
-      <div className="px-4 py-3 bg-brand-950/60 border-b border-brand-800/80 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
-          <span className="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span className="text-[11px] font-mono text-slate-300 uppercase tracking-wider">
-            {user?.role?.replace('_', ' ')} MODE
-          </span>
-        </div>
-        <span className="text-[10px] font-mono text-amber-400 font-bold bg-brand-900 px-1.5 py-0.5 rounded border border-brand-700">
-          {user?.employeeId}
-        </span>
-      </div>
-
-      <nav className="p-3 space-y-5 flex-1">
-        {/* Core Workspace */}
-        <div className="space-y-1">
-          <div className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
-            Operations
+    <>
+      {mobileOpen && (
+        <div className="fixed inset-0 z-30 bg-slate-900/30 lg:hidden" onClick={onClose} aria-hidden="true" />
+      )}
+      <aside
+        className={`fixed inset-y-0 left-0 z-40 flex w-60 shrink-0 flex-col border-r border-slate-200 bg-white transition-transform lg:static lg:translate-x-0 ${
+          mobileOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <div className="flex h-14 items-center justify-between border-b border-slate-200 px-4">
+          <div className="flex items-center gap-2">
+            <div className="flex h-7 w-7 items-center justify-center rounded-md bg-blue-600">
+              <Truck className="h-4 w-4 text-white" />
+            </div>
+            <span className="text-sm font-semibold text-slate-900">Freedom Car &amp; Truck</span>
           </div>
-          <NavLink to="/" className={navItemClass}>
-            <LayoutDashboard className="w-4 h-4 text-blue-400 shrink-0" />
-            <span>Role Dashboard</span>
-          </NavLink>
-          <NavLink to="/tasks" className={navItemClass}>
-            <ListTodo className="w-4 h-4 text-amber-400 shrink-0" />
-            <span>SOP Tasks ({hasRole('technician') ? 'TECH' : hasRole('office_assistant') ? 'OFF' : 'SW/ALL'})</span>
-          </NavLink>
+          <button type="button" onClick={onClose} className="rounded-md p-1 text-slate-400 hover:bg-slate-100 lg:hidden">
+            <X className="h-4 w-4" />
+          </button>
         </div>
 
-        {/* Front Office Management */}
-        {hasRole('service_writer', 'manager', 'admin') && (
-          <div className="space-y-1">
-            <div className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
-              Front Office / Intake
-            </div>
-            <NavLink to="/customers" className={navItemClass}>
-              <Users className="w-4 h-4 text-slate-400 shrink-0" />
-              <span>Customers (SW-001)</span>
-            </NavLink>
-            <NavLink to="/vehicles" className={navItemClass}>
-              <Truck className="w-4 h-4 text-slate-400 shrink-0" />
-              <span>Vehicles (SW-002)</span>
-            </NavLink>
-            <NavLink to="/estimates" className={navItemClass}>
-              <FileSpreadsheet className="w-4 h-4 text-sky-400 shrink-0" />
-              <span>Estimates &amp; Pricing</span>
-            </NavLink>
-            <NavLink to="/repair-orders" className={navItemClass}>
-              <Wrench className="w-4 h-4 text-amber-500 shrink-0" />
-              <span>Repair Orders (RO)</span>
-            </NavLink>
-            <NavLink to="/invoices" className={navItemClass}>
-              <Receipt className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Invoices &amp; Billing</span>
-            </NavLink>
-            <NavLink to="/cash-up" className={navItemClass}>
-              <DollarSign className="w-4 h-4 text-emerald-500 shrink-0" />
-              <span>Daily Cash-Up ($100)</span>
-            </NavLink>
-          </div>
-        )}
+        <nav className="flex-1 overflow-y-auto px-3 py-3">
+          <Section>
+            <Item to="/" label="Dashboard" icon={LayoutDashboard} onClick={onClose} />
+            <Item to="/tasks" label="Tasks" icon={ListChecks} onClick={onClose} />
+          </Section>
 
-        {/* Workshop Floor */}
-        {hasRole('technician', 'qc_technician', 'manager', 'admin', 'service_writer') && (
-          <div className="space-y-1">
-            <div className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
-              Workshop Floor / QC
-            </div>
-            {hasRole('technician', 'qc_technician') && (
-              <NavLink to="/repair-orders" className={navItemClass}>
-                <Wrench className="w-4 h-4 text-amber-500 shrink-0" />
-                <span>My Work Orders</span>
-              </NavLink>
-            )}
-            <NavLink to="/worksheets" className={navItemClass}>
-              <ClipboardCheck className="w-4 h-4 text-teal-400 shrink-0" />
-              <span>Technician Worksheets</span>
-            </NavLink>
-          </div>
-        )}
+          {hasRole('service_writer', 'manager', 'admin') && (
+            <Section title="Front office">
+              <Item to="/customers" label="Customers" icon={Users} onClick={onClose} />
+              <Item to="/vehicles" label="Vehicles" icon={Truck} onClick={onClose} />
+              <Item to="/estimates" label="Estimates" icon={FileText} onClick={onClose} />
+              <Item to="/repair-orders" label="Repair orders" icon={Wrench} onClick={onClose} />
+              <Item to="/invoices" label="Invoices" icon={Receipt} onClick={onClose} />
+              <Item to="/cash-up" label="Cash-up" icon={Wallet} onClick={onClose} />
+            </Section>
+          )}
 
-        {/* Information Security & Office Assistant */}
-        {hasRole('office_assistant', 'manager', 'admin') && (
-          <div className="space-y-1">
-            <div className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
-              Information Security
-            </div>
-            <NavLink to="/security" className={navItemClass}>
-              <ShieldAlert className="w-4 h-4 text-red-400 shrink-0" />
-              <span>Office Security &amp; CMR</span>
-            </NavLink>
-          </div>
-        )}
+          {hasRole('technician', 'qc_technician', 'manager', 'admin', 'service_writer') && (
+            <Section title="Workshop">
+              {isTech && <Item to="/repair-orders" label="My work orders" icon={Wrench} onClick={onClose} />}
+              <Item to="/worksheets" label="Worksheets" icon={ClipboardCheck} onClick={onClose} />
+            </Section>
+          )}
 
-        {/* Management & System Controls */}
-        {hasRole('manager', 'admin') && (
-          <div className="space-y-1">
-            <div className="px-3 text-[10px] font-mono uppercase tracking-wider text-slate-400">
-              Management &amp; Controls
-            </div>
-            <NavLink to="/reports" className={navItemClass}>
-              <BarChart3 className="w-4 h-4 text-indigo-400 shrink-0" />
-              <span>Reports &amp; Audits</span>
-            </NavLink>
-            <NavLink to="/settings" className={navItemClass}>
-              <Sliders className="w-4 h-4 text-purple-400 shrink-0" />
-              <span>Shop Matrix &amp; Config</span>
-            </NavLink>
-          </div>
-        )}
-      </nav>
+          {hasRole('office_assistant', 'manager', 'admin') && (
+            <Section title="Office">
+              <Item to="/security" label="Security" icon={Shield} onClick={onClose} />
+            </Section>
+          )}
 
-      {/* Footer SOP Compliance Badge */}
-      <div className="p-3 bg-brand-950/80 border-t border-brand-800 text-[10px] font-mono text-slate-400 flex items-center justify-between">
-        <span>SOP RULES: 100% ENFORCED</span>
-        <CheckCircle className="w-3.5 h-3.5 text-emerald-400" />
-      </div>
-    </aside>
+          {hasRole('manager', 'admin') && (
+            <Section title="Admin">
+              <Item to="/reports" label="Reports" icon={BarChart3} onClick={onClose} />
+              <Item to="/settings" label="Settings" icon={Settings} onClick={onClose} />
+            </Section>
+          )}
+        </nav>
+      </aside>
+    </>
   );
 };

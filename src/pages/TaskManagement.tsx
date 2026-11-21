@@ -163,14 +163,14 @@ export default function TaskManagement() {
   const getDepartmentIcon = (dept: string) => {
     switch (dept) {
       case 'SERVICE_WRITER':
-        return <FileText className="w-4 h-4 text-blue-400" />;
+        return <FileText className="w-4 h-4 text-blue-600" />;
       case 'TECHNICIAN':
       case 'QC_TECHNICIAN':
-        return <Wrench className="w-4 h-4 text-amber-400" />;
+        return <Wrench className="w-4 h-4 text-amber-600" />;
       case 'OFFICE_ASSISTANT':
-        return <Shield className="w-4 h-4 text-emerald-400" />;
+        return <Shield className="w-4 h-4 text-emerald-600" />;
       default:
-        return <CheckSquare className="w-4 h-4 text-slate-400" />;
+        return <CheckSquare className="w-4 h-4 text-slate-500" />;
     }
   };
 
@@ -179,20 +179,20 @@ export default function TaskManagement() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-700/60">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-600/10 border border-blue-500/20 rounded-lg text-blue-400">
+            <div className="p-2 bg-blue-50 border border-blue-200 rounded-lg text-blue-600">
               <CheckSquare className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Standard Operating Procedure (SOP) Task Management
-                <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700 font-mono">
+                <span className="text-xs px-2 py-0.5 rounded-md bg-white text-slate-500 border border-slate-200">
                   {filteredTasks.length} Tracked
                 </span>
               </h1>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Real-time execution, verification, and supervisory signoff of SW-001..015, TECH-001..013, and OFF-001..012.
               </p>
             </div>
@@ -200,7 +200,7 @@ export default function TaskManagement() {
         </div>
 
         {/* Department Quick Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-slate-800/80 rounded-lg border border-slate-700">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
           {[
             { id: 'ALL', label: 'All SOPs' },
             { id: 'SERVICE_WRITER', label: 'Service Writer' },
@@ -215,7 +215,7 @@ export default function TaskManagement() {
               className={`px-3 py-1.5 rounded text-xs font-medium transition-all ${
                 departmentFilter === tab.id
                   ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                  : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
               }`}
             >
               {tab.label}
@@ -229,26 +229,26 @@ export default function TaskManagement() {
         {/* Left Column: Task Table / List */}
         <div className={`space-y-4 ${selectedTask ? 'lg:col-span-7' : 'lg:col-span-12'}`}>
           {/* Controls Bar */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-800/60 p-3 rounded-lg border border-slate-700/60">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-white p-3 rounded-lg border border-slate-200">
             <div className="relative w-full sm:w-80">
-              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" />
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
               <input
                 type="text"
                 placeholder="Search by SOP ID (e.g. SW-004, TECH-002)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-slate-900 border border-slate-700 rounded-md pl-9 pr-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md pl-9 pr-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
 
             <div className="flex items-center gap-2 w-full sm:w-auto justify-end">
-              <span className="text-xs text-slate-400 flex items-center gap-1">
+              <span className="text-xs text-slate-500 flex items-center gap-1">
                 <Filter className="w-3.5 h-3.5" /> Status:
               </span>
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="bg-slate-900 border border-slate-700 rounded-md px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-blue-500"
+                className="bg-slate-50 border border-slate-200 rounded-md px-2.5 py-1.5 text-xs text-slate-900 focus:outline-none focus:border-blue-500"
               >
                 <option value="ALL">All Statuses</option>
                 <option value="PENDING">Pending</option>
@@ -260,11 +260,11 @@ export default function TaskManagement() {
           </div>
 
           {/* Table */}
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 overflow-hidden shadow-sm">
+          <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-900/80 border-b border-slate-700 text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">SOP ID</th>
                     <th className="py-3 px-3">Standard Operating Procedure</th>
                     <th className="py-3 px-3">Department</th>
@@ -277,7 +277,7 @@ export default function TaskManagement() {
                 <tbody className="divide-y divide-slate-700/60">
                   {loading ? (
                     <tr>
-                      <td colSpan={7} className="text-center py-12 text-slate-400">
+                      <td colSpan={7} className="text-center py-12 text-slate-500">
                         <div className="inline-block animate-spin rounded-full h-5 w-5 border-2 border-blue-500 border-t-transparent mr-2" />
                         Loading SOP tasks...
                       </td>
@@ -300,31 +300,31 @@ export default function TaskManagement() {
                           onClick={() => handleSelectTask(t)}
                           className={`cursor-pointer transition-colors ${
                             isSelected
-                              ? 'bg-blue-950/40 border-l-2 border-l-blue-500'
-                              : 'hover:bg-slate-750/50'
+                              ? 'bg-blue-50 border-l-2 border-l-blue-500'
+                              : 'hover:bg-slate-50'
                           }`}
                         >
                           <td className="py-3 px-3 whitespace-nowrap">
-                            <span className="font-mono font-bold text-blue-400">
+                            <span className="font-bold text-blue-600">
                               {t.sopId}
                             </span>
-                            <span className="block text-[10px] text-slate-500 font-mono">
+                            <span className="block text-xs text-slate-500">
                               {t.taskId}
                             </span>
                           </td>
                           <td className="py-3 px-3">
-                            <p className="font-medium text-slate-200 line-clamp-1">{t.title}</p>
-                            <p className="text-[11px] text-slate-400 line-clamp-1">{t.description}</p>
+                            <p className="font-medium text-slate-900 line-clamp-1">{t.title}</p>
+                            <p className="text-xs text-slate-500 line-clamp-1">{t.description}</p>
                           </td>
                           <td className="py-3 px-3 whitespace-nowrap">
-                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-900 border border-slate-700 text-slate-300 text-[11px]">
+                            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-slate-700 text-xs">
                               {getDepartmentIcon(t.department)}
                               {t.department?.replace('_', ' ')}
                             </span>
                           </td>
                           <td className="py-3 px-3 whitespace-nowrap">
                             <div className="flex items-center gap-2">
-                              <div className="w-16 bg-slate-700 rounded-full h-1.5 overflow-hidden">
+                              <div className="w-16 bg-slate-200 rounded-full h-1.5 overflow-hidden">
                                 <div
                                   className={`h-full ${
                                     completedCount === totalCount ? 'bg-emerald-500' : 'bg-blue-500'
@@ -334,7 +334,7 @@ export default function TaskManagement() {
                                   }}
                                 />
                               </div>
-                              <span className="font-mono text-[10px] text-slate-400">
+                              <span className="text-xs text-slate-500">
                                 {completedCount}/{totalCount}
                               </span>
                             </div>
@@ -345,16 +345,16 @@ export default function TaskManagement() {
                           <td className="py-3 px-3 whitespace-nowrap">
                             {t.supervisorReview?.reviewedAt ? (
                               t.supervisorReview.approved ? (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-emerald-400 font-medium">
+                                <span className="inline-flex items-center gap-1 text-xs text-emerald-600 font-medium">
                                   <Check className="w-3.5 h-3.5" /> Approved
                                 </span>
                               ) : (
-                                <span className="inline-flex items-center gap-1 text-[11px] text-red-400 font-medium">
+                                <span className="inline-flex items-center gap-1 text-xs text-red-600 font-medium">
                                   <X className="w-3.5 h-3.5" /> Needs Rev
                                 </span>
                               )
                             ) : (
-                              <span className="text-[11px] text-slate-500">Unreviewed</span>
+                              <span className="text-xs text-slate-500">Unreviewed</span>
                             )}
                           </td>
                           <td className="py-3 px-3 text-right whitespace-nowrap">
@@ -363,7 +363,7 @@ export default function TaskManagement() {
                                 e.stopPropagation();
                                 handleSelectTask(t);
                               }}
-                              className="p-1 rounded hover:bg-slate-700 text-slate-400 hover:text-white"
+                              className="p-1 rounded-md hover:bg-slate-200 text-slate-500 hover:text-slate-900"
                             >
                               <ChevronRight className="w-4 h-4" />
                             </button>
@@ -380,30 +380,30 @@ export default function TaskManagement() {
 
         {/* Right Column: Selected Task Workspace / Detail Pane */}
         {selectedTask && (
-          <div className="lg:col-span-5 bg-slate-800/90 rounded-lg border border-slate-700 shadow-md p-5 space-y-5 sticky top-20">
+          <div className="lg:col-span-5 bg-white rounded-lg border border-slate-200 shadow-sm p-5 space-y-5 sticky top-20">
             {/* Header */}
-            <div className="flex items-start justify-between border-b border-slate-700 pb-4">
+            <div className="flex items-start justify-between border-b border-slate-200 pb-4">
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-blue-600/20 text-blue-400 border border-blue-500/30">
+                  <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 border border-blue-200">
                     {selectedTask.sopId}
                   </span>
-                  <span className="text-xs font-mono text-slate-400">
+                  <span className="text-xs text-slate-500">
                     {selectedTask.taskId}
                   </span>
                   <StatusBadge status={selectedTask.status} />
                 </div>
-                <h2 className="text-base font-bold text-white mt-1.5">
+                <h2 className="text-base font-bold text-slate-900 mt-1.5">
                   {selectedTask.title}
                 </h2>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-500 mt-1">
                   {selectedTask.description}
                 </p>
               </div>
 
               <button
                 onClick={() => setSelectedTask(null)}
-                className="p-1.5 rounded-md hover:bg-slate-700 text-slate-400 hover:text-white"
+                className="p-1.5 rounded-md hover:bg-slate-200 text-slate-500 hover:text-slate-900"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -411,14 +411,14 @@ export default function TaskManagement() {
 
             {/* Notifications / Messages */}
             {actionSuccess && (
-              <div className="p-3 bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs rounded-md flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 shrink-0 text-emerald-400" />
+              <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-md flex items-center gap-2">
+                <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
                 <span>{actionSuccess}</span>
               </div>
             )}
             {actionError && (
-              <div className="p-3 bg-red-950/40 border border-red-500/40 text-red-300 text-xs rounded-md flex items-center gap-2">
-                <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+              <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-md flex items-center gap-2">
+                <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
                 <span>{actionError}</span>
               </div>
             )}
@@ -426,11 +426,11 @@ export default function TaskManagement() {
             {/* SOP Checklist */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                  <CheckSquare className="w-4 h-4 text-blue-400" />
+                <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+                  <CheckSquare className="w-4 h-4 text-blue-600" />
                   Mandatory SOP Checklist Steps
                 </h3>
-                <span className="text-xs font-mono text-slate-400">
+                <span className="text-xs text-slate-500">
                   {checklistState.filter((c) => c.completed).length} / {checklistState.length} Done
                 </span>
               </div>
@@ -442,22 +442,22 @@ export default function TaskManagement() {
                     onClick={() => handleToggleChecklistItem(idx)}
                     className={`p-2.5 rounded-md border text-xs cursor-pointer flex items-start gap-2.5 transition-all ${
                       step.completed
-                        ? 'bg-emerald-950/20 border-emerald-500/30 text-emerald-200'
-                        : 'bg-slate-900/60 border-slate-700 text-slate-300 hover:border-slate-600'
+                        ? 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                        : 'bg-slate-50 border-slate-200 text-slate-700 hover:border-slate-200'
                     }`}
                   >
                     <input
                       type="checkbox"
                       checked={step.completed}
                       onChange={() => {}}
-                      className="mt-0.5 rounded border-slate-700 text-blue-600 focus:ring-0 cursor-pointer"
+                      className="mt-0.5 rounded-md border-slate-200 text-blue-600 focus:ring-0 cursor-pointer"
                     />
                     <div className="flex-1">
                       <span className={`block ${step.completed ? 'line-through text-slate-400' : ''}`}>
                         {step.stepText}
                       </span>
                       {step.completed && (
-                        <span className="text-[10px] text-emerald-400/80 block mt-0.5 font-mono">
+                        <span className="text-xs text-emerald-400/80 block mt-0.5">
                           Verified by {step.completedBy || user?.name}
                         </span>
                       )}
@@ -469,7 +469,7 @@ export default function TaskManagement() {
 
             {/* Evidence & Completion Notes */}
             <div className="space-y-2">
-              <label className="block text-xs font-bold uppercase tracking-wider text-slate-300">
+              <label className="block text-xs font-bold text-slate-700">
                 Execution Evidence & Work Notes
               </label>
               <textarea
@@ -477,17 +477,17 @@ export default function TaskManagement() {
                 value={evidenceNotes}
                 onChange={(e) => setEvidenceNotes(e.target.value)}
                 placeholder="Record compliance evidence, part serial numbers, invoice # or authorization notes..."
-                className="w-full bg-slate-900 border border-slate-700 rounded-md p-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
               />
             </div>
 
             {/* Action Buttons for Worker */}
-            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-700">
+            <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-200">
               <button
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress('IN_PROGRESS')}
-                className="px-3 py-1.5 rounded-md bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold disabled:opacity-50"
+                className="px-3 py-1.5 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-xs font-semibold disabled:opacity-50"
               >
                 Mark In Progress
               </button>
@@ -506,7 +506,7 @@ export default function TaskManagement() {
                 type="button"
                 disabled={submitting}
                 onClick={() => handleSaveProgress()}
-                className="px-3 py-1.5 rounded-md border border-slate-700 hover:bg-slate-800 text-slate-300 text-xs font-semibold ml-auto"
+                className="px-3 py-1.5 rounded-md border border-slate-200 hover:bg-slate-50 text-slate-700 text-xs font-semibold ml-auto"
               >
                 Save Draft
               </button>
@@ -514,14 +514,14 @@ export default function TaskManagement() {
 
             {/* Supervisor Review Section (Managers / Admins only) */}
             {isSupervisor && (
-              <div className="p-4 bg-slate-900/80 rounded-lg border border-amber-500/30 space-y-3">
+              <div className="p-4 bg-slate-50 rounded-lg border border-amber-200 space-y-3">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                  <h4 className="text-xs font-bold text-amber-600 flex items-center gap-1.5">
                     <Shield className="w-4 h-4" />
                     Supervisor SOP Verification (Rule Enforcement)
                   </h4>
                   {selectedTask.supervisorReview?.reviewedAt && (
-                    <span className="text-[10px] text-slate-400 font-mono">
+                    <span className="text-xs text-slate-500">
                       Reviewed by {selectedTask.supervisorReview.reviewerName}
                     </span>
                   )}
@@ -532,7 +532,7 @@ export default function TaskManagement() {
                   value={supervisorNotes}
                   onChange={(e) => setSupervisorNotes(e.target.value)}
                   placeholder="Supervisor review notes, verification findings, or revision requirements..."
-                  className="w-full bg-slate-950 border border-slate-700 rounded-md p-2.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md p-2.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-amber-500"
                 />
 
                 <div className="flex items-center gap-2">
@@ -558,8 +558,8 @@ export default function TaskManagement() {
             )}
 
             {/* Comments Thread */}
-            <div className="space-y-3 border-t border-slate-700 pt-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+            <div className="space-y-3 border-t border-slate-200 pt-3">
+              <h4 className="text-xs font-bold text-slate-500 flex items-center gap-1.5">
                 <MessageSquare className="w-3.5 h-3.5" />
                 SOP Activity & Operational Notes ({selectedTask.comments?.length || 0})
               </h4>
@@ -567,16 +567,16 @@ export default function TaskManagement() {
               <div className="space-y-2 max-h-40 overflow-y-auto pr-1">
                 {selectedTask.comments?.length > 0 ? (
                   selectedTask.comments.map((c: any, i: number) => (
-                    <div key={i} className="p-2 rounded bg-slate-900 border border-slate-800 text-xs">
-                      <div className="flex items-center justify-between text-[10px] text-slate-400 mb-1">
-                        <span className="font-semibold text-slate-300">{c.userName} ({c.role})</span>
+                    <div key={i} className="p-2 rounded-md bg-slate-50 border border-slate-200 text-xs">
+                      <div className="flex items-center justify-between text-xs text-slate-500 mb-1">
+                        <span className="font-semibold text-slate-700">{c.userName} ({c.role})</span>
                         <span>{new Date(c.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
-                      <p className="text-slate-300">{c.text}</p>
+                      <p className="text-slate-700">{c.text}</p>
                     </div>
                   ))
                 ) : (
-                  <p className="text-[11px] text-slate-500 italic">No notes recorded yet.</p>
+                  <p className="text-xs text-slate-500">No notes recorded yet.</p>
                 )}
               </div>
 
@@ -586,7 +586,7 @@ export default function TaskManagement() {
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="Add handoff note or query..."
-                  className="flex-1 bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-blue-500"
+                  className="flex-1 bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500"
                 />
                 <button
                   type="submit"

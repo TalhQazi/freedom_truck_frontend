@@ -213,17 +213,17 @@ export default function Settings() {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-700/60">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-slate-200">
         <div>
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-slate-700/50 border border-slate-600/60 rounded-lg text-slate-300">
+            <div className="p-2 bg-slate-200 border border-slate-200 rounded-lg text-slate-700">
               <SettingsIcon className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+              <h1 className="text-xl font-bold tracking-tight text-slate-900 flex items-center gap-2">
                 Workshop Configuration & Business Rules
               </h1>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 mt-0.5">
                 Manage parts markup tiers (SW-004), tire flat rules (SW-005), deposit thresholds, and user accounts.
               </p>
             </div>
@@ -231,13 +231,13 @@ export default function Settings() {
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-1.5 p-1 bg-slate-800/80 rounded-lg border border-slate-700">
+        <div className="flex items-center gap-1.5 p-1 bg-white rounded-lg border border-slate-200">
           <button
             onClick={() => setActiveTab('markup')}
             className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'markup'
                 ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
             <Layers className="w-3.5 h-3.5" /> Parts Markup (SW-004)
@@ -248,7 +248,7 @@ export default function Settings() {
             className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'shop'
                 ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
             <CircleDollarSign className="w-3.5 h-3.5" /> Rates & Policies
@@ -259,7 +259,7 @@ export default function Settings() {
             className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'employees'
                 ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
             <Users className="w-3.5 h-3.5" /> Staff Roster
@@ -270,7 +270,7 @@ export default function Settings() {
             className={`px-3 py-1.5 rounded text-xs font-semibold flex items-center gap-1.5 transition-all ${
               activeTab === 'integrations'
                 ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700/50'
+                : 'text-slate-500 hover:text-slate-900 hover:bg-slate-200'
             }`}
           >
             <Radio className="w-3.5 h-3.5" /> Integrations
@@ -280,14 +280,14 @@ export default function Settings() {
 
       {/* Alert Banners */}
       {successMsg && (
-        <div className="p-3 bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 text-xs rounded-md flex items-center gap-2">
-          <CheckCircle className="w-4 h-4 shrink-0 text-emerald-400" />
+        <div className="p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs rounded-md flex items-center gap-2">
+          <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
           <span>{successMsg}</span>
         </div>
       )}
       {errorMsg && (
-        <div className="p-3 bg-red-950/40 border border-red-500/40 text-red-300 text-xs rounded-md flex items-center gap-2">
-          <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+        <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-xs rounded-md flex items-center gap-2">
+          <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
           <span>{errorMsg}</span>
         </div>
       )}
@@ -296,12 +296,12 @@ export default function Settings() {
       {activeTab === 'markup' && (
         <div className="space-y-6">
           {/* Strict SOP Notice */}
-          <div className="p-4 bg-blue-950/30 border border-blue-500/30 rounded-lg text-xs space-y-2">
-            <div className="flex items-center gap-2 text-blue-400 font-bold uppercase tracking-wider">
+          <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg text-xs space-y-2">
+            <div className="flex items-center gap-2 text-blue-600 font-bold">
               <Shield className="w-4 h-4" />
               SOP Pricing Compliance Notice (SW-004 & SW-005)
             </div>
-            <p className="text-slate-300 leading-relaxed">
+            <p className="text-slate-700 leading-relaxed">
               <strong>Parts Pricing (SW-004):</strong> Record actual part cost and apply the company-approved markup matrix below to calculate the selling price. Do not automatically use the electronic parts manager default selling price.
               <br />
               <strong>Tire Pricing (SW-005):</strong> Calculate tire selling price using <strong>actual acquisition cost plus $20 flat per tire</strong>. Tires are strictly exempt from percentage markup matrices.
@@ -310,21 +310,21 @@ export default function Settings() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Markup Table */}
-            <div className="lg:col-span-8 bg-slate-800/80 rounded-lg border border-slate-700 overflow-hidden shadow-sm">
-              <div className="p-3.5 bg-slate-900/60 border-b border-slate-700 flex items-center justify-between">
+            <div className="lg:col-span-8 bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
+              <div className="p-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
                 <div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-blue-400" />
+                  <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-blue-600" />
                     Approved Parts Markup Matrix Tiers
                   </h3>
-                  <span className="text-[11px] text-slate-400">
+                  <span className="text-xs text-slate-500">
                     Tiered percentage calculation based on actual part acquisition cost
                   </span>
                 </div>
                 {isManagement && (
                   <button
                     onClick={handleAddTier}
-                    className="px-2.5 py-1 rounded bg-slate-700 hover:bg-slate-600 text-white text-xs font-semibold flex items-center gap-1"
+                    className="px-2.5 py-1 rounded-md bg-slate-200 hover:bg-slate-600 text-slate-900 text-xs font-semibold flex items-center gap-1"
                   >
                     <Plus className="w-3.5 h-3.5" /> Add Tier
                   </button>
@@ -334,7 +334,7 @@ export default function Settings() {
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs border-collapse">
                   <thead>
-                    <tr className="bg-slate-900/80 border-b border-slate-700 text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+                    <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                       <th className="py-2.5 px-3">Cost Tier Range</th>
                       <th className="py-2.5 px-3">Markup %</th>
                       <th className="py-2.5 px-3">Multiplier</th>
@@ -342,9 +342,9 @@ export default function Settings() {
                       {isManagement && <th className="py-2.5 px-3 text-right">Action</th>}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-700/60 font-mono">
+                  <tbody className="divide-y divide-slate-200">
                     {markupMatrix.tiers.map((tier: any, idx: number) => (
-                      <tr key={idx} className="hover:bg-slate-750/50">
+                      <tr key={idx} className="hover:bg-slate-50">
                         <td className="py-2.5 px-3 whitespace-nowrap">
                           {isManagement ? (
                             <div className="flex items-center gap-1.5">
@@ -354,7 +354,7 @@ export default function Settings() {
                                 step="0.01"
                                 value={tier.minCost}
                                 onChange={(e) => handleTierChange(idx, 'minCost', Number(e.target.value))}
-                                className="w-20 bg-slate-900 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-white"
+                                className="w-20 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
                               />
                               <span>to $</span>
                               <input
@@ -362,7 +362,7 @@ export default function Settings() {
                                 step="0.01"
                                 value={tier.maxCost}
                                 onChange={(e) => handleTierChange(idx, 'maxCost', Number(e.target.value))}
-                                className="w-24 bg-slate-900 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-white"
+                                className="w-24 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
                               />
                             </div>
                           ) : (
@@ -376,7 +376,7 @@ export default function Settings() {
                                 type="number"
                                 value={tier.markupPercent}
                                 onChange={(e) => handleTierChange(idx, 'markupPercent', Number(e.target.value))}
-                                className="w-16 bg-slate-900 border border-slate-700 rounded px-1.5 py-0.5 text-xs text-white"
+                                className="w-16 bg-slate-50 border border-slate-200 rounded-md px-1.5 py-0.5 text-xs text-slate-900"
                               />
                               <span>%</span>
                             </div>
@@ -384,17 +384,17 @@ export default function Settings() {
                             `${tier.markupPercent}%`
                           )}
                         </td>
-                        <td className="py-2.5 px-3 text-blue-400 font-bold">
+                        <td className="py-2.5 px-3 text-blue-600 font-bold">
                           {tier.multiplier?.toFixed(2)}x
                         </td>
-                        <td className="py-2.5 px-3 text-emerald-400 font-bold">
+                        <td className="py-2.5 px-3 text-emerald-600 font-bold">
                           {tier.marginPercent?.toFixed(1)}%
                         </td>
                         {isManagement && (
                           <td className="py-2.5 px-3 text-right">
                             <button
                               onClick={() => handleRemoveTier(idx)}
-                              className="p-1 text-slate-400 hover:text-red-400"
+                              className="p-1 text-slate-500 hover:text-red-600"
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>
@@ -407,11 +407,11 @@ export default function Settings() {
               </div>
 
               {isManagement && (
-                <div className="p-3 bg-slate-900/60 border-t border-slate-700 flex justify-end">
+                <div className="p-3 bg-slate-50 border-t border-slate-200 flex justify-end">
                   <button
                     disabled={saving}
                     onClick={handleSaveMatrix}
-                    className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
+                    className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 shadow-sm disabled:opacity-50"
                   >
                     <Save className="w-3.5 h-3.5" /> Save Markup Matrix
                   </button>
@@ -420,15 +420,15 @@ export default function Settings() {
             </div>
 
             {/* Live Pricing Calculator Tester */}
-            <div className="lg:col-span-4 bg-slate-800/80 rounded-lg border border-slate-700 p-4 shadow-sm space-y-4">
-              <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <Calculator className="w-4 h-4 text-emerald-400" />
+            <div className="lg:col-span-4 bg-white rounded-lg border border-slate-200 p-4 shadow-sm space-y-4">
+              <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+                <Calculator className="w-4 h-4 text-emerald-600" />
                 Live Pricing Matrix Simulator
               </h3>
 
               <div className="space-y-3">
                 <div>
-                  <label className="block text-[11px] text-slate-400 uppercase font-semibold mb-1">
+                  <label className="block text-xs text-slate-500 font-semibold mb-1">
                     Component Type
                   </label>
                   <div className="grid grid-cols-2 gap-2">
@@ -438,7 +438,7 @@ export default function Settings() {
                       className={`py-1.5 rounded text-xs font-semibold ${
                         testType === 'part'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-slate-900 border border-slate-700 text-slate-300'
+                          : 'bg-slate-50 border border-slate-200 text-slate-700'
                       }`}
                     >
                       Automotive Part (SW-004)
@@ -449,7 +449,7 @@ export default function Settings() {
                       className={`py-1.5 rounded text-xs font-semibold ${
                         testType === 'tire'
                           ? 'bg-blue-600 text-white'
-                          : 'bg-slate-900 border border-slate-700 text-slate-300'
+                          : 'bg-slate-50 border border-slate-200 text-slate-700'
                       }`}
                     >
                       Tire Unit (SW-005)
@@ -458,7 +458,7 @@ export default function Settings() {
                 </div>
 
                 <div>
-                  <label className="block text-[11px] text-slate-400 uppercase font-semibold mb-1">
+                  <label className="block text-xs text-slate-500 font-semibold mb-1">
                     Acquisition Cost ($)
                   </label>
                   <input
@@ -466,29 +466,29 @@ export default function Settings() {
                     step="0.01"
                     value={testCost}
                     onChange={(e) => setTestCost(e.target.value)}
-                    className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white font-mono"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleTestCalculate}
-                  className="w-full py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-md text-xs font-semibold flex items-center justify-center gap-1.5"
+                  className="w-full py-2 bg-slate-200 hover:bg-slate-600 text-slate-900 rounded-md text-xs font-semibold flex items-center justify-center gap-1.5"
                 >
                   <Calculator className="w-3.5 h-3.5" /> Calculate Selling Price
                 </button>
 
                 {calcResult && (
-                  <div className="p-3 bg-slate-900 rounded border border-slate-700 space-y-2 text-xs">
+                  <div className="p-3 bg-slate-50 rounded-md border border-slate-200 space-y-2 text-xs">
                     <div className="flex justify-between">
-                      <span className="text-slate-400">Calculated Selling Price:</span>
-                      <span className="font-mono font-bold text-emerald-400 text-sm">
+                      <span className="text-slate-500">Calculated Selling Price:</span>
+                      <span className="font-bold text-emerald-600 text-sm">
                         ${calcResult.sellingPrice?.toFixed(2)}
                       </span>
                     </div>
-                    <div className="flex justify-between text-[11px]">
-                      <span className="text-slate-400">Applied Formula:</span>
-                      <span className="text-slate-300 font-mono text-right">{calcResult.formula}</span>
+                    <div className="flex justify-between text-xs">
+                      <span className="text-slate-500">Applied Formula:</span>
+                      <span className="text-slate-700 text-right">{calcResult.formula}</span>
                     </div>
                   </div>
                 )}
@@ -501,15 +501,15 @@ export default function Settings() {
       {/* TAB 2: RATES & POLICIES */}
       {activeTab === 'shop' && (
         <form onSubmit={handleSaveShopSettings} className="space-y-6 max-w-4xl">
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 p-5 shadow-sm space-y-5">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-              <CircleDollarSign className="w-4 h-4 text-emerald-400" />
+          <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-5">
+            <h3 className="text-xs font-bold text-slate-700 flex items-center gap-2">
+              <CircleDollarSign className="w-4 h-4 text-emerald-600" />
               Workshop Financial Parameters & Business Rules
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Default Labor Rate ($ / hour)
                 </label>
                 <input
@@ -518,15 +518,15 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.laborRateDefault}
                   onChange={(e) => setShopSettings({ ...shopSettings, laborRateDefault: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   Standard mechanical & diagnostic hourly rate
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Default Sales Tax Rate (%)
                 </label>
                 <input
@@ -535,15 +535,15 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.taxRateDefault}
                   onChange={(e) => setShopSettings({ ...shopSettings, taxRateDefault: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   State & local municipal sales tax on parts and labor
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Flat Tire Markup ($ per tire) – SW-005
                 </label>
                 <input
@@ -552,15 +552,15 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.tireMarkupFlat}
                   onChange={(e) => setShopSettings({ ...shopSettings, tireMarkupFlat: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-emerald-400 font-mono font-bold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-emerald-600 font-bold"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   Mandatory flat markup per tire (strictly $20.00 standard)
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Deposit Threshold ($) – SW-008
                 </label>
                 <input
@@ -569,15 +569,15 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.depositThreshold}
                   onChange={(e) => setShopSettings({ ...shopSettings, depositThreshold: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   Repair orders exceeding this amount require a 50% deposit before dispatch
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Mandatory Deposit Percentage (%)
                 </label>
                 <input
@@ -585,15 +585,15 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.depositPercentage}
                   onChange={(e) => setShopSettings({ ...shopSettings, depositPercentage: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   Strictly 50% of the total authorized estimate
                 </span>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 mb-1">
                   Daily Cash-Up Closing Float ($) – SW-015
                 </label>
                 <input
@@ -601,45 +601,45 @@ export default function Settings() {
                   disabled={!isManagement}
                   value={shopSettings.drawerClosingTarget}
                   onChange={(e) => setShopSettings({ ...shopSettings, drawerClosingTarget: Number(e.target.value) })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded-md px-3 py-1.5 text-xs text-emerald-400 font-mono font-bold"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-emerald-600 font-bold"
                 />
-                <span className="text-[10px] text-slate-400 mt-0.5 block">
+                <span className="text-xs text-slate-500 mt-0.5 block">
                   Exact closing drawer cash float balance ($100.00 target)
                 </span>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-700">
-              <h4 className="text-xs font-semibold text-slate-300 mb-3">Shop Facility Details</h4>
+            <div className="pt-4 border-t border-slate-200">
+              <h4 className="text-xs font-semibold text-slate-700 mb-3">Shop Facility Details</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Company Trade Name</label>
+                  <label className="block text-xs text-slate-500 mb-1">Company Trade Name</label>
                   <input
                     type="text"
                     disabled={!isManagement}
                     value={shopSettings.companyName}
                     onChange={(e) => setShopSettings({ ...shopSettings, companyName: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] text-slate-400 mb-1">Phone Number</label>
+                  <label className="block text-xs text-slate-500 mb-1">Phone Number</label>
                   <input
                     type="text"
                     disabled={!isManagement}
                     value={shopSettings.phone}
                     onChange={(e) => setShopSettings({ ...shopSettings, phone: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                   />
                 </div>
                 <div className="md:col-span-2">
-                  <label className="block text-[11px] text-slate-400 mb-1">Facility Address</label>
+                  <label className="block text-xs text-slate-500 mb-1">Facility Address</label>
                   <input
                     type="text"
                     disabled={!isManagement}
                     value={shopSettings.address}
                     onChange={(e) => setShopSettings({ ...shopSettings, address: e.target.value })}
-                    className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                    className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                   />
                 </div>
               </div>
@@ -665,26 +665,26 @@ export default function Settings() {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-bold text-white">Workshop Employee Accounts</h3>
-              <p className="text-xs text-slate-400">
+              <h3 className="text-sm font-bold text-slate-900">Workshop Employee Accounts</h3>
+              <p className="text-xs text-slate-500">
                 Manage roles, employee IDs, and access status across all 6 roles.
               </p>
             </div>
             {isManagement && (
               <button
                 onClick={() => setShowAddEmpModal(true)}
-                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold flex items-center gap-1.5 shadow-sm"
+                className="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold flex items-center gap-1.5 shadow-sm"
               >
                 <UserPlus className="w-3.5 h-3.5" /> Add Employee
               </button>
             )}
           </div>
 
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 overflow-hidden shadow-sm">
+          <div className="bg-white rounded-lg border border-slate-200 overflow-hidden shadow-sm">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
-                  <tr className="bg-slate-900/80 border-b border-slate-700 text-slate-400 font-semibold uppercase tracking-wider text-[11px]">
+                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold text-xs">
                     <th className="py-3 px-3">EMP ID</th>
                     <th className="py-3 px-3">Name</th>
                     <th className="py-3 px-3">Email Address</th>
@@ -695,18 +695,18 @@ export default function Settings() {
                 </thead>
                 <tbody className="divide-y divide-slate-700/60">
                   {employees.map((emp) => (
-                    <tr key={emp._id} className="hover:bg-slate-750/50">
-                      <td className="py-3 px-3 font-mono font-bold text-blue-400 whitespace-nowrap">
+                    <tr key={emp._id} className="hover:bg-slate-50">
+                      <td className="py-3 px-3 font-bold text-blue-600 whitespace-nowrap">
                         {emp.employeeId || 'EMP-XXXX'}
                       </td>
-                      <td className="py-3 px-3 text-slate-200 font-semibold whitespace-nowrap">
+                      <td className="py-3 px-3 text-slate-900 font-semibold whitespace-nowrap">
                         {emp.name}
                       </td>
-                      <td className="py-3 px-3 font-mono text-slate-300">
+                      <td className="py-3 px-3 text-slate-700">
                         {emp.email}
                       </td>
                       <td className="py-3 px-3 whitespace-nowrap">
-                        <span className="px-2 py-0.5 rounded bg-slate-900 border border-slate-700 font-mono text-[11px] text-slate-300">
+                        <span className="px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-xs text-slate-700">
                           {emp.role}
                         </span>
                       </td>
@@ -714,8 +714,8 @@ export default function Settings() {
                         <span
                           className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                             emp.isActive
-                              ? 'bg-emerald-950/60 border border-emerald-500/40 text-emerald-300'
-                              : 'bg-red-950/60 border border-red-500/40 text-red-300'
+                              ? 'bg-emerald-50 border border-emerald-200 text-emerald-700'
+                              : 'bg-red-50 border border-red-200 text-red-700'
                           }`}
                         >
                           {emp.isActive ? 'ACTIVE' : 'INACTIVE'}
@@ -725,7 +725,7 @@ export default function Settings() {
                         <td className="py-3 px-3 text-right whitespace-nowrap">
                           <button
                             onClick={() => handleToggleUserStatus(emp)}
-                            className="text-xs text-slate-400 hover:text-white underline font-mono"
+                            className="text-xs text-slate-500 hover:text-slate-900 underline"
                           >
                             {emp.isActive ? 'Deactivate' : 'Activate'}
                           </button>
@@ -743,54 +743,54 @@ export default function Settings() {
       {/* TAB 4: EXTERNAL INTEGRATIONS */}
       {activeTab === 'integrations' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 p-5 shadow-sm space-y-3">
+          <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-blue-400 font-mono">
+              <span className="text-xs font-bold text-blue-600">
                 Mitchell 1 Manager SE
               </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold font-mono">
-                READY
+              <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+                Ready
               </span>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-700">
               API bridge for importing historical vehicle records, parts catalogs, and labor times.
             </p>
-            <div className="text-[11px] text-slate-400 font-mono">
-              Endpoint: <span className="text-blue-300">tcp://127.0.0.1:41100/mitchell</span>
+            <div className="text-xs text-slate-500">
+              Endpoint: <span className="text-blue-700">tcp://127.0.0.1:41100/mitchell</span>
             </div>
           </div>
 
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 p-5 shadow-sm space-y-3">
+          <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-emerald-400 font-mono">
+              <span className="text-xs font-bold text-emerald-600">
                 Electronic Parts Catalog
               </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold font-mono">
-                CONNECTED
+              <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+                Connected
               </span>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-700">
               Real-time parts inventory query and supplier cost ingestion for matrix calculation.
             </p>
-            <div className="text-[11px] text-slate-400 font-mono">
-              Acquisition matrix: <span className="text-emerald-300">Active (SW-004)</span>
+            <div className="text-xs text-slate-500">
+              Acquisition matrix: <span className="text-emerald-700">Active (SW-004)</span>
             </div>
           </div>
 
-          <div className="bg-slate-800/80 rounded-lg border border-slate-700 p-5 shadow-sm space-y-3">
+          <div className="bg-white rounded-lg border border-slate-200 p-5 shadow-sm space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-400 font-mono">
+              <span className="text-xs font-bold text-purple-600">
                 Tire Wholesale Network
               </span>
-              <span className="px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold font-mono">
-                CONNECTED
+              <span className="px-2 py-0.5 rounded-md bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+                Connected
               </span>
             </div>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-slate-700">
               National tire distributor catalog feeds with automated Cost + $20 flat pricing.
             </p>
-            <div className="text-[11px] text-slate-400 font-mono">
-              Pricing rule: <span className="text-purple-300">Cost + $20 Flat (SW-005)</span>
+            <div className="text-xs text-slate-500">
+              Pricing rule: <span className="text-purple-700">Cost + $20 Flat (SW-005)</span>
             </div>
           </div>
         </div>
@@ -799,15 +799,15 @@ export default function Settings() {
       {/* Add Employee Modal */}
       {showAddEmpModal && (
         <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-800 rounded-lg border border-slate-700 w-full max-w-md shadow-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-slate-700 pb-3">
-              <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                <UserPlus className="w-4 h-4 text-blue-400" />
+          <div className="bg-white rounded-lg border border-slate-200 w-full max-w-md shadow-lg p-6 space-y-4">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+              <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                <UserPlus className="w-4 h-4 text-blue-600" />
                 Register New Workshop Employee
               </h3>
               <button
                 onClick={() => setShowAddEmpModal(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-500 hover:text-slate-900"
               >
                 ✕
               </button>
@@ -815,58 +815,58 @@ export default function Settings() {
 
             <form onSubmit={handleCreateEmployee} className="space-y-3">
               <div>
-                <label className="block text-xs text-slate-300 mb-1">Full Name</label>
+                <label className="block text-xs text-slate-700 mb-1">Full Name</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.name}
                   onChange={(e) => setNewEmpData({ ...newEmpData, name: e.target.value })}
                   placeholder="e.g. John Doe"
-                  className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-300 mb-1">Email Address</label>
+                <label className="block text-xs text-slate-700 mb-1">Email Address</label>
                 <input
                   type="email"
                   required
                   value={newEmpData.email}
                   onChange={(e) => setNewEmpData({ ...newEmpData, email: e.target.value })}
                   placeholder="e.g. jdoe@freedomcartruck.com"
-                  className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-300 mb-1">Employee ID</label>
+                <label className="block text-xs text-slate-700 mb-1">Employee ID</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.employeeId}
                   onChange={(e) => setNewEmpData({ ...newEmpData, employeeId: e.target.value })}
                   placeholder="e.g. EMP-1007"
-                  className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-300 mb-1">Temporary Password</label>
+                <label className="block text-xs text-slate-700 mb-1">Temporary Password</label>
                 <input
                   type="text"
                   required
                   value={newEmpData.password}
                   onChange={(e) => setNewEmpData({ ...newEmpData, password: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white font-mono"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 />
               </div>
 
               <div>
-                <label className="block text-xs text-slate-300 mb-1">Workshop Role</label>
+                <label className="block text-xs text-slate-700 mb-1">Workshop Role</label>
                 <select
                   value={newEmpData.role}
                   onChange={(e) => setNewEmpData({ ...newEmpData, role: e.target.value })}
-                  className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-1.5 text-xs text-white"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-md px-3 py-1.5 text-xs text-slate-900"
                 >
                   <option value="service_writer">Service Writer</option>
                   <option value="technician">Technician</option>
@@ -877,18 +877,18 @@ export default function Settings() {
                 </select>
               </div>
 
-              <div className="flex justify-end gap-2 pt-3 border-t border-slate-700">
+              <div className="flex justify-end gap-2 pt-3 border-t border-slate-200">
                 <button
                   type="button"
                   onClick={() => setShowAddEmpModal(false)}
-                  className="px-3 py-1.5 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded text-xs"
+                  className="px-3 py-1.5 bg-slate-200 hover:bg-slate-600 text-slate-700 rounded-md text-xs"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded text-xs font-semibold"
+                  className="px-4 py-1.5 bg-blue-600 hover:bg-blue-500 text-white rounded-md text-xs font-semibold"
                 >
                   Create Employee
                 </button>

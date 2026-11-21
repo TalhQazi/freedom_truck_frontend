@@ -100,22 +100,22 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-950/70 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-lg shadow-2xl border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+      <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-xl overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="bg-brand-900 text-white px-6 py-4 flex items-center justify-between">
+        <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-brand-800 rounded border border-brand-700">
-              <PenTool className="w-5 h-5 text-amber-400" />
+            <div className="p-2 bg-white rounded-md border border-slate-200">
+              <PenTool className="w-5 h-5 text-amber-600" />
             </div>
             <div>
-              <h3 className="font-bold text-base tracking-wide uppercase text-white">{title}</h3>
-              {subtitle && <p className="text-xs text-slate-300">{subtitle}</p>}
+              <h3 className="font-bold text-base text-slate-900">{title}</h3>
+              {subtitle && <p className="text-xs text-slate-700">{subtitle}</p>}
             </div>
           </div>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-white transition-colors p-1"
+            className="text-slate-500 hover:text-slate-900 transition-colors p-1"
           >
             <X className="w-5 h-5" />
           </button>
@@ -124,7 +124,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
         {/* Content Body */}
         <div className="p-6 space-y-4">
           {declarationText && (
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded text-xs text-slate-700 leading-relaxed font-sans">
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-md text-xs text-slate-700 leading-relaxed font-sans">
               {declarationText}
             </div>
           )}
@@ -132,7 +132,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
           <div className="space-y-1.5">
             <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
               <span>Sign within the boundary below:</span>
-              <span className="text-[11px] text-slate-400 font-mono">Touchscreen &amp; Mouse Enabled</span>
+              <span className="text-xs text-slate-400">Touchscreen &amp; Mouse Enabled</span>
             </div>
 
             <div className="relative border-2 border-dashed border-slate-300 rounded-md bg-slate-50/50 hover:border-slate-400 transition-colors">
@@ -150,10 +150,10 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
                 onTouchEnd={stopDrawing}
               />
               <div className="absolute bottom-3 left-4 right-4 border-b border-slate-300 pointer-events-none flex items-center justify-between">
-                <span className="text-[10px] uppercase font-mono tracking-wider text-slate-400">
+                <span className="text-xs text-slate-400">
                   X Digital Signature Line
                 </span>
-                <span className="text-[10px] font-mono text-slate-400">SOP Validated</span>
+                <span className="text-xs text-slate-400">SOP Validated</span>
               </div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
           <button
             type="button"
             onClick={handleClear}
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded hover:bg-slate-50 transition-colors"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-300 rounded-md hover:bg-slate-50 transition-colors"
           >
             <RotateCcw className="w-3.5 h-3.5 text-slate-500" />
             <span>Clear Canvas</span>
@@ -181,7 +181,7 @@ export const SignatureModal: React.FC<SignatureModalProps> = ({
             <button
               type="button"
               onClick={handleConfirm}
-              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+              className="inline-flex items-center space-x-1.5 px-4 py-1.5 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
             >
               <CheckCircle className="w-3.5 h-3.5" />
               <span>Confirm &amp; Record Signature</span>

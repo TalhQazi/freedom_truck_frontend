@@ -182,11 +182,11 @@ export const SecurityManagement: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-extrabold text-slate-900 uppercase tracking-wide flex items-center gap-2">
+          <h1 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
             <ShieldAlert className="w-5 h-5 text-red-600" />
             <span>Office Assistant &amp; Information Security Management</span>
           </h1>
-          <p className="text-xs text-slate-500 font-mono">
+          <p className="text-xs text-slate-500">
             Mandatory SOPs: OFF-001 through OFF-012 | Computer Modification Approval &amp; Security Controls
           </p>
         </div>
@@ -195,7 +195,7 @@ export const SecurityManagement: React.FC = () => {
           <button
             type="button"
             onClick={() => setCmrModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm transition-colors"
           >
             <Plus className="w-4 h-4" />
             <span>New Computer Mod Request (OFF-005)</span>
@@ -203,7 +203,7 @@ export const SecurityManagement: React.FC = () => {
           <button
             type="button"
             onClick={() => setIncModalOpen(true)}
-            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-red-700 hover:bg-red-800 rounded shadow-sm transition-colors"
+            className="inline-flex items-center space-x-1 px-3 py-2 text-xs font-bold text-white bg-red-700 hover:bg-red-800 rounded-md shadow-sm transition-colors"
           >
             <AlertTriangle className="w-4 h-4" />
             <span>Report Security Incident (OFF-012)</span>
@@ -213,26 +213,26 @@ export const SecurityManagement: React.FC = () => {
 
       {/* Notifications */}
       {error && (
-        <div className="p-3 bg-red-50 border-l-4 border-red-600 rounded text-xs text-red-800 flex items-center space-x-2">
+        <div className="p-3 bg-red-50 border-l-4 border-red-600 rounded-md text-xs text-red-800 flex items-center space-x-2">
           <AlertCircle className="w-4 h-4 shrink-0 text-red-600" />
           <span>{error}</span>
         </div>
       )}
       {success && (
-        <div className="p-3 bg-emerald-50 border-l-4 border-emerald-600 rounded text-xs text-emerald-800 flex items-center space-x-2">
+        <div className="p-3 bg-emerald-50 border-l-4 border-emerald-600 rounded-md text-xs text-emerald-800 flex items-center space-x-2">
           <CheckCircle className="w-4 h-4 shrink-0 text-emerald-600" />
           <span>{success}</span>
         </div>
       )}
 
       {/* Tabs */}
-      <div className="border-b border-slate-200 flex space-x-6 text-xs font-mono font-bold uppercase">
+      <div className="border-b border-slate-200 flex space-x-6 text-xs font-bold">
         <button
           type="button"
           onClick={() => setActiveTab('modifications')}
           className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors ${
             activeTab === 'modifications'
-              ? 'border-blue-700 text-blue-900'
+              ? 'border-blue-700 text-blue-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -245,7 +245,7 @@ export const SecurityManagement: React.FC = () => {
           onClick={() => setActiveTab('checklists')}
           className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors ${
             activeTab === 'checklists'
-              ? 'border-blue-700 text-blue-900'
+              ? 'border-blue-700 text-blue-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -258,7 +258,7 @@ export const SecurityManagement: React.FC = () => {
           onClick={() => setActiveTab('incidents')}
           className={`pb-2.5 flex items-center space-x-2 border-b-2 transition-colors ${
             activeTab === 'incidents'
-              ? 'border-blue-700 text-blue-900'
+              ? 'border-blue-700 text-blue-700'
               : 'border-transparent text-slate-500 hover:text-slate-800'
           }`}
         >
@@ -273,7 +273,7 @@ export const SecurityManagement: React.FC = () => {
           <div className="p-4 bg-blue-50/60 border border-blue-200 rounded-lg text-xs text-blue-950 flex items-start space-x-3">
             <ShieldAlert className="w-5 h-5 text-blue-700 shrink-0 mt-0.5" />
             <div>
-              <span className="font-bold uppercase font-mono">SOP Rule 6 Mandate:</span>
+              <span className="font-bold">SOP Rule 6 Mandate:</span>
               <p className="mt-0.5">
                 No software, setting, hardware, or security modification may be implemented on any workshop or office computer without written management approval (OFF-004, OFF-006).
               </p>
@@ -284,7 +284,7 @@ export const SecurityManagement: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-100 text-[10px] font-mono uppercase text-slate-600 border-b border-slate-200">
+                  <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Request ID</th>
                     <th className="px-4 py-3">Requester</th>
                     <th className="px-4 py-3">Workstation</th>
@@ -298,13 +298,13 @@ export const SecurityManagement: React.FC = () => {
                 <tbody className="divide-y divide-slate-100 text-slate-700">
                   {modRequests.map((cmr) => (
                     <tr key={cmr._id} className="hover:bg-slate-50">
-                      <td className="px-4 py-3 font-mono font-bold text-blue-900">{cmr.requestId}</td>
+                      <td className="px-4 py-3 font-bold text-blue-700">{cmr.requestId}</td>
                       <td className="px-4 py-3 font-medium">
                         {cmr.employeeName} ({cmr.employeeIdNumber})
                       </td>
-                      <td className="px-4 py-3 font-mono text-[11px] font-semibold">{cmr.workstationIdentifier}</td>
-                      <td className="px-4 py-3 uppercase font-mono text-[10px]">
-                        <span className="bg-slate-100 px-1.5 py-0.5 rounded font-bold">{cmr.requestedAction}</span>
+                      <td className="px-4 py-3 text-xs font-semibold">{cmr.workstationIdentifier}</td>
+                      <td className="px-4 py-3 text-xs">
+                        <span className="bg-slate-100 px-1.5 py-0.5 rounded-md font-bold">{cmr.requestedAction}</span>
                       </td>
                       <td className="px-4 py-3 font-bold text-slate-900">{cmr.softwareOrSettingName}</td>
                       <td className="px-4 py-3 max-w-xs truncate text-slate-600">{cmr.businessReason}</td>
@@ -317,14 +317,14 @@ export const SecurityManagement: React.FC = () => {
                             <button
                               type="button"
                               onClick={() => handleReviewCMR(cmr._id, 'APPROVED')}
-                              className="px-2 py-0.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded text-[10px]"
+                              className="px-2 py-0.5 bg-emerald-700 hover:bg-emerald-800 text-white font-bold rounded-md text-xs"
                             >
                               Approve
                             </button>
                             <button
                               type="button"
                               onClick={() => handleReviewCMR(cmr._id, 'REJECTED')}
-                              className="px-2 py-0.5 bg-red-700 hover:bg-red-800 text-white font-bold rounded text-[10px]"
+                              className="px-2 py-0.5 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md text-xs"
                             >
                               Reject
                             </button>
@@ -334,7 +334,7 @@ export const SecurityManagement: React.FC = () => {
                           <button
                             type="button"
                             onClick={() => handleImplementCMR(cmr._id)}
-                            className="px-2 py-0.5 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded text-[10px]"
+                            className="px-2 py-0.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md text-xs"
                           >
                             Mark Implemented
                           </button>
@@ -360,7 +360,7 @@ export const SecurityManagement: React.FC = () => {
       {activeTab === 'checklists' && (
         <div className="space-y-4">
           <div className="flex justify-between items-center">
-            <span className="text-xs text-slate-500 font-mono">
+            <span className="text-xs text-slate-500">
               Audit logs for daily workstation locking (OFF-008) and terminal sign-outs (OFF-009)
             </span>
             <button
@@ -369,7 +369,7 @@ export const SecurityManagement: React.FC = () => {
                 setChkSignature(null);
                 setChecklistModalOpen(true);
               }}
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-blue-700 hover:bg-blue-800 rounded shadow-sm"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-md shadow-sm"
             >
               <CheckSquare className="w-4 h-4" />
               <span>Submit Daily Security Walkthrough (OFF-008)</span>
@@ -380,7 +380,7 @@ export const SecurityManagement: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-100 text-[10px] font-mono uppercase text-slate-600 border-b border-slate-200">
+                  <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Checklist #</th>
                     <th className="px-4 py-3">Business Date</th>
                     <th className="px-4 py-3">Inspected By</th>
@@ -393,14 +393,14 @@ export const SecurityManagement: React.FC = () => {
                 <tbody className="divide-y divide-slate-100 text-slate-700">
                   {checklists.map((chk) => (
                     <tr key={chk._id} className="hover:bg-slate-50">
-                      <td className="px-4 py-3 font-mono font-bold text-blue-900">{chk.checklistNumber}</td>
-                      <td className="px-4 py-3 font-mono font-medium">{chk.businessDate}</td>
+                      <td className="px-4 py-3 font-bold text-blue-700">{chk.checklistNumber}</td>
+                      <td className="px-4 py-3 font-medium">{chk.businessDate}</td>
                       <td className="px-4 py-3 font-medium">
                         {chk.employeeName} ({chk.employeeIdNumber})
                       </td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ VERIFIED</td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ VERIFIED</td>
-                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ COMPLIANT</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Verified</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Verified</td>
+                      <td className="px-4 py-3 text-center font-bold text-emerald-700">✓ Compliant</td>
                       <td className="px-4 py-3">
                         <StatusBadge status={chk.status} size="sm" />
                       </td>
@@ -427,7 +427,7 @@ export const SecurityManagement: React.FC = () => {
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
-                  <tr className="bg-slate-100 text-[10px] font-mono uppercase text-slate-600 border-b border-slate-200">
+                  <tr className="bg-slate-100 text-xs text-slate-600 border-b border-slate-200">
                     <th className="px-4 py-3">Incident ID</th>
                     <th className="px-4 py-3">Date</th>
                     <th className="px-4 py-3">Incident Title</th>
@@ -440,13 +440,13 @@ export const SecurityManagement: React.FC = () => {
                 <tbody className="divide-y divide-slate-100 text-slate-700">
                   {incidents.map((inc) => (
                     <tr key={inc._id} className="hover:bg-slate-50">
-                      <td className="px-4 py-3 font-mono font-bold text-red-900">{inc.incidentId}</td>
-                      <td className="px-4 py-3 font-mono text-[11px] text-slate-500">
+                      <td className="px-4 py-3 font-bold text-red-900">{inc.incidentId}</td>
+                      <td className="px-4 py-3 text-xs text-slate-500">
                         {new Date(inc.createdAt).toLocaleDateString()}
                       </td>
                       <td className="px-4 py-3 font-bold text-slate-900">{inc.title}</td>
                       <td className="px-4 py-3">{inc.reporterName}</td>
-                      <td className="px-4 py-3 font-mono text-[11px]">{inc.workstationOrDevice}</td>
+                      <td className="px-4 py-3 text-xs">{inc.workstationOrDevice}</td>
                       <td className="px-4 py-3">
                         <span className={`px-2 py-0.5 rounded font-mono font-bold text-[10px] uppercase ${
                           inc.severity === 'CRITICAL' ? 'bg-red-200 text-red-900' : inc.severity === 'HIGH' ? 'bg-red-100 text-red-800' : 'bg-amber-100 text-amber-900'
@@ -475,19 +475,19 @@ export const SecurityManagement: React.FC = () => {
 
       {/* New Computer Modification Request Modal (OFF-005) */}
       {cmrModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-950/70 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
-            <div className="bg-brand-900 text-white px-6 py-4 flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
+            <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
-                <Laptop className="w-5 h-5 text-amber-400" />
-                <h3 className="font-bold text-sm tracking-wide uppercase text-white font-mono">
+                <Laptop className="w-5 h-5 text-amber-600" />
+                <h3 className="font-bold text-sm text-slate-900">
                   Submit Computer Modification Request (OFF-005)
                 </h3>
               </div>
               <button
                 type="button"
                 onClick={() => setCmrModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -495,7 +495,7 @@ export const SecurityManagement: React.FC = () => {
 
             <form onSubmit={handleCreateCMR} className="p-6 space-y-4 text-xs">
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Workstation Identifier *
                 </label>
                 <input
@@ -504,18 +504,18 @@ export const SecurityManagement: React.FC = () => {
                   value={workstationId}
                   onChange={(e) => setWorkstationId(e.target.value)}
                   placeholder="e.g. TERMINAL-BAY-02 or DESK-FRONT-01"
-                  className="w-full font-mono border border-slate-300 rounded px-3 py-2 text-slate-900 focus:outline-none"
+                  className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Requested Action Type *
                 </label>
                 <select
                   value={cmrAction}
                   onChange={(e) => setCmrAction(e.target.value as any)}
-                  className="w-full border border-slate-300 rounded px-3 py-2 bg-white text-slate-900 focus:outline-none"
+                  className="w-full border border-slate-300 rounded-md px-3 py-2 bg-white text-slate-900 focus:outline-none"
                 >
                   <option value="SOFTWARE_INSTALL">Software / Diagnostic Application Installation</option>
                   <option value="SETTING_CHANGE">Operating System / Network Setting Change</option>
@@ -526,7 +526,7 @@ export const SecurityManagement: React.FC = () => {
               </div>
 
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Software / Setting Name *
                 </label>
                 <input
@@ -535,12 +535,12 @@ export const SecurityManagement: React.FC = () => {
                   value={softwareName}
                   onChange={(e) => setSoftwareName(e.target.value)}
                   placeholder="e.g. Allison DOC Transmission Diagnostic Suite"
-                  className="w-full border border-slate-300 rounded px-3 py-2 text-slate-900 focus:outline-none"
+                  className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Business Reason &amp; Operational Justification *
                 </label>
                 <textarea
@@ -549,7 +549,7 @@ export const SecurityManagement: React.FC = () => {
                   value={cmrReason}
                   onChange={(e) => setCmrReason(e.target.value)}
                   placeholder="Explain why this modification is required for workshop business operations..."
-                  className="w-full border border-slate-300 rounded px-3 py-2 text-slate-900 focus:outline-none"
+                  className="w-full border border-slate-300 rounded-md px-3 py-2 text-slate-900 focus:outline-none"
                 />
               </div>
 
@@ -563,7 +563,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md"
                 >
                   Submit for Management Review (OFF-005)
                 </button>
@@ -575,17 +575,17 @@ export const SecurityManagement: React.FC = () => {
 
       {/* Submit Daily Security Checklist Modal (OFF-008/009) */}
       {checklistModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-950/70 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
-            <div className="bg-brand-900 text-white px-6 py-4 flex items-center justify-between">
-              <h3 className="font-bold text-sm tracking-wide uppercase text-white font-mono flex items-center gap-2">
-                <CheckSquare className="w-4 h-4 text-amber-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
+            <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
+                <CheckSquare className="w-4 h-4 text-amber-600" />
                 <span>Daily Security Walkthrough &amp; Sign-Out (OFF-008)</span>
               </h3>
               <button
                 type="button"
                 onClick={() => setChecklistModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -598,7 +598,7 @@ export const SecurityManagement: React.FC = () => {
                     type="checkbox"
                     checked={chkLocked}
                     onChange={(e) => setChkLocked(e.target.checked)}
-                    className="w-4 h-4 text-blue-700 rounded"
+                    className="w-4 h-4 text-blue-700 rounded-md"
                   />
                   <span>1. All unattended workstations and terminals locked (OFF-008)</span>
                 </label>
@@ -607,7 +607,7 @@ export const SecurityManagement: React.FC = () => {
                     type="checkbox"
                     checked={chkSignOut}
                     onChange={(e) => setChkSignOut(e.target.checked)}
-                    className="w-4 h-4 text-blue-700 rounded"
+                    className="w-4 h-4 text-blue-700 rounded-md"
                   />
                   <span>2. Daily user account sign-out verified on all bay terminals (OFF-009)</span>
                 </label>
@@ -616,7 +616,7 @@ export const SecurityManagement: React.FC = () => {
                     type="checkbox"
                     checked={chkNoPersonal}
                     onChange={(e) => setChkNoPersonal(e.target.checked)}
-                    className="w-4 h-4 text-blue-700 rounded"
+                    className="w-4 h-4 text-blue-700 rounded-md"
                   />
                   <span>3. No personal cloud sync or webmail active on company computers (OFF-002/003)</span>
                 </label>
@@ -625,14 +625,14 @@ export const SecurityManagement: React.FC = () => {
                     type="checkbox"
                     checked={chkStorage}
                     onChange={(e) => setChkStorage(e.target.checked)}
-                    className="w-4 h-4 text-blue-700 rounded"
+                    className="w-4 h-4 text-blue-700 rounded-md"
                   />
                   <span>4. Authorized business-data storage compliance verified (OFF-010)</span>
                 </label>
               </div>
 
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Walkthrough Observations / Notes
                 </label>
                 <input
@@ -640,21 +640,21 @@ export const SecurityManagement: React.FC = () => {
                   value={chkNotes}
                   onChange={(e) => setChkNotes(e.target.value)}
                   placeholder="All 4 bay terminals checked and locked."
-                  className="w-full border border-slate-300 rounded px-2.5 py-1.5 text-slate-900"
+                  className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 text-slate-900"
                 />
               </div>
 
-              <div className="p-3 bg-slate-50 border border-slate-200 rounded flex items-center justify-between">
+              <div className="p-3 bg-slate-50 border border-slate-200 rounded-md flex items-center justify-between">
                 <div>
                   <span className="font-semibold block">Employee Signature:</span>
-                  <span className="text-[11px] font-mono text-slate-500">
+                  <span className="text-xs text-slate-500">
                     {chkSignature ? '✓ Signature Attached' : 'Signature required to submit'}
                   </span>
                 </div>
                 <button
                   type="button"
                   onClick={() => setChkSigOpen(true)}
-                  className="px-3 py-1.5 bg-white border border-slate-300 text-slate-800 font-bold rounded text-xs"
+                  className="px-3 py-1.5 bg-white border border-slate-300 text-slate-800 font-bold rounded-md text-xs"
                 >
                   Capture Signature
                 </button>
@@ -670,7 +670,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-blue-700 hover:bg-blue-800 text-white font-bold rounded"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-md"
                 >
                   Submit Checklist (OFF-008)
                 </button>
@@ -682,17 +682,17 @@ export const SecurityManagement: React.FC = () => {
 
       {/* Report Security Incident Modal (OFF-012) */}
       {incModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-950/70 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-lg shadow-2xl border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
-            <div className="bg-red-900 text-white px-6 py-4 flex items-center justify-between">
-              <h3 className="font-bold text-sm tracking-wide uppercase text-white font-mono flex items-center gap-2">
-                <AlertTriangle className="w-4 h-4 text-amber-400" />
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-lg shadow-lg border border-slate-300 w-full max-w-lg overflow-hidden flex flex-col">
+            <div className="bg-white text-slate-900 border-b border-slate-200 px-6 py-4 flex items-center justify-between">
+              <h3 className="font-bold text-sm text-slate-900 flex items-center gap-2">
+                <AlertTriangle className="w-4 h-4 text-amber-600" />
                 <span>Security Incident Reporting (OFF-012)</span>
               </h3>
               <button
                 type="button"
                 onClick={() => setIncModalOpen(false)}
-                className="text-slate-400 hover:text-white"
+                className="text-slate-500 hover:text-slate-900"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -700,7 +700,7 @@ export const SecurityManagement: React.FC = () => {
 
             <form onSubmit={handleReportIncident} className="p-6 space-y-4 text-xs">
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Incident Title *
                 </label>
                 <input
@@ -709,17 +709,17 @@ export const SecurityManagement: React.FC = () => {
                   value={incTitle}
                   onChange={(e) => setIncTitle(e.target.value)}
                   placeholder="e.g. Unrecognized USB drive plugged into reception PC"
-                  className="w-full border border-slate-300 rounded px-2.5 py-1.5 text-slate-900"
+                  className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 text-slate-900"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block font-semibold uppercase text-slate-700 mb-1">Severity *</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Severity *</label>
                   <select
                     value={incSeverity}
                     onChange={(e) => setIncSeverity(e.target.value as any)}
-                    className="w-full border border-slate-300 rounded px-2.5 py-1.5 bg-white text-slate-900"
+                    className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 bg-white text-slate-900"
                   >
                     <option value="LOW">Low</option>
                     <option value="MEDIUM">Medium</option>
@@ -729,20 +729,20 @@ export const SecurityManagement: React.FC = () => {
                 </div>
 
                 <div>
-                  <label className="block font-semibold uppercase text-slate-700 mb-1">Impacted Device *</label>
+                  <label className="block font-semibold text-slate-700 mb-1">Impacted Device *</label>
                   <input
                     type="text"
                     required
                     value={incDevice}
                     onChange={(e) => setIncDevice(e.target.value)}
                     placeholder="e.g. DESK-FRONT-01"
-                    className="w-full border border-slate-300 rounded px-2.5 py-1.5 text-slate-900 font-mono"
+                    className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 text-slate-900"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block font-semibold uppercase text-slate-700 mb-1">
+                <label className="block font-semibold text-slate-700 mb-1">
                   Description of Incident *
                 </label>
                 <textarea
@@ -751,7 +751,7 @@ export const SecurityManagement: React.FC = () => {
                   value={incDesc}
                   onChange={(e) => setIncDesc(e.target.value)}
                   placeholder="Detail observations, symptoms, and immediate containment taken..."
-                  className="w-full border border-slate-300 rounded px-2.5 py-1.5 text-slate-900"
+                  className="w-full border border-slate-300 rounded-md px-2.5 py-1.5 text-slate-900"
                 />
               </div>
 
@@ -765,7 +765,7 @@ export const SecurityManagement: React.FC = () => {
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white font-bold rounded"
+                  className="px-4 py-2 bg-red-700 hover:bg-red-800 text-white font-bold rounded-md"
                 >
                   Escalate Incident to Management (OFF-012)
                 </button>
