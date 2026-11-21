@@ -1,10 +1,7 @@
 import axios from 'axios';
 
 export const API_BASE_URL =
-  (import.meta as any).env?.VITE_API_URL ||
-  (typeof window !== 'undefined' && window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1'
-    ? 'https://freedom-truck-backend.vercel.app/api'
-    : 'http://localhost:5001/api');
+  (import.meta as any).env?.VITE_API_URL || 'https://freedom-truck-backend.vercel.app/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
